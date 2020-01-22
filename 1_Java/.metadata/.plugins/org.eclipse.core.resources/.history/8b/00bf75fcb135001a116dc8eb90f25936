@@ -1,0 +1,18 @@
+package pra;
+
+import java.util.LinkedList;
+
+public class Ex12 {
+	public static void main(String[] args) {
+		Ex12 ex = new Ex12();
+		int no[] = {1,1,1,1,1};
+		int no2[] = {1,2,3,9,10,12};
+		System.out.println(ex.solution(no2,7));
+		
+	}
+	
+	public String solution(int n) {
+	      String answer = "";
+	      return answer;
+	  }
+}

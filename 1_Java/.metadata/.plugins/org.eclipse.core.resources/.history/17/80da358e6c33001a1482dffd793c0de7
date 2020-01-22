@@ -1,0 +1,28 @@
+package com.tj.supermarket;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GridBagLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public class JPanelLol extends JPanel {
+	public void background(Graphics g) {
+		Dimension d = getSize();
+		String backlol = "src/com/tj/image/lolimage.jpg";
+		ImageIcon imageLol = new ImageIcon(backlol); 
+		g.drawImage(imageLol.getImage(), 0, 0, 0, 0, null);
+		
+	}
+	
+	public JPanelLol() {
+		super();
+	}
+	
+	
+	
+	
+
+}

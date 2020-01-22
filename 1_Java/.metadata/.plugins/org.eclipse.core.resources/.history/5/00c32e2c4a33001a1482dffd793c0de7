@@ -1,0 +1,26 @@
+package com.tj.supermarket;
+
+public class SuperDTO {
+	private String cTel;
+	private String cName;
+	private int cPoint;
+	private int cAmount;
+	private String gLevel;
+	private int pAmount;
+	public SuperDTO(String cTel, String cName, int cPoint, int cAmount, String gLevel, int pAmount) {
+		super();
+		this.cTel = cTel;
+		this.cName = cName;
+		this.cPoint = cPoint;
+		this.cAmount = cAmount;
+		this.gLevel = gLevel;
+		this.pAmount = pAmount;
+	}
+	@Override
+	public String toString() {
+		return cTel + "\t" + cName + "\t" + cPoint + "\t" + cAmount
+				+ "\t" + gLevel + "\t" + pAmount;
+	}
+	
+	
+}

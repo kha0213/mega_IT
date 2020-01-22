@@ -1,0 +1,47 @@
+package com.tj.student;
+
+public class StudentDTO2 {
+	private String sNo;
+	private String sName;
+	private String mName;
+	private int score;
+	public StudentDTO2(String sNo, String sName, String mName, int score) {
+		super();
+		this.sNo = sNo;
+		this.sName = sName;
+		this.mName = mName;
+		this.score = score;
+	}
+	@Override
+	public String toString() {
+		return sNo + "\t" + sName + "\t" + mName + "\t" + score;
+	}
+	public String getsNo() {
+		return sNo;
+	}
+	public void setsNo(String sNo) {
+		this.sNo = sNo;
+	}
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
+	public String getmName() {
+		return mName;
+	}
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	
+	
+	
+}

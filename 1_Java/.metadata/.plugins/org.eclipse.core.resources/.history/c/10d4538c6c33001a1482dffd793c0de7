@@ -1,0 +1,18 @@
+package com.tj.supermarket;
+
+import java.awt.GridBagLayout;
+
+import javax.swing.JPanel;
+
+public class JPanelLol extends JPanel {
+	public JPanelLol() {
+		super();
+		initialize();
+	}
+	
+	private void initialize() {
+		  this.setSize(160, 140);
+		  this.setLayout(new GridBagLayout());
+	}
+
+}

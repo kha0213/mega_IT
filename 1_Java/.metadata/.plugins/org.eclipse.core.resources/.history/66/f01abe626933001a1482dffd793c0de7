@@ -1,0 +1,31 @@
+package com.tj.supermarket;
+
+public class JPanelLol {
+	public JPanelLol() {
+		  super();
+		  initialize();
+		 }
+
+		 private void initialize() {
+		  this.setSize(160, 140);
+		  this.setLayout(new GridBagLayout());
+		 }
+		 
+		 //이 메소드를 오버라이드 해야합니다.
+		 public void paintComponent(Graphics g){
+
+		  g.setColor(Color.orange);
+		  g.fillRect(10, 10, 50, 80);
+		  //2. 이미지 넣기
+		  //- 경로는 어떻게 할까? workspace에 src 동일 폴더 image 폴더에서..
+		  //Image imgae = new ImageIcon("image/mainPicture.jpg").getImage();
+		  //g.drawImage(imgae,0,0,this);
+		 }
+		}
+
+		//////////////////////////////////////////////////////////////////
+		jPanel.add(new Pictuer()); // add 했군요.
+		}
+
+
+}

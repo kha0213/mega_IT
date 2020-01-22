@@ -1,0 +1,25 @@
+package pra;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+        
+    }
+
+	public boolean solution(int x) {
+	      boolean answer = true;
+	      ArrayList<Integer> a = new ArrayList<>();
+	      do {
+	    	  a.add(x%10);
+	    	  x/=10;
+	      } while(x!=0);
+	      
+	      
+	      
+	      return answer;
+	  }
+	  
+		
+}

@@ -1,0 +1,21 @@
+package pra;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Ex11 {
+	public static void main(String[] args) {
+		Ex11 ex = new Ex11();
+		int no[] = {6,10,2};
+		int no2[] = {1,2,3,9,10,12};
+		System.out.println(ex.solution(no2),7);
+		
+	}
+	
+	public int solution(int[] scoville, int K) {
+        
+		
+		int answer = 0;
+        return answer;
+    }
+}

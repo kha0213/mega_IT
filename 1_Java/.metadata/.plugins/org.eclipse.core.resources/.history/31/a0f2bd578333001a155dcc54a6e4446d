@@ -1,0 +1,634 @@
+package com.tj.supermarket;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.TexturePaint;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+
+public class SwingSupermarket extends JFrame implements ActionListener {
+//Swing
+	private Container container;
+	private JPanel jpup, jpbtn;
+	private JTextField jtxtId, jtxtTel, jtxtName, jtxtPoint, jtxtAmount;
+	private Vector<String> levels;
+	private JComboBox<String> jcomLevel;
+	private JButton jbtnTelSearch, jbtnNameSearch, jbtnPoint;
+	private JButton jbtnBuy, jbtnLevelOutput, jbtnAllOutput, jbtnInsert, jbtnTelUpdate, jbtnDelete, jbtnExit;
+	private JTextArea jtxtPool;
+	private JScrollPane scrollPane;
+	private String driver;
+	private String url;
+	private String user;
+	private String password;
+
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	private String sql;
+
+	private String cTel, cName, gLevel;
+	private int cPoint, cAmount, pAmount, cID;
+	private ArrayList<SuperDTO> customers;
+	
+	public SwingSupermarket(String title) {
+		super(title);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		container = getContentPane();
+		container.setLayout(new FlowLayout());
+		jpup = new JPanel(new GridLayout(6, 3));
+		jpbtn = new JPanel();
+		jtxtId = new JTextField(20);
+		jtxtTel = new JTextField(20);
+		jtxtName = new JTextField(20);
+		jtxtPoint = new JTextField(20);
+		jtxtAmount = new JTextField(20);
+		levels = new Vector<String>();
+		levels.add("");
+		driver = "oracle.jdbc.driver.OracleDriver";
+		url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		user = "scott";
+		password = "tiger";
+		sql = "SELECT GNAME FROM GRADE";
+		
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				levels.add(rs.getString("GNAME"));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+		jcomLevel = new JComboBox<String>(levels);
+		jbtnTelSearch = new JButton("폰4자리(FULL) 검색");
+		jbtnNameSearch = new JButton("고객 이름 검색");
+		jbtnPoint = new JButton("포인트로만 구매");
+		jpup.add(new JLabel(" 아 이 디 ", (int) CENTER_ALIGNMENT));
+		jpup.add(jtxtId);
+		jpup.add(new JLabel(""));
+		jpup.add(new JLabel("고 객 전 화", (int) CENTER_ALIGNMENT));
+		jpup.add(jtxtTel);
+		jpup.add(jbtnTelSearch);
+		jpup.add(new JLabel("고 객 이 름", (int) CENTER_ALIGNMENT));
+		jpup.add(jtxtName);
+		jpup.add(jbtnNameSearch);
+		jpup.add(new JLabel("포  인  트", (int) CENTER_ALIGNMENT));
+		jpup.add(jtxtPoint);
+		jpup.add(jbtnPoint);
+		jpup.add(new JLabel("구 매 금 액", (int) CENTER_ALIGNMENT));
+		jpup.add(jtxtAmount);
+		jpup.add(new JLabel(""));// 빈 라벨 추가하는 부분
+		jpup.add(new JLabel("고 객 등 급", (int) CENTER_ALIGNMENT));
+		jpup.add(jcomLevel);
+		jbtnBuy = new JButton("물품 구매");
+		jbtnLevelOutput = new JButton("등급별출력");
+		jbtnAllOutput = new JButton("전체출력");
+		jbtnInsert = new JButton("회원가입");
+		jbtnTelUpdate = new JButton("번호수정");
+		jbtnDelete = new JButton("회원탈퇴");
+		jbtnExit = new JButton("나가기");
+		jpbtn.add(jbtnBuy);
+		jpbtn.add(jbtnLevelOutput);
+		jpbtn.add(jbtnAllOutput);
+		jpbtn.add(jbtnInsert);
+		jpbtn.add(jbtnTelUpdate);
+		jpbtn.add(jbtnDelete);
+		jpbtn.add(jbtnExit);
+		jtxtPool = new JTextArea(20, 60);
+		scrollPane = new JScrollPane(jtxtPool);
+		container.add(jpup);
+		container.add(jpbtn);
+		container.add(scrollPane);
+		
+		jtxtPool.setText("\t\t★ ★ ★ 고객검색 후 구매하세요 ★ ★ ★");
+		customers = new ArrayList<SuperDTO>();
+
+		jbtnTelSearch.addActionListener(this);
+		jbtnNameSearch.addActionListener(this);
+		jbtnPoint.addActionListener(this);
+		jbtnBuy.addActionListener(this);
+		jbtnLevelOutput.addActionListener(this);
+		jbtnAllOutput.addActionListener(this);
+		jbtnInsert.addActionListener(this);
+		jbtnTelUpdate.addActionListener(this);
+		jbtnDelete.addActionListener(this);
+		jbtnExit.addActionListener(this);
+		
+		jtxtPool.setEditable(false);
+		jtxtId.setEditable(false);
+		jtxtPoint.setEditable(false);
+		jtxtId.setBackground(Color.WHITE);
+		jtxtPoint.setBackground(Color.WHITE);
+		jtxtPoint.setBorder(BorderFactory.createBevelBorder(5));
+
+		setBounds(100, 100, 700, 650);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		driver = "oracle.jdbc.driver.OracleDriver";
+		url = "jdbc:oracle:thin:@localhost:1521:xe";// 로칼 호스트로 해도 됨
+		user = "scott";
+		password = "tiger";
+
+		String sql = "";
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, user, password);
+		} catch (Exception e1) {
+			System.out.println(e1.getMessage());
+		}
+
+		if (e.getSource() == jbtnTelSearch) {
+			jtxtPool.setText("");
+			jtxtName.setText("");
+			jtxtAmount.setText("");
+			jtxtPoint.setText("");
+			jcomLevel.setSelectedItem("");
+			if (jtxtTel.getText().trim().isEmpty()) {
+				jtxtPool.setText("전화번호를 입력하고 검색을 눌러주세요");
+				return;
+			}
+			sql = "SELECT C.*,GNAME,HIAMOUNT-CAMOUNT PAMOUNT FROM CUSTOMER C, "
+					+ " GRADE G WHERE CPHONE LIKE '%'||? AND CAMOUNT BETWEEN LOAMOUNT AND HIAMOUNT" + " ORDER BY CNAME"; // 전화번호
+																															// 뒷자리
+																															// '8628'
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, jtxtTel.getText().trim());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					jtxtPool.append("전화\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을 위한 앞으로 구매할 금액\r\n");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("---------------------\r\n");
+					customers.clear();
+					do {
+						cID = rs.getInt("CID");
+						cTel = rs.getString("CPHONE");
+						cName = rs.getString("CNAME");
+						cPoint = rs.getInt("CPOINT");
+						cAmount = rs.getInt("CAMOUNT");
+						gLevel = rs.getString("GNAME");
+						pAmount = rs.getInt("PAMOUNT");
+						if (gLevel.equals("DIAMOND")) {
+							pAmount = 0;
+						}
+						customers.add(new SuperDTO(cTel, cName, cPoint, cAmount, gLevel, pAmount));
+						jtxtId.setText(String.valueOf(cID));
+						jtxtTel.setText(cTel);
+						jtxtName.setText(cName);
+						jtxtPoint.setText(String.valueOf(cPoint));
+						jcomLevel.setSelectedItem(gLevel);
+					} while (rs.next());
+					for (SuperDTO s : customers) {
+						jtxtPool.append(s.toString());
+					}
+				} else {
+					jtxtPool.setText("해당전화번호 고객이 하나도 없습니다.");
+				}
+			} catch (Exception e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+
+		} else if (e.getSource() == jbtnNameSearch) {
+			jtxtPool.setText("");
+			jtxtPool.setText("");
+			jtxtId.setText("");
+			jtxtTel.setText("");
+			jtxtAmount.setText("");
+			jcomLevel.setSelectedItem("");
+			if (jtxtName.getText().trim().isEmpty()) {
+				jtxtPool.setText("이름을 입력하고 검색을 눌러주세요.");
+				return;
+			}
+			sql = "SELECT C.*,GNAME,HIAMOUNT-CAMOUNT PAMOUNT FROM CUSTOMER C, "
+					+ "GRADE G WHERE CNAME LIKE '%'||?||'%' AND CAMOUNT BETWEEN LOAMOUNT AND HIAMOUNT"; // ? cname
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, jtxtName.getText().trim());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					jtxtPool.append("전화\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을 위한 앞으로 구매할 금액\r\n");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("---------------------\r\n");
+					customers.clear();
+					do {
+						cID = rs.getInt("CID");
+						cTel = rs.getString("CPHONE");
+						cName = rs.getString("CNAME");
+						cPoint = rs.getInt("CPOINT");
+						cAmount = rs.getInt("CAMOUNT");
+						gLevel = rs.getString("GNAME");
+						pAmount = rs.getInt("PAMOUNT");
+						if (gLevel.equals("DIAMOND")) {
+							pAmount = 0;
+						}
+						customers.add(new SuperDTO(cTel, cName, cPoint, cAmount, gLevel, pAmount));
+						jtxtId.setText(String.valueOf(cID));
+						jtxtTel.setText(cTel);
+						jtxtName.setText(cName);
+						jtxtPoint.setText(String.valueOf(cPoint));
+						jcomLevel.setSelectedItem(gLevel);
+					} while (rs.next());
+					for (SuperDTO s : customers) {
+						jtxtPool.append(s.toString());
+					}
+				} else {
+					jtxtPool.setText("해당 이름의 고객이 한 명도 없습니다.");
+				}
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+
+		} else if (e.getSource() == jbtnPoint) {
+			jtxtPool.setText("");
+			sql = "UPDATE CUSTOMER SET CPOINT=CPOINT-?, CAMOUNT=CAMOUNT+? WHERE CID=?";
+			// 1.구매금액 2.구매금액 3.cID
+			if(jtxtId.getText().isEmpty()) {
+				jtxtPool.setText("먼저 고객 검색하고 포인트구매버튼 누르세요");
+				return;
+			}
+			int pur = 0;
+			try {
+				pur = Integer.parseInt(jtxtAmount.getText().trim());
+			} catch (Exception e2) {
+				jtxtPool.setText("구매금액은 숫자만 입력해 주세요.");
+				return;
+			}
+			try {
+				pstmt = conn.prepareStatement(sql);
+				if (pur > Integer.parseInt(jtxtPoint.getText())) {
+					jtxtPool.setText("구매금액이 포인트보다 큽니다. 물품 구매로 진행해주세요.");
+					return;
+				}
+				pstmt.setInt(1, pur);
+				pstmt.setInt(2, pur);
+				pstmt.setString(3, jtxtId.getText());
+				int result = pstmt.executeUpdate();
+				if (result > 0) {
+					jtxtPool.setText("포인트로 구매하여 포인트가" + pur + "점 차감되었습니다.");
+					jtxtPoint.setText(String.valueOf(Integer.parseInt(jtxtPoint.getText()) - pur));
+					jtxtAmount.setText("");
+				} else {
+					jtxtPool.setText("오류입니다.관리자에게 문의하세요");
+				}
+
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+		} else if (e.getSource() == jbtnBuy) {
+			jtxtPool.setText("");
+			if(jtxtId.getText().isEmpty()) {
+				jtxtPool.setText("먼저 고객 검색하고 포인트구매버튼 누르세요");
+				return;
+			}
+			sql = "UPDATE CUSTOMER SET CPOINT=CPOINT+?*0.1, " + "CAMOUNT=CAMOUNT+? WHERE CID=?"; // 1.amount 2.amount
+																									// 3.cid
+			int pur = 0;
+			try {
+				pur = Integer.parseInt(jtxtAmount.getText().trim());
+			} catch (Exception e2) {
+				jtxtPool.setText("구매금액은 숫자만 입력해 주세요.");
+				return;
+			}
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pur);
+				pstmt.setInt(2, pur);
+				pstmt.setInt(3, Integer.parseInt(jtxtId.getText()));
+				int result = pstmt.executeUpdate();
+				if (result > 0) {
+					jtxtPool.setText(pur + "원 어치 물품 구매 성공하였습니다.\r\n");
+					jtxtPool.append("★★★★★★★★★★★★★" + pur / 10 + "점 포인트 적립되었습니다★★★★★★★★★★★★★");
+					jtxtPoint.setText(String.valueOf(Integer.parseInt(jtxtPoint.getText()) + pur / 10));
+				} else {
+					jtxtPool.setText("고객 아이디를 확인해주세요");
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+		} else if (e.getSource() == jbtnLevelOutput) {
+			jtxtId.setText("");
+			jtxtPool.setText("");
+			jtxtPoint.setText("");
+			jtxtTel.setText("");
+			jtxtName.setText("");
+			jtxtAmount.setText("");
+			if(jcomLevel.getSelectedItem().toString().isEmpty()) {
+				jtxtPool.setText("고객등급란을 선택하시고 등급별 출력을 눌러주세요");
+				return;
+			}
+			
+			sql = "SELECT C.*,GNAME,HIAMOUNT-CAMOUNT PAMOUNT FROM CUSTOMER C, GRADE G WHERE GNAME=? AND CAMOUNT BETWEEN LOAMOUNT AND HIAMOUNT"
+					+ "    ORDER BY CAMOUNT"; // ? gname
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, jcomLevel.getSelectedItem().toString());
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					jtxtPool.append("전화\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을 위한 앞으로 구매할 금액\r\n");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("---------------------\r\n");
+					customers.clear();
+					do {
+						cID = rs.getInt("CID");
+						cTel = rs.getString("CPHONE");
+						cName = rs.getString("CNAME");
+						cPoint = rs.getInt("CPOINT");
+						cAmount = rs.getInt("CAMOUNT");
+						gLevel = rs.getString("GNAME");
+						pAmount = rs.getInt("PAMOUNT");
+						if (gLevel.equals("DIAMOND")) {
+							pAmount = 0;
+						}
+						customers.add(new SuperDTO(cTel, cName, cPoint, cAmount, gLevel, pAmount));
+						
+					} while (rs.next());
+					for (SuperDTO s : customers) {
+						jtxtPool.append(s.toString());
+					}
+				}else {
+					jtxtPool.setText(jcomLevel.getSelectedItem().toString()+"고객이 한 명도 없어요");
+				}
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+
+		} else if (e.getSource() == jbtnAllOutput) {
+			jtxtId.setText("");
+			jtxtPool.setText("");
+			jtxtTel.setText("");
+			jtxtPoint.setText("");
+			jtxtName.setText("");
+			jtxtAmount.setText("");
+			jcomLevel.setSelectedItem("");
+			
+			sql = "SELECT C.*,GNAME,HIAMOUNT-CAMOUNT PAMOUNT FROM CUSTOMER C, GRADE G WHERE CAMOUNT BETWEEN LOAMOUNT AND HIAMOUNT"
+					+ "    ORDER BY CAMOUNT"; 
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					jtxtPool.append("전화\t이름\t포인트\t구매누적액\t고객레벨\t레벨업을 위한 앞으로 구매할 금액\r\n");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("----------------------------------------------------------------");
+					jtxtPool.append("---------------------\r\n");
+					customers.clear();
+					do {
+						cID = rs.getInt("CID");
+						cTel = rs.getString("CPHONE");
+						cName = rs.getString("CNAME");
+						cPoint = rs.getInt("CPOINT");
+						cAmount = rs.getInt("CAMOUNT");
+						gLevel = rs.getString("GNAME");
+						pAmount = rs.getInt("PAMOUNT");
+						if (gLevel.equals("DIAMOND")) {
+							pAmount = 0;
+						}
+						customers.add(new SuperDTO(cTel, cName, cPoint, cAmount, gLevel, pAmount));
+						
+					} while (rs.next());
+					for (SuperDTO s : customers) {
+						jtxtPool.append(s.toString());
+					}
+				}else {
+					jtxtPool.setText(jcomLevel.getSelectedItem().toString()+"고객이 한 명도 없어요");
+				}
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+			
+		} else if (e.getSource() == jbtnInsert) {
+			jtxtPool.setText("");
+			cTel = jtxtTel.getText().trim();
+			cName = jtxtName.getText().trim();
+			if(cTel.length()<12 || cTel.length()>15) {
+				jtxtPool.setText("전화번호 형식이 잘못되었습니다 -(하이픈)을 포함하여 입력해주세요");
+				return;
+			}else if(cName.isEmpty()) {
+				jtxtPool.setText("이름을 입력해주세요.");
+			}
+			
+			sql="INSERT INTO CUSTOMER (CID,CPHONE,CNAME) VALUES(CSEQ.NEXTVAL,?,?)";
+			//1.cphone,2.cname
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, jtxtTel.getText().trim());
+				pstmt.setString(2, jtxtName.getText().trim());
+				int result = pstmt.executeUpdate();
+				if(result>0) {
+					jtxtPool.setText("★★★★★★★★★★★★★★★★★★★★★"+jtxtName.getText().trim()+"님 가입 환영합니다. 포인트 1000점을 선물로 드립니다 ^-^★★★★★★★★★★★★★★★★★★★★★");
+				}else {
+					jtxtPool.setText("등록실패되었습니다. 관리자에게 문의하세요");
+				}
+			} catch (SQLException e1) {
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+			
+		} else if (e.getSource() == jbtnTelUpdate) {
+			if(jtxtId.getText().isEmpty()) {
+				jtxtPool.setText("먼저 고객 검색하고 번호수정해주세요");
+				return;
+			}
+			jtxtPoint.setText("");
+			jtxtPool.setText("");
+			jtxtAmount.setText("");
+			jcomLevel.setSelectedItem("");
+			cTel = jtxtTel.getText().trim();
+			if(cTel.length()<12 || cTel.length()>15) {
+				jtxtPool.setText("수정할 전화번호 형식이 잘못되었습니다 -(하이픈)을 포함하여 입력해주세요");
+				return;
+			}
+			sql = "UPDATE CUSTOMER SET CPHONE=? WHERE CID=?";
+			//1.cphone 2.cid
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, cTel);
+				pstmt.setString(2, jtxtId.getText());
+				int result = pstmt.executeUpdate();
+				if(result>0) {
+					jtxtPool.setText(jtxtName.getText()+"님 전화번호 수정 완료하였습니다.");
+				}else {
+					jtxtPool.setText("전화번호 수정 실패하였습니다. 관리자에게 문의하세요");
+				}
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+			
+			
+		} else if (e.getSource() == jbtnDelete) {
+			if(jtxtId.getText().isEmpty()) {
+				jtxtPool.setText("먼저 고객 검색하고 탈퇴처리해주세요");
+				return;
+			}
+			jtxtPool.setText("");
+			jtxtTel.setText("");
+			jtxtAmount.setText("");
+			jcomLevel.setSelectedItem("");
+			sql = "DELETE FROM CUSTOMER WHERE CID=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, jtxtId.getText());
+				int result = pstmt.executeUpdate();
+				if(result>0) {
+					jtxtPool.setText(jtxtName.getText()+"님 회원탈퇴 완료되었습니다.");
+					jtxtId.setText("");
+					jtxtName.setText("");
+					jtxtPoint.setText("");
+				}else {
+					jtxtPool.setText("회원삭제에 실패하였습니다. 관리자에게 문의하세요");
+				}
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e1) {
+				}
+			}
+		} else if (e.getSource() == jbtnExit) {
+			int answer = JOptionPane.showConfirmDialog(null, "진짜 종료할꺼야?");
+			if (answer == 0) {
+				setVisible(false);
+				dispose();
+				System.exit(0);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		new SwingSupermarket("고객관리");
+	}
+
+}

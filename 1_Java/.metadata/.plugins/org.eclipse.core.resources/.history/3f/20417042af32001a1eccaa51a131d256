@@ -1,0 +1,50 @@
+package com.tj.student;
+
+import java.sql.SQLException;
+
+public class BtnSNoSearch {
+	txtPool.setText("");
+	if (txtSNo.getText().trim().length() == 0) {
+		txtPool.setText("학번을 입력하고 검색하세요.");
+		txtSName.setText("");
+		comMname.setSelectedItem("");
+		txtScore.setText("");
+		return;
+	} else {
+		sql = "SELECT SNO,SNAME,MNAME,SCORE FROM STUDENT S,MAJOR M WHERE S.MNO=M.MNO AND SNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, txtSNo.getText().trim());
+			rs = pstmt.executeQuery();
+			students2.clear();
+			if (rs.next()) {
+				do {
+					students2.add(
+							new StudentDTO2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+					txtSNo.setText(rs.getString(1));
+					txtSName.setText(rs.getString(2));
+					comMname.setSelectedItem(rs.getString(3));
+					txtScore.setText(String.valueOf(rs.getInt(4)));
+				} while (rs.next());
+				txtPool.setText(students2.get(0).getsName()+"님 검색 완료");
+			} else {
+				txtPool.setText("없는 학번 입니다.");
+				txtSName.setText("");
+				comMname.setSelectedItem("");
+				txtScore.setText("");
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1.getMessage());
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e4) {
+			}
+		}
+	}
+}

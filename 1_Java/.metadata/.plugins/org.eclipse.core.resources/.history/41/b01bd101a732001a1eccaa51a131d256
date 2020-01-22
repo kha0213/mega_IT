@@ -1,0 +1,504 @@
+package com.tj.student;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.*;
+
+public class SwingStudentMng extends JFrame implements ActionListener {
+	private Container containPane;
+	private JPanel jpup;
+	private JPanel jpbtn;
+	private JTextField txtSNo;
+	private JTextField txtSName;
+	private Vector<String> vMajor;
+	private JComboBox<String> comMname;
+	private JTextField txtScore;
+	private JButton btnSNoSearch;
+	private JButton btnSNameSearch;
+	private JButton btnMNameSearch;
+
+	private JButton btnInput;
+	private JButton btnUpdate;
+	private JButton btnStudentOut;
+	private JButton btnExpel;
+	private JButton btnExit;
+	private JButton btnExpelOut;
+
+	private JTextArea txtPool;
+	private JScrollPane scrollPane;
+
+	private String driver;
+	private String url;
+	private String user;
+	private String password;
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+
+	ArrayList<StudentDTO> students1 = new ArrayList<StudentDTO>();
+	ArrayList<StudentDTO2> students2 = new ArrayList<StudentDTO2>();
+
+	public SwingStudentMng(String title) {
+		super(title);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		containPane = getContentPane();
+		containPane.setLayout(new FlowLayout());
+		jpup = new JPanel(new GridLayout(4, 3));
+		jpbtn = new JPanel(new FlowLayout());
+		txtSNo = new JTextField(10);
+		txtSName = new JTextField(10);
+		vMajor = new Vector<String>();
+		vMajor.add("");
+
+		driver = "oracle.jdbc.driver.OracleDriver";
+		url = "jdbc:oracle:thin:@localhost:1521:xe";
+		user = "scott";
+		password = "tiger";
+		
+		String sql = "SELECT MNAME FROM MAJOR";
+		
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				vMajor.add(rs.getString(1));
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		comMname = new JComboBox<String>(vMajor);
+		txtScore = new JTextField(10);
+		btnSNoSearch = new JButton("학번검색");
+		btnSNameSearch = new JButton("이름검색");
+		btnMNameSearch = new JButton("전공검색");
+
+		btnInput = new JButton("학생입력");
+		btnUpdate = new JButton("학생수정");
+		btnStudentOut = new JButton("학생출력");
+		btnExpel = new JButton("제적처리");
+		btnExit = new JButton("종  료");
+		btnExpelOut = new JButton("제적자출력");
+
+		txtPool = new JTextArea(30, 50);
+		scrollPane = new JScrollPane(txtPool);
+
+		jpup.add(new JLabel("학번", (int) CENTER_ALIGNMENT));
+		jpup.add(txtSNo);
+		jpup.add(btnSNoSearch);
+		jpup.add(new JLabel("이름", (int) CENTER_ALIGNMENT));
+		jpup.add(txtSName);
+		jpup.add(btnSNameSearch);
+		jpup.add(new JLabel("전공", (int) CENTER_ALIGNMENT));
+		jpup.add(comMname);
+		jpup.add(btnMNameSearch);
+		jpup.add(new JLabel("점수", (int) CENTER_ALIGNMENT));
+		jpup.add(txtScore);
+
+		jpbtn.add(btnInput);
+		jpbtn.add(btnUpdate);
+		jpbtn.add(btnStudentOut);
+		jpbtn.add(btnExpel);
+		jpbtn.add(btnExpelOut);
+		jpbtn.add(btnExit);
+
+		containPane.add(jpup);
+		containPane.add(jpbtn);
+		containPane.add(scrollPane);
+
+		btnSNoSearch.addActionListener(this);
+		btnSNameSearch.addActionListener(this);
+		btnMNameSearch.addActionListener(this);
+		btnInput.addActionListener(this);
+		btnUpdate.addActionListener(this);
+		btnStudentOut.addActionListener(this);
+		btnExpel.addActionListener(this);
+		btnExit.addActionListener(this);
+		btnExpelOut.addActionListener(this);
+
+		setVisible(true);
+		setBounds(100, 100, 600, 750);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		driver = "oracle.jdbc.driver.OracleDriver";
+		url = "jdbc:oracle:thin:@localhost:1521:xe";// 로칼 호스트로 해도 됨
+		user = "scott";
+		password = "tiger";
+
+		String sql = "";
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, user, password);
+		} catch (Exception e1) {
+			System.out.println(e1.getMessage());
+		}
+		if (e.getSource() == btnSNoSearch) {
+			txtPool.setText("");
+			if (txtSNo.getText().trim().length() == 0) {
+				txtPool.setText("학번을 입력하고 검색하세요.");
+				txtSName.setText("");
+				comMname.setSelectedItem("");
+				txtScore.setText("");
+				return;
+			} else {
+				sql = "SELECT SNO,SNAME,MNAME,SCORE FROM STUDENT S,MAJOR M WHERE S.MNO=M.MNO AND SNO=?";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, txtSNo.getText().trim());
+					rs = pstmt.executeQuery();
+					students2.clear();
+					if (rs.next()) {
+						do {
+							students2.add(
+									new StudentDTO2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+							txtSNo.setText(rs.getString(1));
+							txtSName.setText(rs.getString(2));
+							comMname.setSelectedItem(rs.getString(3));
+							txtScore.setText(String.valueOf(rs.getInt(4)));
+						} while (rs.next());
+						txtPool.setText(students2.get(0).getsName()+"님 검색 완료");
+					} else {
+						txtPool.setText("없는 학번 입니다.");
+						txtSName.setText("");
+						comMname.setSelectedItem("");
+						txtScore.setText("");
+					}
+				} catch (SQLException e1) {
+					System.out.println(e1.getMessage());
+				} finally {
+					try {
+						if (rs != null)
+							rs.close();
+						if (pstmt != null)
+							pstmt.close();
+						if (conn != null)
+							conn.close();
+					} catch (SQLException e4) {
+					}
+				}
+			}
+		} else if (e.getSource() == btnSNameSearch) {
+			txtPool.setText("");
+			sql = "SELECT SNO,SNAME,MNAME,SCORE FROM STUDENT S,MAJOR M WHERE S.MNO=M.MNO AND SNAME=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, txtSName.getText().trim());
+				rs = pstmt.executeQuery();
+				students2.clear();
+				if (rs.next()) {
+					do {
+						students2.add(new StudentDTO2(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+						txtSNo.setText(rs.getString(1));
+						txtSName.setText(rs.getString(2));
+						comMname.setSelectedItem(rs.getString(3));
+						txtScore.setText(String.valueOf(rs.getInt(4)));
+					} while (rs.next());
+					if(students2.size()>1) {
+						txtPool.append("학번\t이름\t전공명\t성적\r\n");
+						txtPool.append("--------------------------------------"
+								+ "-----------------------------------------\r\n");
+						
+					for (StudentDTO2 s : students2) {
+						txtPool.append(s.toString()+"\r\n");
+						
+					}
+					}
+				} else {
+					txtPool.setText("해당 이름 학생이 없습니다.");
+					txtSNo.setText("");
+					comMname.setSelectedItem("");
+					txtScore.setText("");
+				}
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {
+				}
+			}
+
+		} else if (e.getSource() == btnMNameSearch) {
+			txtPool.setText("");
+			sql="SELECT ROWNUM RANK, sNAME||'('||sNO||')' NAMENO, mNAME||'('||MNO||')' mNAME, SCORE" + 
+					"    FROM (SELECT S.*,MNAME FROM STUDENT S, MAJOR M WHERE S.mNO=m.mNO AND mNAME=?" + 
+					"            ORDER BY SCORE DESC)";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, comMname.getSelectedItem().toString());
+				rs = pstmt.executeQuery();
+				
+				students1.clear();
+				if(rs.next()) {
+					do {
+						int rank=rs.getInt("rank");
+						String nameNo=rs.getString("nameNo");
+						String mName=rs.getString("mName");
+						int score = rs.getInt("score");
+						students1.add(new StudentDTO(rank, nameNo, mName, score));
+					}while(rs.next());
+					txtPool.append("등수\t이름(학번)\t\t학과명(학과번호)\t성적\r\n");
+					txtPool.append("---------------------------------------"
+							+ "--------------------------------------------"
+							+ "-----------------------------------------\r\n");
+					for(StudentDTO s : students1) {
+						txtPool.append(s.toString()+"\r\n");
+					}
+					
+				}else {
+					txtPool.setText("해당 전공 학생이 한명도 없습니다.");
+				}
+				
+				
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {
+				}
+			}
+			
+
+		} else if (e.getSource() == btnInput) {
+//--------------------------------------학생등록
+			txtPool.setText("");
+			int sscore;
+			try {
+				sscore = Integer.parseInt(txtScore.getText());
+			}catch (NumberFormatException num) {
+				txtPool.setText("점수는 0~100사이의 정수로 입력해주세요");
+				return;
+			}
+			
+			if(txtSNo.getText().trim().length()>0) {
+				txtPool.setText("학번은 입력하시면 안됩니다.\r\n학생입력시 이름,전공,점수(0~100)만 입력하세요.");
+				return;
+			}else if(comMname.getSelectedItem().toString().length()==0) {
+				txtPool.setText("전공을 선택해주세요.");
+				return;
+			}else if(sscore<0 || sscore>100) {
+				txtPool.setText("점수는 0~100사이의 정수로 입력해주세요");
+				return;
+			}
+			
+			sql="INSERT INTO STUDENT (sNO, sNAME, mNO, SCORE) VALUES" + 
+					"    (TO_CHAR(SYSDATE, 'YYYY')||TRIM(TO_CHAR((SELECT mNO FROM MAJOR WHERE mNAME=?),'00'))" + 
+					"    ||TRIM(TO_CHAR(STUDENT_SEQ.NEXTVAL,'000'))," + 
+					"    ?,(SELECT mNO FROM MAJOR WHERE mNAME=?), ?) ";
+					//1.mName 2.sName 3.mName 4.score
+			try {
+				students1.clear();
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, comMname.getSelectedItem().toString());
+				pstmt.setString(2, txtSName.getText().trim());
+				pstmt.setString(3, comMname.getSelectedItem().toString());
+				pstmt.setInt(4, Integer.parseInt(txtScore.getText().trim()));
+				rs = pstmt.executeQuery();
+				txtPool.setText(txtSName.getText().trim()+"님 입력성공하셨습니다.");
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {
+				}
+			}
+// --------------------------------------------- 학생수정
+		} else if (e.getSource() == btnUpdate) {
+			txtPool.setText("");
+			int sscore;
+			try {
+				sscore = Integer.parseInt(txtScore.getText());
+			}catch (NumberFormatException num) {
+				txtPool.setText("학생수정은 이름 학과 성적( 0~100사이의 정수)를 입력해주세요");
+				return;
+			}
+			sql = "UPDATE STUDENT SET SNAME=?,MNO=(SELECT mNO FROM MAJOR WHERE mNAME=?),SCORE=? WHERE SNO=?";
+			//1.sName 2.mName 3.score 4.sNo
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, txtSName.getText().trim());
+				pstmt.setString(2, comMname.getSelectedItem().toString());
+				pstmt.setInt(3, sscore);
+				pstmt.setString(4, txtSNo.getText().trim());
+				int result = pstmt.executeUpdate();
+				txtPool.append(result>0?"학번 ("+txtSNo.getText().trim()+")"+" 님의 정보를 [이름]:"+txtSName.getText().trim()+"\t[성적]: \t으로수정하였습니다.":"오류있음");
+				
+				
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {
+				}
+			}
+		} else if (e.getSource() == btnStudentOut) {
+			txtPool.setText("");
+			sql = "SELECT ROWNUM RANK, sNAME||'('||sNO||')' NAMENO, mNAME||'('||MNO||')' mNAME, SCORE" + 
+					"    FROM (SELECT S.*,MNAME FROM STUDENT S, MAJOR M WHERE S.mNO=m.mNO AND SEXPEL=0" + 
+					"            ORDER BY SCORE DESC)";
+			try {
+				students1.clear();
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					do {
+					int rank = rs.getInt("rank");
+					String nameNo = rs.getString("nameno");
+					String mName = rs.getString("mName");
+					int score = rs.getInt("score");
+					students1.add(new StudentDTO(rank, nameNo, mName, score));
+					}while(rs.next());
+				}else {
+					txtPool.setText("학생이 하나도 없어요");
+				}
+				
+				txtPool.append("학번\t이름\t\t학과명\t\t점수\r\n");
+				txtPool.append("----------------------------------------------------------------------"
+						+ "---------------------------------------------------------------------\r\n");
+				for(StudentDTO s : students1) {
+					txtPool.append(s.toString()+"\r\n");
+				}
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {
+				}
+			}
+		} else if (e.getSource() == btnExpel) {
+			txtPool.setText("");
+			sql="UPDATE STUDENT SET SEXPEL=1 WHERE SNO=?"; //?는 학번
+			if(txtSNo.getText().trim().length()!=9) {
+				txtPool.setText("학번을 제대로 입력해주세요");
+				return;
+			}
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, txtSNo.getText().trim());
+				int result = pstmt.executeUpdate();
+				txtPool.append(result>0?txtSNo.getText().trim()+"번 학생 제적처리되었습니다.":"존재하지 않는 학번입니다.");
+				
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {
+				}
+			}
+		} else if (e.getSource() == btnExpelOut) {
+			txtPool.setText("");
+			sql ="SELECT ROWNUM RANK, sNAME||'('||sNO||')' NAMENO, mNAME||'('||MNO||')' mNAME, SCORE" + 
+					"    FROM (SELECT S.*,MNAME FROM STUDENT S, MAJOR M WHERE S.mNO=m.mNO AND SEXPEL=1" + 
+					"            ORDER BY SCORE DESC)";
+			try {
+				pstmt= conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					txtPool.append("학번\t이름\t\t학과명\t\t점수\r\n");
+					txtPool.append("----------------------------------------------------------------------"
+							+ "---------------------------------------------------------------------\r\n");
+					students1.clear();
+					do {
+						int rank = rs.getInt("rank");
+						String nameNo = rs.getString("nameno");
+						String mName = rs.getString("mName");
+						int score = rs.getInt("score");
+						students1.add(new StudentDTO(rank, nameNo, mName, score));
+					}while(rs.next());
+					for(StudentDTO s : students1) {
+						txtPool.append(s.toString()+"\r\n");
+					}
+				}else {
+					txtPool.setText("제적자가 한 명도 없습니다.");
+				}
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e4) {	}
+			}
+			
+		} else if (e.getSource() == btnExit) {
+			int answer = JOptionPane.showConfirmDialog(null, "진짜 종료할꺼야?");
+			if(answer == 0) {
+			setVisible(false);
+			dispose();
+			System.exit(0);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		SwingStudentMng sw = new SwingStudentMng("학생 관리");
+	}
+
+}

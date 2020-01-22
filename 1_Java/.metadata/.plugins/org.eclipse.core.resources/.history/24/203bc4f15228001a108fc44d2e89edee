@@ -1,0 +1,21 @@
+package pra;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		ex.solution(100);
+		
+	}
+
+	public long solution(long n) {
+		if((int)Math.sqrt(n)==Math.pow(Math.sqrt(n), 2)) {
+		
+			System.out.println("Âü");
+		}
+			
+		
+	      long answer = 0;
+	      return answer;
+	  }
+
+}

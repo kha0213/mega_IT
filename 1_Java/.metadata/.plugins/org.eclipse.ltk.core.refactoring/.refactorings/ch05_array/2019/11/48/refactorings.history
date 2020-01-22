@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Ex08.java&apos; to &apos;com.tj.ex.Ex08.java&apos;&#x0D;&#x0A;- Original project: &apos;ch05_array&apos;&#x0D;&#x0A;- Destination element: &apos;com.tj.ex.Ex08.java&apos;&#x0D;&#x0A;- Original element: &apos;com.tj.ex.Ex08.java&apos;" description="Copy compilation unit" destination="/src&lt;com.tj.ex{Ex08.java" element1="/src&lt;com.tj.ex{Ex08.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1574906570233" units="1" version="1.0"/>
+</session>

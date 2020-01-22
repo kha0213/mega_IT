@@ -1,0 +1,28 @@
+package pra;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+        Ex01_sosu ex = new Ex01_sosu();
+       System.out.println(ex.solution(11));
+    }
+
+	
+	public int[] solution(long n) {
+		ArrayList<Long> a = new ArrayList<>();
+	      do {
+	    	  a.add(n%10);
+	    	  n/=10;
+	      } while(n!=0);
+	     a.sort(null); 
+	     int[] answer = new int[a.size()];
+	     a.toArray(answer);
+	     
+	     
+		
+	      return answer;
+	  }
+		
+}

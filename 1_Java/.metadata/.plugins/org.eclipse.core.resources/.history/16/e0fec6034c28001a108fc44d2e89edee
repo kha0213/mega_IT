@@ -1,0 +1,51 @@
+package pra;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		ex.solution(5,24);
+		
+	}
+
+	public String solution(int a, int b) {
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyMMddE");
+		Date ans = new Date(2016, a-1, b);
+		System.out.println(sdf.format(ans));
+		
+		
+		  String answer = "";
+		  char week = sdf.format(ans).charAt(-1);
+		  System.out.println(week);
+//		  switch (week) {
+//			case 1:
+//				answer = "SUN";
+//				break;
+//			case 2:
+//				answer = "MON";
+//				break;
+//			case 3:
+//				answer = "TUE";
+//				break;
+//			case 4:
+//				answer = "WED";
+//				break;
+//			case 5:
+//				answer = "THU";
+//				break;
+//			case 6:
+//				answer = "FRI";
+//				break;
+//			case 7:
+//				answer = "SAT";
+//				break;
+//			
+//			}
+		 
+	      return "";
+	  }
+
+}

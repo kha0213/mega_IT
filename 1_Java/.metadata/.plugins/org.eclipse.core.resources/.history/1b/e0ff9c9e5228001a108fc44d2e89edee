@@ -1,0 +1,21 @@
+package pra;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		System.out.println((int)Math.sqrt(100));
+		int aa=Math.sqrt(100);
+	}
+
+	public long solution(long n) {
+		try {
+			int j=(int)Math.sqrt(n);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	      long answer = 0;
+	      return answer;
+	  }
+
+}

@@ -1,0 +1,10 @@
+package com.tj.supermarket;
+
+import java.awt.Container;
+
+import javax.swing.*;
+
+public class SwingManager extends JFrame {
+	private Container containpane;
+	private JPanel jpup,jpdown;
+}

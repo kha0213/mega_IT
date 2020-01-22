@@ -1,0 +1,46 @@
+package pra;
+
+import java.util.Calendar;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		System.out.println(ex.solution(5,24));
+		
+	}
+
+	public String solution(int a, int b) {
+		  Calendar cal = Calendar.getInstance();
+		  cal.clear();
+		  cal.set(2016, a, b);
+		  String answer = "";
+		  int week = cal.get(Calendar.DAY_OF_WEEK);
+		  switch (week) {
+			case 1:
+				answer = "SUN";
+				break;
+			case 2:
+				answer = "MON";
+				break;
+			case 3:
+				answer = "TUE";
+				break;
+			case 4:
+				answer = "WED";
+				break;
+			case 5:
+				answer = "THU";
+				break;
+			case 6:
+				answer = "FRI";
+				break;
+			case 7:
+				answer = "SAT";
+				break;
+			
+			}
+		 
+	      return answer;
+	  }
+
+}

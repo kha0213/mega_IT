@@ -1,0 +1,19 @@
+package com.tj.supermarket;
+
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class SwingLogin extends JFrame{
+	private Container containpane;
+	private JPanel jpup,jpdown;
+	private JTextField txtId,txtPassword;
+	
+	
+	public SwingLogin(String title) {
+		super(title);
+	}
+	
+}

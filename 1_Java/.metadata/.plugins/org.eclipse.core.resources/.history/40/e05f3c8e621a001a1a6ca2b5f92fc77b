@@ -1,0 +1,33 @@
+package singletonclass1;
+
+public class SingletonMain {
+	public static void main(String[] args) {
+		SingletonClass obj1 = SingletonClass.getINSTANCE();
+		obj1.setI(99);
+		SingletonClass obj2 = SingletonClass.getINSTANCE();
+		System.out.println("obj2ÀÇ I : "+obj2.getI());
+		System.out.println("obj1ÀÇ I : "+obj1.getI());
+		int i=1;
+		while(i<10){
+
+			System.out.println("7*"+i+"="+7*i);
+			i++;
+			}
+		
+		
+//		public class Aclass{
+//			private int intVar;
+//			public AClass() {}
+//			public int getIntVar() {return iVar;}
+//		}
+//		
+//		public class AClass {
+//			private int intVar;
+//			private static AClass INSTANCE = new AClass();
+//			public static AClass getInstance() {
+//				
+//			}
+		}
+	}
+
+}

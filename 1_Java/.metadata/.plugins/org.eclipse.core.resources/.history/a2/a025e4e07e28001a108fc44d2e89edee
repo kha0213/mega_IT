@@ -1,0 +1,36 @@
+package pra;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		// a=97, z=122/ ' '=32 A=65 Z=90
+		
+		String[] a = {"a", "a","n"};
+		String[] b = {"a","n"};
+		StringBuilder aaa = new StringBuilder("abbbcdef");
+		System.out.println(aaa.indexOf("bc"));
+		aaa.delete(aaa.indexOf("bc"), aaa.indexOf("bc")+1);
+		System.out.println(aaa.toString());
+		
+		ex.solution(a,b);
+	}
+
+	public String solution(String[] participant, String[] completion) {
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0;i<participant.length;i++) {
+        	sb.append(participant[i]);
+        }
+        System.out.println(sb);
+        
+        for(int i=0;i<completion.length;i++) {
+        	sb.delete(0,2);
+        }
+        
+        System.out.println(sb);
+		
+		String answer = sb.toString();
+        return answer;
+    }
+
+}

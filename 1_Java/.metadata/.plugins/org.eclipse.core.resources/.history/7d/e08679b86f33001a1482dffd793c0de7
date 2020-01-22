@@ -1,0 +1,32 @@
+package com.tj.supermarket;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+
+public class JPanelLol extends JPanel {
+	JLayeredPane layeredPane = new JLayeredPane();
+	layeredPane.setSize(480, 640);
+	layeredPane.setLayout(null);
+	
+	try {
+		imglol = ImageIO.read(new File("src/com/tj/image"));
+	} catch (IOException e) {
+		System.out.println(e.getMessage());
+	}
+	
+	public void background(Graphics g) {
+		Image imageLol = new ImageIcon(backlol); 
+		g.drawImage(imageLol, 0, 0, null);
+		
+	}
+	
+
+}

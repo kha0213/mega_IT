@@ -1,0 +1,6 @@
+package com.tj.supermarket;
+
+public class SuperDTO {
+	private String cno;
+	private String cName;
+}

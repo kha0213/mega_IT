@@ -1,0 +1,16 @@
+package pra;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		System.out.println(Math.sqrt(100));
+		
+	}
+
+	public long solution(long n) {
+		
+	      long answer = 0;
+	      return answer;
+	  }
+
+}

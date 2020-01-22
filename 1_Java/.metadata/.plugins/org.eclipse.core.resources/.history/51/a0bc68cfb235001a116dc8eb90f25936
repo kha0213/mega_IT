@@ -1,0 +1,29 @@
+package pra;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Ex12 {
+	public static void main(String[] args) {
+		Ex12 ex = new Ex12();
+		System.out.println(ex.solution(7));
+		
+	}
+	
+	public String solution(int n) {
+	      String answer = "";
+	      ArrayList<Integer> ar = new ArrayList<Integer>();
+	      while(n>0) {
+	    	  ar.add(n%3);
+	    	  n/=3;
+	      }
+	      for(int a : ar) {
+	    	  answer+=a;
+	      }
+	      
+	      
+	      
+	      
+	      return answer;
+	  }
+}

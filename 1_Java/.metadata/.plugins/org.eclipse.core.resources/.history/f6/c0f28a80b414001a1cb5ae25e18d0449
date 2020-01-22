@@ -1,0 +1,36 @@
+package com.tj.ex2_parkingSystem;
+
+public class Parking {
+	private int into;
+	private String carNum;
+	private int out;
+	private int parkMoney;
+	parkMoney = (out-into)*2000;
+	
+	
+	public Parking() {
+		
+	}
+	public Parking(String carNum, int into) {
+		this.carNum=carNum;
+		this.into=into;		
+	}
+	public Parking(String carNum, int into,int out) {
+		this.carNum=carNum;
+		this.into=into;		
+		this.out=out;
+	}
+	
+	
+	
+
+}
+
+//public class ParkingTestMain {
+//	public static void main(String[] args) {
+//		Parking car1 = new Parking("111·ç1111", 6);
+//		Parking car2 = new Parking("222·ç2222", 8);
+//		car1.out(8);
+//		car2.out(9);
+//		Parking car3 = new Parking("333·ç3333", 9);
+

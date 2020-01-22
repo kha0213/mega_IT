@@ -1,0 +1,42 @@
+1575508152403	Delete element
+1575511048643	Move compilation unit
+1575511056049	Rename package 'com.tj.ex1_store'
+1575512150808	Rename type 'main'
+1575512693113	Delete element
+1575513306533	Move compilation unit
+1575513310962	Move file
+1575513342616	Delete element
+1575513348572	Rename compilation unit 'TestMain1.java'
+1575514816939	Copy compilation unit
+1575515854333	Delete element
+1575516290031	Rename type 'IPoilceMan'
+1575516487680	Rename type 'IFireFighter'
+1575516493157	Rename type 'IChef'
+1575516497787	Rename type 'IPoliceMan'
+1575525134539	Delete element
+1575526074261	Copy compilation unit
+1575526201432	Move compilation units
+1575534924620	Rename type 'Accout'
+1575535084567	Rename type 'Account'
+1575592237489	Rename compilation unit 'Library_class.java'
+1575592357386	Rename compilation unit 'Library_system.java'
+1575593106851	Rename field 'no'
+1575597538448	Rename local variable 'library'
+1575597636707	Delete element
+1575598705156	Rename local variable 'book'
+1575601587975	Copy compilation unit
+1575601668336	Copy compilation unit
+1575604290638	Rename field 'bookState'
+1575604350291	Delete element
+1575604629604	Move compilation unit
+1575605331336	Rename type 'BookMain'
+1575607899055	Rename local variable 'idx'
+1575607989715	Rename local variable 'CdTitle'
+1575608365323	Rename local variable 'borrower'
+1575608440946	Rename local variable 'bookBorrower'
+1575611162921	Rename type 'ILobot'
+1575611210156	Move compilation unit
+1575611561896	Rename type 'IRobot'
+1575614603717	Rename type 'Main'
+1575618358847	Rename type 'CreditLineAccount'
+1575620787377	Rename type 'ILivrary'

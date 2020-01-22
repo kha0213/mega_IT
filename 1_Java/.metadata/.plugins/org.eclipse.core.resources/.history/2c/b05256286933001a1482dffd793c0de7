@@ -1,0 +1,39 @@
+package com.tj.supermarket;
+
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+public class SwingManager extends JFrame {
+	private Container containpane;
+	private JPanel jpup,jpdown;
+	private JTextField jtxtID,jtxtPassword;
+	private Image background;
+	
+	
+	public SwingManager() throws HeadlessException {
+		super();
+		jpup.add(JPanelbackground("src/com/tj/image"));
+		
+		
+		
+		
+	}
+	
+	public Image JPanelbackground(String fileName) {
+		try {
+			background = ImageIO.read(new File(fileName));
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return background;
+	}
+	
+	
+}

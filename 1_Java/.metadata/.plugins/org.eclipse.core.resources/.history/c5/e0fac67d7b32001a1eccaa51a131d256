@@ -1,0 +1,155 @@
+package com.tj.student;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ConsoleStudentMng {
+	public static void main(String[] args) {
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";// 로칼 호스트로 해도 됨
+		String user = "scott";
+		String password = "tiger";
+		String fn = "";
+		ArrayList<StudentDTO> students = new ArrayList<StudentDTO>();
+		Scanner sc = new Scanner(System.in);
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sName, mName;
+		int score;
+		try {
+			Class.forName(driver);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		do {
+			System.out.println("1:입력, 2:학과별출력, 3:전체출력, 그외:종료");
+			fn = sc.next();
+			switch (fn) {
+			case "1": // 입력작업(이름, 학과명, 점수를 받아 insert)
+				String sql = "INSERT INTO STUDENT (sNO, sNAME, mNO, SCORE) VALUES"
+						+ "    (TO_CHAR(SYSDATE, 'YYYY')||(SELECT mNO FROM MAJOR WHERE mNAME=?)"
+						+ "    ||TRIM(TO_CHAR(STUDENT_SEQ.NEXTVAL,'000')),"
+						+ "    ?,(SELECT mNO FROM MAJOR WHERE mNAME=?), ?)";
+				System.out.println("입력할 학생 이름 ?");
+				sName = sc.next();
+				System.out.println("학과명?");
+				mName = sc.next();
+				System.out.println("점수는?(0~100사이의 정수 입력)");
+				score = sc.nextInt();
+				try {
+					conn = DriverManager.getConnection(url, user, password);
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, mName);
+					pstmt.setString(2, sName);
+					pstmt.setString(3, mName);
+					pstmt.setInt(4, score);
+					int result = pstmt.executeUpdate();
+					System.out.println(result > 0 ? sName + "님 입력 성공" : "입력 실패");
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				} finally {
+					try {
+						if (pstmt != null)
+							pstmt.close();
+						if (conn != null)
+							conn.close();
+					} catch (Exception e) {
+					}
+				}
+				break;
+			case "2": // 학과별 출력(학과명을 입력받아 해당학과 학생 출력 students이용)
+				sql = "SELECT ROWNUM RANK, sNAME||'('||sNO||')' NAME_NO, mNAME, SCORE"
+						+ "    FROM (SELECT * FROM STUDENT S, MAJOR M WHERE S.mNO=m.mNO AND mNAME=?"
+						+ "            ORDER BY SCORE DESC)"; // ? 컴퓨터공학
+				System.out.println("출력을 원하는 학과명을 입력해주세요");
+				mName = sc.next();
+				try {
+					conn = DriverManager.getConnection(url, user, password);
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, mName);
+					rs = pstmt.executeQuery();
+					students.clear(); // students에 있는 값을 모두 지움
+
+					while (rs.next()) {
+						int rank = rs.getInt("RANK");
+						String nameNo = rs.getString("NAME_NO");
+						mName = rs.getString("mNAME");
+						score = rs.getInt("SCORE");
+						students.add(new StudentDTO(rank, nameNo, mName, score));
+					}
+						if (!students.isEmpty()) {
+							System.out.println("등수\t이름(studentID)\t학과\t점수");
+							System.out.println("----------------------------------");
+							for (StudentDTO s : students) {
+								System.out.println(s);
+							}
+						} else {
+							System.out.println("해당 학과 학생이 없습니다.");
+						}
+
+					
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				} finally {
+					try {
+						if (rs != null)
+							rs.close();
+						if (pstmt != null)
+							pstmt.close();
+						if (conn != null)
+							conn.close();
+					} catch (SQLException e) {
+					}
+				}
+				break;
+			case "3": // 전체출력(students 이용)
+				sql = "SELECT ROWNUM RANK, sNAME||'('||sNO||')' NAME_NO, mNAME, SCORE"
+						+ "    FROM (SELECT * FROM STUDENT S, MAJOR M WHERE S.mNO=m.mNO"
+						+ "            ORDER BY SCORE DESC)";
+
+				try {
+					conn = DriverManager.getConnection(url, user, password);
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					students.clear(); // students에 있는 값을 모두 지움
+
+					while (rs.next()) {
+						int rank = rs.getInt("RANK");
+						String nameNo = rs.getString("NAME_NO");
+						mName = rs.getString("mNAME");
+						score = rs.getInt("SCORE");
+						students.add(new StudentDTO(rank, nameNo, mName, score));
+						if (students.size() > 0) {
+							System.out.println("등수\t이름(studentID)\t학과\t점수");
+							System.out.println("----------------------------------");
+							for (StudentDTO s : students) {
+								System.out.println(s);
+							}
+						} else {
+							System.out.println("해당 학생이 없습니다.");
+						}
+					}
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+
+				break;
+			default:
+				break;
+			}
+
+		} while (fn.equals("1") || fn.equals("2") || fn.equals("3"));
+		System.out.println("종료합니다.");
+
+	}
+}

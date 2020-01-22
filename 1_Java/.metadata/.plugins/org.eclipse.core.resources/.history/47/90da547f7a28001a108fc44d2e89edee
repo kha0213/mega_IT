@@ -1,0 +1,15 @@
+package pra;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		// a=97, z=122/ ' '=32 A=65 Z=90
+
+	}
+
+	public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        return answer;
+    }
+
+}

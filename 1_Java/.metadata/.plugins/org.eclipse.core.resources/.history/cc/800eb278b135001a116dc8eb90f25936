@@ -1,0 +1,31 @@
+package pra;
+
+import java.util.LinkedList;
+
+public class Ex12 {
+	public static void main(String[] args) {
+		Ex12 ex = new Ex12();
+		int no[] = {6,10,2};
+		int no2[] = {1,2,3,9,10,12};
+		System.out.println(ex.solution(no2,7));
+		
+	}
+	
+	public int solution(int[] scoville, int K) {
+        LinkedList<Integer> ll = new LinkedList<Integer>();
+        for(int i=0;i<scoville.length;i++) {
+        	ll.add(scoville[i]);
+        }
+		int cnt=0;
+		while(true) {
+		ll.sort(null);
+        if(ll.get(0)>=K) return cnt;
+		
+		int tmp = ll.get(0)+ll.get(1)*2;
+		ll.remove(0);
+		ll.remove(0);
+		ll.add(0, tmp);
+		cnt++;
+		}
+    }
+}

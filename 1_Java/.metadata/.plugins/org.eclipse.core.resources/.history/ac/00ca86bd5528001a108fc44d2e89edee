@@ -1,0 +1,22 @@
+package pra;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		ex.solution(100);
+		
+	}
+
+	public long solution(long n) {
+		
+		if(n==Math.pow((int)Math.sqrt(n), 2)) {
+			return (long)Math.pow(Math.sqrt(n)+1, 2);
+			
+		}
+			
+		
+	      long answer = 0;
+	      return answer;
+	  }
+
+}

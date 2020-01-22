@@ -1,0 +1,196 @@
+package com.tj.student;
+
+
+
+
+
+
+import java.awt.event.MouseAdapter;
+
+import java.awt.event.MouseEvent;
+
+import javax.swing.JFrame;
+
+import javax.swing.JLabel;
+
+import javax.swing.JScrollPane;
+
+import javax.swing.JTree;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import javax.swing.tree.TreePath;
+
+public class Exxxxx extends JFrame{
+
+    
+
+    private JLabel lab;            // 레이블 변수를 만든다.
+
+    private JTree tree;            // 트리구조의 구조공간 변수 생성
+
+    private JScrollPane scroll; // 비어있는 스크롤이 달려있는 판을 준비하고
+
+                                // 트리구조를 담을 수 있도록 한다.
+
+    
+
+    public Exxxxx() {
+
+        
+
+        //트리구조의 아이템을 만들어 준다.
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultMutableTreeNode root =
+
+                new DefaultMutableTreeNode("커피");
+
+        
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultMutableTreeNode step1 =
+
+                new DefaultMutableTreeNode("자바 커피");
+
+        
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultMutableTreeNode step2 =
+
+                new DefaultMutableTreeNode("원두 커피");
+
+        
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultMutableTreeNode step2_1 =
+
+                new DefaultMutableTreeNode("아메리카노");
+
+        
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultMutableTreeNode step2_2 =
+
+                new DefaultMutableTreeNode("헤이즐넛");
+
+        
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultMutableTreeNode step2_3 =
+
+                new DefaultMutableTreeNode("라떼");        
+
+        
+
+        root.add(step1);                                //root에 step1,2 를 담는다.
+
+        root.add(step2);
+
+        
+
+        step2.add(step2_1);                                // step2에 step2_1,2,3을 담는다.
+
+        step2.add(step2_2);
+
+        step2.add(step2_3);
+
+        tree = new JTree(root);                            //트리의 인스턴스를 생성하고
+
+        scroll = new JScrollPane(tree);                    //스크롤바 판에 트리를 붙여 인스턴스 생성
+
+        lab = new JLabel("여기에 선택한 항목이 나타납니다.");    //라벨을 붙힌다.
+
+        
+
+        
+
+        
+
+        add(scroll);                                    //트리 붙은 스크롤바 판을 프레임에 더한다.
+
+        add("South", lab);                                //아래쪽에 라벨을 프레임에 더한다.
+
+        
+
+        tree.addMouseListener(new TreeMouseHandler());    //핸들러를 만든다.
+
+        
+
+    }
+
+    
+
+    class TreeMouseHandler extends MouseAdapter{
+
+        //마우스 리스너의 기능 중 일부를 쓰기 위해 마우스 리스너를 상속받는 마우스 어댑터를 사용한다.
+
+        
+
+        @Override    //마우스를 눌렀을 때 이벤트가 발생하는 메소드 오버라이드
+
+        public void mousePressed(MouseEvent e) {
+
+            
+
+            //System.out.println(tree.getRowForLocation(e.getX(), e.getY()));    //행의 위치를 알고 싶을 때 사용
+
+            //System.out.println(tree.getPathForLocation(e.getX(), e.getY()));     //경로와 위치를 알고 싶을 때 사용
+
+            
+
+            int row = tree.getRowForLocation(e.getX(), e.getY());        //행의 위치값을 row변수에 담는다.
+
+            TreePath path = tree.getPathForLocation(e.getX(), e.getY());//path라는 리턴값에 경로와 위치를 담는다.
+
+                                                                                        //누르면 누른 값이 마지막 값으로 나온다.
+
+            
+
+            if(row != -1) { //선택했을 때만 결과가 나올 수 있도록 처리한다.
+
+                lab.setText(path.getLastPathComponent().toString());
+
+                //lab변수안에
+
+                //.setText()안의 문자를 넣어라.
+
+                //path.getLastPathComponent().toString()의 문자를 넣어라
+
+                //path.getLastPathComponent()는 행의 마지막 값을 아래에 출력
+
+            }
+
+            
+
+        }
+
+    
+
+        
+
+        
+
+        
+
+    }
+
+    
+
+    public static void main(String[] args) {
+
+    	Exxxxx test = new Exxxxx();               //클래스 인스턴스 생성
+
+        test.setSize(300, 400);                              //사이즈를 정함
+
+        test.setVisible(true);                              //창이 보여지게 함 창을 끄면 false 상태가 됨.
+
+    }
+
+}

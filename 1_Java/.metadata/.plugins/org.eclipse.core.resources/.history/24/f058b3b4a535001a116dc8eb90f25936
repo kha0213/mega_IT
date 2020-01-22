@@ -1,0 +1,32 @@
+package pra;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Ex11 {
+	public static void main(String[] args) {
+		
+	}
+	
+	public String solution(int[] numbers) {
+		String answer = "";
+        String[] number = new String[numbers.length]; 
+		for(int i=0;i<numbers.length;i++) {
+        	number[i]=String.valueOf(numbers[i]);
+        }
+		Arrays.sort(number, new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				
+				
+				return 0;
+			}
+		});
+		
+		
+		
+        
+        return answer;
+    }
+}

@@ -1,0 +1,29 @@
+package pra;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Ex01_sosu {
+	public static void main(String[] args) {
+		Ex01_sosu ex = new Ex01_sosu();
+		
+		
+		String[] a = {"a", "a","n"};
+		String[] b = {"a","n"};
+	
+		
+		ex.solution(a,b);
+	}
+
+	public String solution(String[] participant, String[] completion) {
+        ArrayList<String> arr = new ArrayList<String>(Arrays.asList(participant));
+		
+        for(String a : arr) {
+        	System.out.println(a);
+        }
+        
+		String answer = "";
+        return answer;
+    }
+
+}

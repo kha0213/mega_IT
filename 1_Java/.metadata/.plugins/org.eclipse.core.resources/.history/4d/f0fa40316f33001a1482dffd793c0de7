@@ -1,0 +1,53 @@
+package com.tj.supermarket;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class SwingLogin extends JFrame{
+	private Container containpane;
+	private JPanel jpup,jpdown;
+	private JTextField txtId,txtPassword;
+	BufferedImage imglol = null;
+	
+	public SwingLogin(String title) {
+		super(title);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setSize(480, 640);
+		layeredPane.setLayout(null);
+		
+		
+		containpane = getContentPane();
+		containpane.setLayout(new FlowLayout());
+		jpup = new JPanel();
+		jpdown = new JPanel(new GridLayout(2, 2));
+		txtId = new JTextField(15);
+		txtPassword = new JTextField(15);
+		
+		jpdown.add(new JLabel(" I  D ", (int) CENTER_ALIGNMENT));
+		jpdown.add(txtId);
+		jpdown.add(new JLabel("PASSWORD", (int) CENTER_ALIGNMENT));
+		jpdown.add(txtPassword);
+		
+		containpane.add(jpup);
+		containpane.add(jpdown);
+		
+		setSize(new Dimension(750, 670));
+		setLocation(200, 200);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		SwingLogin sw = new SwingLogin("À¸¾Æ´Ö");
+	}
+	
+}

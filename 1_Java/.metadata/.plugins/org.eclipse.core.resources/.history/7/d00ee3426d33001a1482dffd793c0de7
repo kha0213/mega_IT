@@ -1,0 +1,29 @@
+package com.tj.supermarket;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class SwingLogin extends JFrame{
+	private Container containpane;
+	private JPanel jpup,jpdown;
+	private JTextField txtId,txtPassword;
+	private JPanelLol backlol;
+	
+	public SwingLogin(String title) {
+		super(title);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		containpane = getContentPane();
+		containpane.setLayout(new FlowLayout());
+		jpup = new JPanel();
+		jpdown new JPanel();
+		
+		
+		
+		
+	}
+	
+}

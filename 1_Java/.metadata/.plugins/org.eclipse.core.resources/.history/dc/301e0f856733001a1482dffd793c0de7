@@ -1,0 +1,18 @@
+package com.tj.supermarket;
+
+import java.awt.Container;
+import java.awt.HeadlessException;
+
+import javax.swing.*;
+
+public class SwingManager extends JFrame {
+	private Container containpane;
+	private JPanel jpup,jpdown;
+	private JTextField jtxtID,jtxtPassword;
+	
+	public SwingManager() throws HeadlessException {
+		super();
+	}
+	
+	
+}

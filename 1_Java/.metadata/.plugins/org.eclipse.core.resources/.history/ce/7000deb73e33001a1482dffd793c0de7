@@ -1,0 +1,137 @@
+package com.tj.supermarket;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class SwingSuper extends JFrame {
+   private Container container;
+   private JPanel jpup,jpbtn;
+   private JTextField jtxtTel,jtxtName,jtxtPoint,jtxtAmount;
+   private Vector<String> gradeName;
+   private JComboBox<String> jcomLevel;
+   private JButton jbtnTelSearch,jbtnNameSearch,jbtnPoint;
+   private JButton jbtnBuy,jbtnLevelOutput,jbtnAllOutput,jbtnInsert,
+               jbtnTelUpdate,jbtnDelete,jbtnExit;
+   private JTextArea jtxtPool;
+   private JScrollPane scrollpane;
+   
+   private String driver;
+   private String url;
+   private String user;
+   private String password;
+    
+   private Connection conn;
+   private PreparedStatement pstmt;
+   private ResultSet rs;
+   private String sql;
+   
+   
+   
+   
+   public SwingSuper(String title) {
+      super(title);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      container = getContentPane();
+      container.setLayout(new FlowLayout()); 
+      jpup = new JPanel(new GridLayout(6, 3));
+      jpbtn = new JPanel(new FlowLayout());
+      jtxtTel = new JTextField(15);
+      jtxtName = new JTextField(15);
+      jtxtPoint = new JTextField(15);
+      jtxtAmount = new JTextField(15);
+      gradeName = new Vector<String>();
+      driver = "oracle.jdbc.driver.OracleDriver";
+      url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+      user = "scott";
+      password = "tiger";
+      sql = "SELECT GNAME FROM GRADE";
+      conn=null;
+      pstmt=null;
+      rs=null;
+      try {
+         Class.forName(driver);
+         conn = DriverManager.getConnection(url, user, password);
+         pstmt = conn.prepareStatement(sql);
+         rs = pstmt.executeQuery();
+         while(rs.next()) {
+            gradeName.add(rs.getString("GNAME"));
+         }
+      } catch (Exception e) {
+         System.out.println(e.getMessage());
+      } finally {
+         try {
+            if(rs!=null) rs.close();
+            if(pstmt!=null) pstmt.close();
+            if(conn!=null) conn.close();
+         } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+         }
+      }
+      jcomLevel = new JComboBox<String>(gradeName);
+      jbtnTelSearch = new JButton("전화번호검색");
+      jbtnNameSearch = new JButton("고객 이름 검색");
+      jbtnPoint = new JButton("포인트로만 구매");
+      jbtnBuy = new JButton("물품 구매");
+      jbtnLevelOutput = new JButton("등급별출력");
+      jbtnAllOutput = new JButton("전체출력");
+      jbtnInsert = new JButton("회원가입");
+      jbtnTelUpdate = new JButton("번호수정");
+      jbtnDelete = new JButton("회원탈퇴");
+      jbtnExit = new JButton("나가기");
+      jtxtPool = new JTextArea(20, 59);
+      scrollpane = new JScrollPane(jtxtPool);
+      
+      jpup.add(new JLabel("고객전화"));
+      jpup.add(jtxtTel);
+      jpup.add(jbtnTelSearch);
+      jpup.add(new JLabel("고객이름"));
+      jpup.add(jtxtName);
+      jpup.add(jbtnNameSearch);
+      jpup.add(new JLabel("포 인 트"));
+      jpup.add(jtxtPoint);
+      jpup.add(jbtnPoint);
+      jpup.add(new JLabel("구매금액"));
+      jpup.add(jtxtAmount);
+      jpup.add(new JLabel());
+      jpup.add(new JLabel("고객등급"));
+      jpup.add(jcomLevel);
+      jpup.add(new JLabel());
+      
+      jpbtn.add(jbtnBuy);
+      jpbtn.add(jbtnLevelOutput);
+      jpbtn.add(jbtnAllOutput);
+      jpbtn.add(jbtnInsert);
+      jpbtn.add(jbtnTelUpdate);
+      jpbtn.add(jbtnDelete);
+      jpbtn.add(jbtnExit);
+      
+      container.add(jpup);
+      container.add(jpbtn);
+      container.add(scrollpane);
+      
+      setVisible(true);
+      setBounds(100, 100, 700, 650);
+   }
+   
+   
+   public static void main(String[] args) {
+      Swing_supermaket sw = new Swing_supermaket("슈퍼마켓 관리");
+   }
+}
