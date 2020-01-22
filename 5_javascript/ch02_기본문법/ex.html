@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var ko, en;
+        alert(Boolean(NaN));
+        
+        do{
+        ko = Number(prompt('국어점수 입력하세요'));
+        
+    }while(!(!isNaN(ko) && ko>=0 && ko <=100));
+    do{
+        en = Number(prompt('영어점수 입력하세요'));
+        if(!isNaN(en) && en>=0 && en <=100){
+            break;
+        }
+    }while(true);
+        document.write(ko+en);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

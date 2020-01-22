@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        do{
+        var hak = Number(prompt('학점을 입력하세요'));
+        if(isNaN(hak) || hak<0 || hak>4.5){
+            alert('학점은 0~4.5 사이 숫자만 입력하세요');
+        }else if(hak>=4 && hak<=4.5){
+            alert('a학점이군요');
+            break;
+        }else if(hak>=3 && hak<4){
+            alert('b학점이군요');
+            break;
+        }else if(hak>=2 && hak<3){
+            alert('c학점이군요');
+            break;
+        }else if(hak<=2){
+            alert('분발하세요');
+            break;
+        }
+    }while(true);
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

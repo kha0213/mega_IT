@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        do{
+        ko=Number(prompt('국어점수를 입력하세요 0~100'));
+        en=Number(prompt('영어점수를 입력하세요 0~100'));
+        ma=Number(prompt('수학점수를 입력하세요 0~100'));
+        boo = isNaN(ko) || isNaN(en) || isNaN(ma);
+        
+    }while(boo);
+        
+        
+        sum=ko+en+ma;
+        avg=sum/3;
+        alert('평균 '+avg);
+        if(90<=avg && avg<=100){
+            alert('수');
+        }else if(80<=avg && avg<90){
+            alert('우');
+        }else if(70<=avg && avg<80){
+            alert('미');
+        }else if(60<=avg && avg<70){
+            alert('양');
+        }else if(0<=avg && avg<60){
+            alert('가');
+        }else{
+            alert('평균이'+avg+'이네요 0~100사이 숫자만 입력하세요')
+        }
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var str;
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+        str=1;
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+        str='hello';
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+        str = Boolean(1);
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+        str = function (){alert('경고창 뿌려지나?')};
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+        str = {'name':'홍길동','age':32,'address':'서울시' };
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+        str = [1,'str',function(){},true]; //배열선언
+        str.push(2);
+        str.push('6');
+        document.write(str.length);
+        document.write('str의 타입 : '+typeof(str)+' -내용 : '+ str +'<br>');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

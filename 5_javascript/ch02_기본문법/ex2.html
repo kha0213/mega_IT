@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      table{
+          border: 2px darkblue solid;
+      }
+    
+    </style>
+    <script>
+        function chk(){
+            if(frm.name.value.length<2){
+                alert('이름은 2글자 이상 입력하세요');
+                frm.name.focus();
+                return false;
+            }
+            var age = Number(frm.age.value);
+            if(isNaN(age) || age>120 || age<0){
+                alert('나이는 0~120까지');
+                frm.age.focus();
+                return false;
+            }
+            if(!frm.address.value){// == 값만 일치(최대한 javascript가 타입을 일치시켜줌) === 완전 일치(값과 타입이 둘 다 일치)
+                alert('주소는 입력만');
+                frm.address.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="get" onsubmit="return chk()" name="frm">
+        <table>
+            <tr>
+            <th>이름</th>
+        <td><input type="text" placeholder='이름은 2글자 이상' name="name"><br>
+        </td></tr>
+        <tr>
+            <th> 나이</th>
+            <td> <input type="text" placeholder='나이는 0~120까지' name="age"><br>
+            </td></tr>
+            <tr>
+                <th>주소</th> <td><input type="text" placeholder='주소는 입력만' name="address"><br>
+   </td> </tr>
+      <tr><th colspan="2"> <input type="submit" value="입 력"></th></tr>
+    </table>
+    </form>
+</body>
+</html>
