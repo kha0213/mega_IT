@@ -1,0 +1,75 @@
+1. TO_DATE 단일행함수를 이용하여 EMP 테이블에서 HIREDATE가 1981년 2월 20일부터 1981년 5월 1일 사이에 입사한 사원의 사원명, 직책, 입사일을 최초입사일부터 최근입사일 순으로 정렬하여 출력하는 SQL문을 작성하시오(5점).
+SELECT ename, job, hiredate FROM emp 
+  WHERE hiredate BETWEEN to_date('19810220','yyyymmdd')
+  AND to_date('19810501','yyyymmdd')  ORDER BY hiredate;
+
+
+2. EMP테이블과 DEPT테이블의 self join과 outer join을 이용하여 사원명, 급여, 부서번호, 부서명, 근무지, 직속상사명을 상사가 없는 직원까지 전체 직원 다 출력하는 SQL문을 작성하시오. 단, 상사가 없는 경우 상사명 대신 ‘없음’을 출력한다(5점).
+
+SELECT w.ename, w.sal, w.deptno, dname, loc, NVL(m.ename,'없음') 상사명 
+  FROM emp w, emp m, dept d  WHERE w.mgr=m.empno(+) AND w.deptno=d.deptno;
+
+3. EMP테이블에서 사원명에 ‘L’자가 있는 사원에 대하여 사원명, 직책, 부서명, 근무지를 출력하는 SQL문을 작성하시오(5점).
+
+SELECT ENAME, JOB, DNAME, LOC
+  FROM emp e, dept d
+  WHERE e.deptno=d.deptno AND ename LIKE '%L%';
+
+4. SALGRADE 테이블의 LOSAL을 등급최저 급여, HISAL을 등급 최고 급여로 이용하여, EMP 테이블의 사원을 사번, 사원명, 직책, 급여, 급여등급을 급여 기준 내림차순으로 정렬하여 출력하는 SQL문을 작성하시오(5점). 
+
+SELECT empno, ename, job, sal, grade
+  FROM emp, salgrade
+  WHERE sal BETWEEN losal AND hisal
+  ORDER BY sal DESC;   
+
+5. EMP 테이블에서 부서번호가 20번인 사원의 사번, 사원명, 급여를 출력하되 급여 앞에는 $를 붙이고, 숫자는 3자리마다 콤마( , )를 추가하여 출력하는 SQL문을 작성하시오(5점). 단 급여(SAL)의 타입은 NUMBER(7,2)로 한다.
+SELECT empno, ename, TO_CHAR(sal, ‘$99,999’) FROM emp WHERE deptno=20;
+
+
+6. EMP 테이블과 DEPT 테이블을 통해 사원수가 5명 이상인 부서명과 사원수를 출력하는 SQL문을 그룹함수와 테이블 JOIN을 이용하여 작성하시오(5점).
+
+	SELECT DNAME, COUNT(*) FROM EMP E, DEPT D
+    	WHERE E.DEPTNO=D.DEPTNO GROUP BY DNAME HAVING COUNT(*)>=5;
+
+
+7. EMP테이블에서 사원명이 ‘FORD’인 직원과 직책(JOB)과 급여(SAL)이 같은 사원의 모든 정보를 출력하는 SQL문을 작성하시오(5점).
+	SELECT * FROM emp WHERE (job, sal) IN (SELECT job, sal FROM emp 
+                        WHERE ename='FORD') AND ename != 'FORD';
+
+8. EMP테이블에서 이름(ENAME)이 ‘KING’인 사원의 직속부하의 사원명(ENAME)과 급여(SAL)를 출력하는 SQL문을 작성하시오(5점).
+	SELECT ename, sal FROM emp 
+	    WHERE mgr=(SELECT empno FROM emp WHERE ename='KING');
+
+9. EMP 테이블에서 급여(SAL)가 각각의 부서별 평균 급여보다 높은 사원들만 사번, 사원명, 급여, 부서번호를 출력하는 SQL문을 작성하시오(5점).
+
+SELECT empno, ename, sal, DEPTNO FROM emp e WHERE sal > (SELECT avg(sal) 
+					     FROM emp WHERE e.deptno=deptno);
+
+
+10. EMP 테이블에서 사원명이 ‘FORD’인 사원을 삭제하는 SQL문을 작성하시오(5점).
+
+	DELETE FROM EMP WHERE ENAME=’FORD’;
+
+11. EMP 테이블에서 급여(SAL)이 3000이상인 사원들만 급여(SAL)을 10% 인상시키는 SQL문을 작성하시오(5점).
+	UPDATE EMP SET SAL=SAL*1.1 WHERE SAL>=3000;
+
+
+12. EMP테이블에서 SCOTT사원의 부서번호(DEPTNO)는 20번으로, 직책(JOB)은 MANAGER로 수정하는 SQL문을 작성하시오(5점)
+       UPDATE EMP SET DEPTNO=20, JOB=’MANAGER’ WHERE ENAME=’SCOTT’;
+
+
+13. EMP 테이블과 DEPT 테이블을 이용하여, ‘DALLAS’에서 근무하는 직원들의 급여(SAL)을 1000씩 인상시키는 SQL문을 작성하시오(5점).
+	UPDATE EMP SET SAL = SAL+1000 
+	    WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS');
+
+
+14. EMP 테이블에서 최근입사일순으로 6번째인 사원부터 최근입사일 순 10번째 사원까지 사번, 사원명, 입사일을 출력하는 SQL문을 작성하시오(5점).
+Select rn, empno, ename, hiredate
+    from (select rownum rn, a.* from 
+		(select * from emp order by hiredate desc) a)
+    where rn between 6 and 10;
+        
+
+15. 데이터베이스에서 트랜잭션은 데이터 처리의 한 단위를 말한다. 데이터를 조작하기 위한 INSERT, UPDATE, DELETE 등의 명령들이 실행됨과 동시에 트랜잭션이 진행되는데, 이들 INSERT, UPDATE, DELETE작업이 성공적으로 데이터베이스에 반영·처리되도록 명령어를 작성하시오(5점).
+	commit;
+
