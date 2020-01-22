@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        input{color:green;}
+        input[type='password']{/*input태그중에type속성이 password*/
+            color:black;
+        }
+        input[type^='te']{/* te로 시작할 때 type이 text, tel 다 된다*/
+            color:orange; width:300px;
+        }
+        input[name$='me']{/* name이 'me'로 끝나는 경우*/
+            color:crimson; border:1px solid black; padding:10px;
+        }
+        img[alt]{width:100px;}
+    </style>
+</head>
+<body>
+    <form action="#">
+        이름 <input type="text" name="name" /><br />
+        아이디 <input type="id" name="id" /><br />
+        비밀번호 <input type="password" name="pw" /><br />
+        전화번호 <input type="tel" name="tel" /><br />
+        <img src="https://t1.daumcdn.net/daumtop_chanel/op/20170315064553027.png" alt="다음로고" /><br />
+        <input type="submit" value="submit"/>
+    </form>
+</body>
+</html>

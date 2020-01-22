@@ -1,0 +1,100 @@
+@font-face{
+    font-family: 'ShadowsIntoLight-Regular';
+    src : url('../font/ShadowsIntoLight-Regular.ttf');
+}
+
+
+#content{
+    width:100%;
+    display: flex;
+
+}
+#content #main_menu{
+    padding-top: 0px;
+    margin-left: 50px;
+    flex-grow: 15;
+    font-family: ShadowsIntoLight-Regular;
+}
+#content #main_menu ul li{
+    list-style: none;
+    margin: 10px 0 0 10px;
+    font-size: 1.3em;
+}
+#content #main_menu ul li a:link, #main_menu ul li a:visited{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*메인 banner*/
+#content #main{
+    flex-grow: 60;
+    font-weight: bold;
+}
+#content #main div{
+    margin-bottom: 13px;
+}
+#content #main #main_big_banner{
+    height: 300px;
+    border: 1px solid gray;
+    margin-bottom: 12px;
+}
+#content #main #main_slide_banner{
+    height: 150px;
+    border: 1px solid gray;
+}
+#content #main #main_menubar{
+    border: 1px solid gray;
+    background-color: #500095;
+    display: flex;
+}
+#content #main #main_menubar div {
+    flex-grow: 1;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-bottom: 0; 
+}
+#content #main #main_menubar div a:visited,#content #main #main_menubar div a:link{
+    color:white;
+    text-decoration: none;
+    
+}
+#content #main .main_topic{
+    height: 100px;
+    border: 1px solid gray;
+}
+
+#content #main_banner{
+    margin-right: 50px;
+    flex-grow: 23;
+    display: flex;
+    flex-direction: column;
+}
+#content #main_banner div{
+    margin: 0 0 5px 5px;
+}
+
+
+#content #main_banner .hit_search_word{
+    border: gray 1px solid;
+    height: 100px;
+}
+
+#content #main_banner .banner_ad1{
+    border: gray 1px solid;
+    height: 100px;
+}
+#content #main_banner .banner_ad2{
+    border: gray 1px solid;
+    height: 150px;
+}
+#content #main_banner .banner_ad3{
+    border: gray 1px solid;
+    height: 150px;
+}
+#content #main_banner .banner_ad4{
+    border: gray 1px solid;
+    height: 230px;
+}

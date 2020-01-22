@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body{
+    min-width: 900px;
+}
+a{
+    text-decoration: none;
+    
+}
+li{
+    list-style: none;
+}
+
+
+#header {
+    background-color: purple;
+    height: 100px;
+    line-height: 100px;
+    padding: 10px;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+#nav_gnb{
+    background-color: black; 
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    line-height: 80px;
+}
+#nav_gnb ul{
+    display: flex;
+}
+
+#nav_gnb ul li a{
+    display: block;
+    padding: 0 50px;
+    border-right: 1px solid lightgray;
+    font-size: 1.2em;
+}
+
+#nav_gnb ul:last-child li:first-child{
+    border-left: 1px solid lightgray;  
+}
+#nav_gnb ul li a{
+    color: white;
+}
+#section{
+    display: flex;
+    flex-direction: row;
+}
+#section #nav_lnb{
+    background-color: khaki;
+}
+#section #nav_lnb ul li{
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px green dotted;  
+}
+#section #nav_lnb ul li a{
+    color: green;
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+
+/*content_wrap*/
+#section #content_wrap{
+    background-color: #fcffcf;
+}
+
+#section #content_wrap #content{
+   padding: 20px 120px 20px 20px;
+   
+}
+#section #content_wrap #content div{
+    overflow: hidden;
+    margin: 20px 0;
+    text-align: justify;
+}
+#section #content_wrap #content div:nth-child(1) img{
+    float: left;
+    margin: 10px 20px 10px 10px;
+}
+
+#section #content_wrap #content div:nth-child(2) img{
+    float: right;
+    margin: 10px;
+}
+
+#section #content div:nth-child(3) img{
+    width: 100px;
+    float: left;
+    margin: 10px;
+}
+
+#section #content div:last-child ul li:last-child img{
+    margin-right: 40px;
+}
+
+#footer{
+    background-color: lightgray;
+    text-align: center;
+    height:100px;
+}
+#footer p:first-child{
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+#footer p:last-child{
+    margin: 20px 0 5px 0;
+}

@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+header{
+    height: 100px;
+    background-color: #ea8f00;
+}
+header #logo_wrap{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+}
+header #logo_wrap img.menu{
+    position: absolute;
+    left: 10px;
+    top: 0;
+}
+header #logo_wrap img.myinfo{
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+header #logo_wrap a.logo{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+header #search{
+    height: 50px;
+    position: relative;
+}
+
+header #search input[type=text]{
+    height: 50px;
+    width: 100%;
+    border: 3px solid #ea8f00;
+    box-sizing: border-box;
+    padding: 5px 55px 5px 5px;
+    font-size: 1.2em;
+    outline: none;
+}
+header #search input[type=submit]{
+    width: 50px;
+    height: 50px;
+    background-image: url(../0121_imgEx2/search.png);
+    border: 0;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#lnb ul{
+    overflow: hidden;
+    margin: 7px 0;
+}
+#lnb ul li{
+    float: left;
+    width: 16.6666%;
+    border-right: 1px solid #ea8f00;
+    box-sizing: border-box;
+    text-align: center;
+}
+#lnb ul li:last-child{
+    border: 0;
+}
+#lnb ul li a {
+    display: block;
+}
+
+
+section #section1 .row1{
+    overflow: hidden;
+}
+section #section1 .row2{
+    overflow: hidden;
+}
+section #section1 .row3{
+    overflow: hidden;
+}
+
+section #section1 .row1 div,
+section #section1 .row2 div,
+section #section1 .row3 div{
+    width: 50%;
+    height: 180px;
+    float: left;
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+section #section1 img{
+    width: 100%;
+    height: 100%;
+}
+section #section2 {
+    margin: 7px;
+}
+section #section2 ul li{
+    padding: 8px;
+    border: 1px solid lightgray;
+    /*말줄임태그 꼭 3개 같이쓰자 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+section #section3 ul li{
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin: 7px;
+    position: relative;
+}
+section #section3 ul li p.img{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 100px;
+    height: 100px;
+}
+section #section3 ul li p.img img{
+    width: 100px;
+    height: 100px;
+}
+section #section3 ul li p.txt{
+    padding: 10px 20px 10px 120px;
+    width: 100%-20px;
+    text-align: justify;
+}
+section #section3 ul li p.txt span:first-child{
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: darkblue;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+section #section3 ul li p.txt span:last-child{
+    font-size: .8em;
+}
+
+footer{
+    background-color: #ea8f00;
+    text-align: center;
+}
+footer p:first-child{
+    padding: 5px;
+}
+footer p:last-child{
+    font-size: 1.2em;
+    height: 30px;
+    line-height: 20px;
+}
+
+

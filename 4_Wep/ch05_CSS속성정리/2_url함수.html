@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        @font-face{/*로컬 폰트*/
+            font-family:'Cavert-Bold';
+            src: url('Caveat-Bold.ttf');
+        }
+        /*url()함수 - 이미지 가져올 때. font파일 가져올 때*/
+    * { font-family: 'Cavert-Bold'; }
+    #wrap{
+        width:640px;
+        margin:0 auto;
+        height:550px;
+        border:1px solid #cccccc;
+    }
+    #wrap #content{
+        color:white;
+        width:80%;
+        margin:0 auto;
+        height:100%;
+        background-color:aqua;
+        background-image: url("http://lolteaser-lol.cdn.x-cdn.com/promotion/2016_shurima-story/img/amumu/amumu-hero-mobile.jpg");
+        background-repeat:no-repeat;
+        background-size:100%; /*길이가 50%로 함 = 넓이는 1/4*/
+        font-size:2em;
+        
+    }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="content">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        </div>
+        
+    </div>
+     
+</body>
+</html>

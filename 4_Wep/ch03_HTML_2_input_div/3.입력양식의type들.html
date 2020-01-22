@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form action="#" method="get">
+        아 이 디 : <input type="text" name="uid" value="id"/>
+                   <input type="button" value="중복확인" /><br />
+        비밀번호 : <input type="password" name="upw" /><br />
+        전화번호 : <input type="tel" name="uphone1" size="3"/> -
+                   <input type="tel" name="uphone2" size="3"/> -
+                   <input type="tel" name="uphone3" size="3"/><br />
+                      <!--tel은 스마트폰에서 자동으로 숫자키패드가 보임-->
+        사 진 : <input type="file" name="ufilename"/><br />
+        성별구분 : <input type="radio" name="gender" value="m" checked="checked" />남
+                   <input type="radio" name="gender" value="f"/>여<br /> <!--name이 같아야 하나만 선택가능-->
+        사용언어 : <input type="checkbox" name="lang" value="kor" checked="checked"/>한국어 <!--DEFAULT 체크기능-->
+                   <input type="checkbox" name="lang" value="chi" />중국어
+                    <input type="checkbox" name="lang" value="ind" />인도<br />
+        <!--데이트 타입은 크롬만 적용가능, 자바스크립트,jquery에서 만듬-->
+        생일 : <input type="date" name="birth" /><br />
+        <!--textarea는 4000자 까지-->
+        자기소개 :<br /> <textarea cols="25" rows="5" name="intro">소개입니다.</textarea><br />
+        국적 : <select name="nation">
+                <option>대한민국</option>
+                <option>일본</option>
+                <option>미국</option>
+                <option>중국</option>
+                </select><br />
+        좋아하는 음식:<br /> <select name="food" multiple="multiple" size="3">
+                        <option>김치찌개</option>
+                        <option>된장찌개</option>
+                        <option>파스타</option>
+                        <option>라면</option>
+                        <option>불고기</option>
+                        <option>샐러드</option>
+                        </select><br />
+        좋아하는 색상:<br /><input type="color" name="color" /><br />
+        좋아하는 정도:<br />0<input type="range" name="step" min="0" max="10" />10<br />
+        홈페이지 :<br /><input type="url" name="homepy" /><br />
+        이메일 : <input type="email" name="mail" /><br />
+        <input type="submit" value="입력" />
+    </form>
+</body>
+</html>

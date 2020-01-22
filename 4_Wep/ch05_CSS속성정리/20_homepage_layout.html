@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:3px;
+        }
+        #wrap{
+            border:1px solid gray;
+            display:flex;
+            flex-direction:column;
+            padding:5px;
+            height:700px;
+        }
+        header{
+            border:1px solid gray;
+            background-color:yellow;
+            text-align:center;
+            height:100px;
+            line-height:100px;
+        }
+        nav{
+            border:1px solid gray;
+            height:100px;
+            padding-top:10px;
+        }
+        nav ul{
+            display:flex;
+            padding-left:30px;
+        }
+
+            nav p {
+                text-align: center;
+            }
+            nav ul li {
+                list-style: none;
+                background-color:lightcoral;
+                padding:10px;
+                flex-grow:1;
+            }
+                nav ul li:first-child {
+                    border-radius: 20px 0 0 20px;
+                }
+
+                nav ul li:last-child {
+                    margin-right: 30px;
+                    border-radius: 0 20px 20px 0;
+                }
+
+                nav ul li a {
+                    text-decoration: none;
+                }
+                nav ul li a:link, nav ul li a:visited{
+                    color:purple;
+                }
+        section {
+            border: 1px solid gray;
+            display: flex;
+            text-align:center;
+            padding:5px;
+        }
+
+        #content {
+            border: 1px solid gray;
+            flex-grow: 3;
+            height:350px;
+        }
+        #banner {
+            border: 1px solid gray;
+            flex-grow:1;
+
+        }
+        footer {
+            border: 1px solid gray;
+            background-color: yellow;
+            text-align: center;
+            height: 100px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            HEADER
+        </header>
+        <nav>
+            <p>NAVIGATION</p>
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+                <li><a href="#">menu5</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div id="content">CONTENT</div>
+            <div id="banner">BANNER</div>
+        </section>
+        <footer>
+            FOOTER
+        </footer>
+    </div>
+</body>
+</html>

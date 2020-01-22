@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width:700px; margin:0 auto;
+        }
+        #wrap #header {
+            font-size: 25px; font-weight:bold; text-align:center;
+            padding-bottom:20px;
+            border-bottom:1px solid #cccccc;
+        }
+        #wrap #content a {
+            text-decoration:none;
+            color:black;
+        }
+        #wrap #content a::after{/*링크 선택자*/
+            content:' - ' attr(href);
+        }
+        
+        #wrap #content ul li:not(.legend){
+            background-color:yellow;
+            
+        }
+
+        #wrap #content {
+            border-bottom:1px solid #cccccc;
+        }
+        #wrap #footer ul{
+            overflow:hidden;
+        }
+        #wrap #footer ul li {
+            list-style: none;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            Weekly connect website
+        </div>
+        <div id="content">
+            <ul>
+                <li><a href="http://www.naver.com" target="_blank">네이버</a></li>
+                <li><a href="http://www.daum.net" target="_blank">다음</a></li>
+                <li class="legend"><a href="http://www.google.com" target="_blank">갓갓갓 구글</a></li>
+                <li><a href="http://www.yahoo.com" target="_blank">야후</a></li>
+            </ul>
+        </div>
+        <div id="footer">
+            <ul>
+                <li><img src="http://www.moel.go.kr/images/layout/logo.png" /></li>
+                <li><img src="address.png" /></li>
+            </ul>
+
+
+        </div>
+    </div>
+</body>
+</html>

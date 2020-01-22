@@ -1,0 +1,110 @@
+* {
+	margin: 3px;
+	font-weight: bold;
+}
+
+#wrap {
+	z-index: 1;
+	border: 1px solid gray;
+	display: flex;
+	position:relative;
+	flex-direction: column;
+	padding: 5px;
+	height: 700px;
+	width: 1500px;
+	margin: 0 auto;
+}
+
+	#wrap:after {
+		z-index: -1;
+		content: "";
+		background-image: url('http://mblogthumb3.phinf.naver.net/20151022_166/alsdk0404_1445446632051rsvqL_JPEG/tumblr_mtl96v95kQ1s0adc8o1_1280.jpg?type=w2');
+		background-repeat: repeat-y;
+		background-position: left top;
+		background-size: 100% 100%;
+		padding: 0;
+		margin: 0 auto;
+		flex-shrink: 1;
+		opacity: 0.3;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-height: 700px;
+		max-width: 1500px;
+	}
+
+header {
+	border: 1px solid gray;
+	background-color: lightyellow;
+	text-align: center;
+	height: 100px;
+	line-height: 100px;
+}
+
+nav {
+	border: 1px solid gray;
+	height: 100px;
+	padding-top: 10px;
+}
+
+	nav ul {
+		display: flex;
+		padding-left: 30px;
+		text-align: center;
+	}
+
+	nav p {
+		text-align: center;
+	}
+
+	nav ul li {
+		list-style: none;
+		background-color: lightpink;
+		padding: 10px;
+		flex-grow: 1;
+	}
+
+		nav ul li:first-child {
+			border-radius: 20px 0 0 20px;
+		}
+
+		nav ul li:last-child {
+			margin-right: 30px;
+			border-radius: 0 20px 20px 0;
+		}
+
+		nav ul li a {
+			text-decoration: none;
+		}
+
+			nav ul li a:link, nav ul li a:visited {
+				color: purple;
+			}
+
+section {
+	border: 1px solid gray;
+	display: flex;
+	text-align: center;
+	padding: 5px;
+}
+
+#content {
+	border: 1px solid gray;
+	flex-grow: 5;
+	height: 350px;
+}
+
+#banner {
+	border: 1px solid gray;
+	flex-grow: 1;
+}
+
+footer {
+	border: 1px solid gray;
+	background-color: lightyellow;
+	text-align: center;
+	height: 100px;
+	line-height: 100px;
+}

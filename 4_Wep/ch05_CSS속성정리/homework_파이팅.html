@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:5px;
+            padding:0;
+            font-weight:bold;
+            text-align:center;
+        }
+        #wrap{
+            width:800px;
+            height:650px;
+            margin:0 auto;
+            border:1px solid gray;
+            padding:10px;
+        }
+        header{
+            
+            background-color:yellow;
+            border:1px solid gray;
+            height:100px;
+            line-height:100px;
+            
+        }
+        nav{
+            text-align:center;
+            padding:5px;
+            border:1px solid gray;
+            
+        }
+            nav li {
+                list-style: none;
+                display: inline-block;
+                background-color: pink;
+                height: 40px;
+                line-height: 40px;
+                color: purple;
+                
+                width: 15%;
+            }
+        nav li:first-child{
+            border-radius: 20px 0 0 20px;
+        }
+        nav li:last-child{
+            border-radius: 0 20px 20px 0 ;
+        }
+        section{
+            border:1px solid gray;
+            padding:5px;
+        }
+        #content,#banner{
+            border:1px solid gray;
+            display:inline-block;
+            box-sizing:content-box;
+            
+            
+        }
+        #content{
+            width:67%;
+            height:300px;
+        }
+        #banner{
+            width:29%;
+            height:300px;
+        }
+        footer{
+            
+            background-color:yellow;
+            border:1px solid gray;
+            height:100px;
+            line-height:100px;
+            font-weight:600;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <p>HEADER</p>
+        </header>
+        <nav>
+            <p>NAVIGATION</p>
+            <ul>
+                <li>menu1</li>
+                <li>menu2</li>
+                <li>menu3</li>
+                <li>menu4</li>
+                <li>menu5</li>
+            </ul>
+        </nav>
+        <section>
+            <div id="content">
+                CONTENT
+            </div>
+            <div id="banner">
+                BANNER
+            </div>
+        </section>
+        <footer>
+            FOOTER
+        </footer>
+
+    </div>
+</body>
+</html>

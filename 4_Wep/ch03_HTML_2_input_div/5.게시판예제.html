@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function chk() {// "" => false로 인식
+            if (!frm.title.value) {// 제목이 빈 스트링일때
+                alert('제목을 꼭 입력하세요');
+                frm.title.focus();
+                return false;
+            } else if (!frm.name.value) {
+                alert('작성자를 꼭 입력하세요');
+                frm.name.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="get" onsubmit="return chk()" name="frm">
+        <!--onsubmit 이벤트처리-->
+        <table border="1">
+            <caption><h2><b>게시판</b></h2></caption>
+            <tr>
+                <td>제목</td>
+                <td><input type="text" name="title" size="30" /></td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td><input type="text" name="name" size="30" /></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea cols="31" rows="5" name="content"></textarea></td> <!--열자마자 닫아라 빈공간생김-->
+            </tr>
+            <tr>
+                <td>첨부화일</td>
+                <td><input type="file" name="file" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <input type="submit" value="입력완료" />
+                        <input type="reset" value="입력취소" />
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+    li{
+        list-style:none;
+    }
+    a{
+        text-decoration: none;
+    }
+    header#header {
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        background-image: url('../0121_imgEx1/bg_header.png');
+    }
+    header {
+        position: relative;
+    }
+
+    header .left{
+        position: absolute;
+        left: 10px;
+        top: 7px;
+    }
+    header .right{
+        position: absolute;
+        right: 10px;
+        top: 7px;
+    }
+    #gnb ul{
+        overflow: hidden;
+        border: 5px solid fray;;
+    }
+    #gnb ul li{
+        float: left;
+        width: 10%;
+        margin: 1.25%;
+        border: 1px solid gray;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    #gnb{
+        display: none;
+    }
+    #toggle:checked ~ #gnb{
+        display: block;
+    }
+    #toggle{
+        display: none;
+    }
+
+#lnb ul{
+    overflow: hidden;
+}
+#lnb ul li{
+    float: left; width:20%;
+    border: 1px solid white;
+    box-sizing: border-box;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #137163;
+    font-weight: bold;
+}
+#lnb ul li a{color: white;}
+#content{
+    padding: 10px;
+    color: #333333;
+}
+#content #content_header{
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+#content #content_body p:first-child{
+    color:deepskyblue;
+    font-weight: bold;
+    padding: 10px 0;
+}
+#content #content_body p:last-child{
+    /*background-image: url('../0121_imgEx1/bg_image.jpg');
+    background-repeat: no-repeat;
+    background-position: -500px 0; 아래랑 똑같다*/   
+    background:url('../0121_imgEx1/bg_image.jpg') no-repeat -500px 0;
+    padding: 10px 0;
+    font-weight: bold;
+}
+#footer{
+    margin: 10px 0;
+    text-align: center;
+}
+#footer .logo{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    
+}
+#footer .logo img{
+    width: 30%;
+}
+#footer .info{
+    font-size: 1.3em;
+    padding: 5px 0;
+    font-weight: bold;
+}
+#footer .address{
+    font-size: 1.1em;
+    padding: 5px 0;
+}
+
+
