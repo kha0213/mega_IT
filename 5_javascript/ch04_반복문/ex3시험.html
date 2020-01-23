@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{background-color: black;}
+        td{
+            background-color: white;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        var arr = ['홍길동','컴퓨터공학',100];
+        document.write('<table>');
+            document.write('<tr>');
+        arr.forEach(function(element) {
+            document.write('<td>');
+            document.write(element);
+            document.write('</td>');
+        });
+        document.write('</tr>');
+        document.write('</table>');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
