@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // window.alert('하하'); window생략가능
+        function chkIdOpen(){
+            window.open('12_closer함수.html')
+            window.alert('경고창');
+            window.prompt('입력해');
+            window.confirm('yes or no');
+        }
+    
+    </script>
+</head>
+<body>
+    <form action="#">
+        <h3>회원가입</h3>
+        아이디 <input type="text" name="id"><input type="button" value="중복확인" onclick='chkIdOpen()'><br>
+        <input type="submit" value='가입'>
+
+    </form>
+</body>
+</html>
