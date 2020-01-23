@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var won = '100원';
+        if(isNaN(parseInt(won))){//isNaN() 숫자가 아니면 true
+            alert('숫자가 아니야');
+        }
+        var num = 100/-0;
+        if (isFinite(num)) {// isFinite() 유한한 숫자면 true;
+            alert(num+'유한이야');
+        }else{
+            alert(num);
+        }
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
