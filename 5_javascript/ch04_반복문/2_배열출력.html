@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var array = [273, 32, '홍길동'];
+        // 1. 일반 for문
+        document.write('<h2>1.일반for문</h2>');
+        for(var idx=0;idx<array.length; idx++){
+            document.write(idx+'번째 : '+array[idx]+'<br>')
+        }
+        // 2. for-in문
+        document.write('<h2>2.for-in문</h2>');
+        for(var idx in array){
+            document.write(idx+'번째 : '+array[idx]+'<br>')
+        }
+        // 3. forEach()함수
+        document.write('<h2>3.forEach()함수 이용하기1</h2>');
+        array.forEach(function(data, idx){ 
+            document.write(idx+'번째 : '+array[idx]+'<br>')
+        });
+        // 3. forEach()함수
+        document.write('<h2>3.forEach()함수 이용하기2</h2>');
+        array.forEach(function(data, idx){ 
+            document.write(idx+'번째 : '+data+'<br>')
+        });
+        document.write('<h2>array 데이터만 출력</h2>');
+        array.forEach(function(data){
+            document.write(data+'<br>')
+        });
+        
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

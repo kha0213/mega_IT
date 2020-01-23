@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script> // while문이 1초동안 몇번 수행하는지 수행횟수 출력
+        var cnt=0;
+        var startTime = new Date().getTime(); //현재의 밀리세컨
+        // while문을 1초동안 돌리자
+        
+        var strCnt = String(1238456);
+        
+        var st = strCnt.length;
+
+        var temp = '';
+        document.write(temp);
+        for(var idx in strCnt){
+            if(idx==0) {temp+=strCnt[idx]; continue;}
+            if(idx%3==0){
+                temp+=',';}
+            
+            temp+=strCnt[idx];
+        }
+
+        document.write(temp);
+
+
+
+
+
+
+
+
+
+
+        // var strCntLength = strCnt.length;
+        // var temp = strCntLength%3;
+        // for(var idx=0; idx<strCnt.length;idx++){
+        //     if(temp==0){
+        //         temp=3;
+        //         if(idx != strCntLength-1 && idx!=0){
+        //             document.write(',');
+        //         }
+        //     }
+        //     document.write(strCnt[idx]);
+        //     temp--;
+        // }   
+
+
+
+    </script> 
+
+</head>
+<body>
+    
+</body>
+</html>

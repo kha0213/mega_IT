@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 2px;
+        }
+      
+        tr{
+            background-color: salmon;
+            color: yellow;
+        }
+        td:hover{
+            background-color: aqua;
+            cursor: cell;
+        }
+    </style>
+    <script>
+        document.write('<table>');
+            document.write('<tr>');
+            for(j=2;j<10;j++){
+                document.write('<td>');
+                document.write(j+'단');
+                document.write('</td>');
+            }
+            document.write('</tr>');
+        for(i=1;i<10;i++){
+            document.write('<tr>');
+            for(j=2;j<10;j++){
+                document.write('<td>');
+                document.write(j+'x'+i+' = '+i*j+' ');
+                document.write('</td>');
+            }
+            
+            document.write('</tr>');
+        }
+        
+
+        document.write('</table>');
+    
+    </script>
+</head>
+<body>
+</body>
+</html>
