@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var product = {
+            name:'Microsoft Visual Studio',
+            price : 0,
+            language : '한국어',
+            supportOS : 'win 32/64',
+            method : function(){
+                alert('method test')
+                }
+        };
+        product.wow='WOW';
+        product['wawa wow']='WAWA WOW';
+
+        for(var key in product){
+            if((typeof product[key]) !='function'){
+            document.write('key값: ['+key+'] value: ['+product[key]+']<br>');
+            }
+        }
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function Student(name,kor,mat,eng,sci){//생성자함수는 대문자로
+            this.name=name;
+            this.kor=kor;
+            this.mat=mat;
+            this.eng=eng;
+            this.sci=sci;
+            this.getSum=function(){
+                return this.kor+this.mat+this.eng+this.sci;
+            };
+            this.getAvg=function(){
+                return this.getSum()/4;
+            };
+            this.toString=function(){
+                var output='';
+                    for(var key in this){
+                        if(typeof this[key] != 'function'){
+                            output+=key+' : '+this[key]+'<br>';
+                        }else if(key == 'getSum'){
+                            output += '총점 : '+this.getSum() + '<br>';
+                        }else if(key =='getAvg'){
+                            output += '평균 : '+this.getAvg()+'<br>';
+                        }
+                    }
+                    return output;
+            };
+        }
+        var students=[];
+        students.push(new Student('홍길동',100,99,98,97));
+        students.push(new Student('일길동',22,33,44,55));
+        students.push(new Student('이길동',88,77,76,97));
+
+        students.forEach(function(data){
+            document.write(data+'<hr>');
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

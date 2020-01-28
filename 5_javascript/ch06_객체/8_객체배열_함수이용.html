@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function makeStudent(name, kor, mat, eng, sci){
+            var result={
+                'name' : name,
+                'kor' : kor,
+                'mat' : mat,
+                'eng' : eng,
+                'sci' : sci,
+                getSum : function(){
+                    return this.kor+this.mat+this.eng+this.sci;
+                },
+                getAvg : function(){
+                    return this.getSum()/4;
+                },
+                toString : function(){
+                    var output='';
+                    for(var key in this){
+                        if(typeof this[key] != 'function'){
+                            output+=key+' : '+this[key]+'<br>';
+                        }else if(key == 'getSum'){
+                            output += '총점 : '+this.getSum() + '<br>';
+                        }else if(key =='getAvg'){
+                            output += '평균 : '+this.getAvg()+'<br>';
+                        }
+                    }
+                    return output;
+                }
+            };
+            return result;
+        }
+        var students=[];
+        students.push(makeStudent('롱롱이',100,50,80,90));
+        students.push(makeStudent('일롱이',88,77,66,55));
+        students.push(makeStudent('삼롱이',12,34,56,78));
+
+        students.forEach(function(data, idx){
+            document.write(idx+'번째<br>'+data+'<hr>');
+        });
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

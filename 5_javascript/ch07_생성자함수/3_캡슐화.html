@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function Rect(w, h){
+            if(width<0){
+                throw '음수길이';
+            }
+            // this.width=w; //이렇게하면 못숨김
+            // this.height=h;
+            var width = w;
+            var height = h;
+            this.getWidth = function(){
+                return width;
+            };
+            this.getHeight = function(){
+                return height;
+            };
+            this.setWidth = function(w){
+                width=w;
+            }
+            this.setHeigth = function(h){
+                height=h;
+            }
+        }
+        var rect1 = new Rect(10,20);
+        alert(rect1.getWidth());
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
