@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var str = 'abcd@abcd@';
+        document.write('글씨 길이 : '+str.length+'<br>');
+        document.write('글씨 더하기 : '+str.concat('efgh')+'<br>');
+        document.write('부분 글씨 추출 : '+str.substr(3,2)+'<br>'); //3번째 글씨부터 2글자 가지고와
+        document.write('앞부터 가까운 일치하는 글자 위치 : '+str.indexOf('@')+'<br>'); //@가 앞에서 몇번째인지? 없으면 -1
+        document.write('뒤부터 가까운 일치하는 글자 위치 : '+str.lastIndexOf('@')+'<br>'); //@가 뒤에서부터 찾음 몇번째인지 리턴? 없으면 -1
+        document.write('문자를 다른걸로 하나 대체 : '+str.replace('@','♡')+'<br>');
+        document.write('대문자로 변환 : '+str.toUpperCase()+'<br>');
+        document.write('소문자로 변환 : '+str.toLowerCase()+'<br>');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // int primitiveNumber = 273;
+        // primitiveNumber.toString(); //java에선 이거 불가능
+        // Integer objectNumber = new Integer(273); //java에선 이 둘이 다르다
+        var primitiveNumber = 273;
+        var objectNumber = new Number(273); //java script에서는 똑같다.
+        document.write('primitiveNumber 타입은'+typeof(primitiveNumber)+'<br>');
+        document.write('objectNumber 타입은'+typeof(objectNumber)+'<br>'); //타입은 다르게 나온다.
+        //constructor : 생성자함수
+        document.write('primitiveNumber생성시 생성자 : '+primitiveNumber.constructor+'<br>');
+        document.write('objectNumber생성시 생성자 : '+objectNumber.constructor+'<br>');
+        // Number 객체에 method1추가
+        Number.prototype.method1 = function(){
+            alert('Number타입은 다 써');
+        };
+        // primitiveNumber.method1();
+        // objectNumber.method1();
+        objectNumber.method2 = function(){
+            alert('objectNumber만 써');
+        };
+        // primitiveNumber.method2(); 실행 불가 안됨
+        // objectNumber.method2();
+        primitiveNumber.method3 = function(){
+            alert('되나보자'); //안됨
+        };
+        // primitiveNumber.method3(); 타입이 object 가 아니라 속성 추가가 불가
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

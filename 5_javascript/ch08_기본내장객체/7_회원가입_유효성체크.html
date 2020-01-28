@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            width: 300px;
+            margin: 200px auto;
+            border: 2px solid #385d81;
+            padding: 10px 50px;
+        }
+        
+        td{
+            text-align: center;
+            padding:10px 10px;
+        }
+        
+        input[type='text'], input[type='password']{
+            border: 2px solid #385d81;
+            padding: 10px 5px;
+        }
+        tr:last-child td input{
+            background-color: #385d81;
+            color: white;
+            border: 2px solid steelblue;
+            border-radius: 10px;
+            padding: 10px 25px;
+        }
+
+    </style>
+
+    <script>
+        function chk(){
+            var pwNum = /[0-9]/;
+            var pwEng = /[a-zA-Z]/;
+            var pwSpe = /[~!@#$%^&*()_+|<>?:{}]/;
+            var pwC = frm.pw.value;
+            if(frm.mail.value.indexOf('@')!=frm.mail.value.lastIndexOf('@') || frm.mail.value.indexOf('@')==frm.mail.value.length-1 || frm.mail.value.indexOf('@')<=0){
+                alert('메일형식에 맞춰랑');
+                frm.mail.focus();
+                return false;
+            }else if(pwC.length<4 || !pwNum.test(pwC) || !pwEng.test(pwC) || !pwSpe.test(pwC)){
+                alert('비밀번호 형식에 맞춰랑');
+                frm.pw.focus();
+                return false;
+            }else if(!(frm.pw.value==frm.pwchk.value)){
+                alert('비밀번호를 똑같이 입력해');
+                frm.pw.focus();
+                return false;
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <form action="#" name="frm" onsubmit="return chk()">
+        <table>
+            <tr>
+                <td>메 일</td>
+                <td colspan="2"><input type="text" name="mail" placeholder="메일형식에 맞추세요"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td colspan="2"><input type="password" name="pw"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td colspan="2"><input type="password" name="pwchk"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="회원가입"></td>
+                <td><input type="reset" value="취소"></td>
+                <td><input type="button" value="로그인" onclick="location.href='1_Number객체.html'"></td>
+            </tr>
+
+
+        </table>
+    </form>
+</body>
+
+</html>

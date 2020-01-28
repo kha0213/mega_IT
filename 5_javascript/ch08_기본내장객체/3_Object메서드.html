@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var obj = { property:273 }; //모든 객체는 내장객체인 Object로 상속
+        var output = '';
+        output +="hasOwnProperty('property') : "+obj.hasOwnProperty('property')+'<br>';
+        output +="hasOwnProperty('name') : "+obj.hasOwnProperty('name')+'<br>';
+        output +=obj.toString()+'<br>'; //오버라이딩해서 쓰자
+        document.write(output);
+
+        
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

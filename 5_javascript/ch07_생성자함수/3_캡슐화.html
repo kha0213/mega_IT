@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        function Rect(w, h){
-            if(width<0){
+        function Rect(w, h) {
+            if (w < 0) {
                 throw '음수길이';
+            } else {
+                var width = w;
             }
             // this.width=w; //이렇게하면 못숨김
             // this.height=h;
-            var width = w;
             var height = h;
-            this.getWidth = function(){
+            this.getWidth = function () {
                 return width;
             };
-            this.getHeight = function(){
+            this.getHeight = function () {
                 return height;
             };
-            this.setWidth = function(w){
-                width=w;
-            }
-            this.setHeigth = function(h){
-                height=h;
-            }
+            this.setWidth = function (w) {
+                if (w < 0) {
+                    throw '음수길이';
+                } else {
+                    width = w;
+                }
+            };
+            this.setHeigth = function (h) {
+                height = h;
+            };
+            this.getArea = function () {
+                return width * height;
+            };
         }
-        var rect1 = new Rect(10,20);
-        alert(rect1.getWidth());
-    
-    
+        try {
+            var rect1 = new Rect(10, 20);
+        } catch (e) {
+            alert(e+'예외발생');
+            location.href = '공사중.html';
+        } 
+        document.write('rect1의 가로는 ' + rect1.getWidth()+'<br>');
+        document.write('rect1의 세로는 ' + rect1.getHeight()+'<br>');
+        document.write('rect1의 넓이는 ' + rect1.getArea()+'<br>');
+        rect1.setWidth(5);
+        rect1.setHeigth(10);
+        document.write('rect1의 가로는 ' + rect1.getWidth()+'<br>');
+        document.write('rect1의 세로는 ' + rect1.getHeight()+'<br>');
+        document.write('rect1의 넓이는 ' + rect1.getArea()+'<br>');
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
