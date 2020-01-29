@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var child;
+        function openBig(){
+            child = open('4_child_big.html','child','left=600, width=450, height=500');
+            if(!child){
+                alert('팝업차단을 해제하세요.')
+            }
+            
+        }
+        function closeBig(){
+            child.close();
+        }
+    
+    </script>
+</head>
+<body>
+    <h2>작은 그림의 parent 창</h2>
+    <img src="img/small.jpg" alt="small" onmouseover="openBig()" onmouseout="closeBig()">
+</body>
+</html>

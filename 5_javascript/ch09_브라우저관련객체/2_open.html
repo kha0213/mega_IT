@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var child = open('','','wjdth=450, height=500');
+        // window.open(url,가로,세로);
+        // 속성1:url
+        // 속성2:윈도우이름
+        // 속성3:width,height,left,right,top, location(1,0 yes,no),menubar, resiable,scrollbar
+        if(child){
+            child.document.write('<h1>새창</h1>');
+        } else{
+            alert('팝업차단을 해제하여야 확인이 됩니다.');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

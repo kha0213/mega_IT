@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEXT NODE</title>
+    <script>
+        window.onload = function(){
+            // h1과 textNode 생성
+            var h1 = document.createElement('h1');
+            var textNode = document.createTextNode('추가한 텍스트');
+            // 생성된 node를 연결
+            h1.appendChild(textNode);
+            document.body.appendChild(h1);
+            // img태그 노드 생성
+            var img = document.createElement('img');
+            img.setAttribute('src','img/orange.jpg');
+            img.setAttribute('alt','orange.jpg');
+            document.body.appendChild(img);
+        };
+
+
+    </script>
+
+</head>
+<body>
+    <h1>TEXT NODE</h1>
+    <img src="img/orange.jpg" alt="0out.jpg">
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       
+    
+    </style>
+
+
+
+    <script>
+        var color=['red','orange','yellow','green','blue','navy','violet'];
+        var cnt=0;
+        window.onload = function(){
+            var date = document.getElementById('date');
+            var time = document.getElementById('time');
+            date.append(new Date().toLocaleDateString());
+            time.innerHTML=new Date().toLocaleTimeString();
+            setInterval(function(){
+                time.innerHTML=new Date().toLocaleTimeString();
+                time.style.color=color[cnt++%7]; 
+            },1000);
+
+
+
+        };
+    
+    
+    </script>
+
+
+
+</head>
+<body>
+    날짜 : <h2 id="date"></h2>
+    시간 : <h2 id="time"></h2>
+</body>
+</html>

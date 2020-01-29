@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function openWindow(){
+            var child = open('1_window객체의속성및메소드.html','childWin','width=500, height=300');
+            if(!child){//chile=true면 새로운 창
+                alert('팝업차단을 해제해 주세요');
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="openWindow()">새창열기 버튼</button>
+    <hr>
+    <a href="http://www.daum.net" target="childWin">새창을 [다음]으로 가기</a>
+</body>
+</html>

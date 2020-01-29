@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        
+        var child = open('6.html','','width=300,height=2');
+        var screenW = screen.width/2;
+        var screenH = screen.height/2;
+        child.resizeTo(screenW,screenH);
+        child.moveTo(screen.width/4,screen.height/4);
+        //창이 왔다 갔다.
+        var toggle = 1;
+        setInterval(function(){
+            if(toggle==1){
+                child.moveBy(30,30);
+                toggle=0;
+            }else{
+                child.moveBy(-30,-30);
+                toggle=1;
+            }
+        },1000);
+    </script>
+</head>
+<body>
+</body>
+</html>

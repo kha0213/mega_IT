@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var today=new Date();   // 현재 1/29 오전 10:14
+        var limitday = new Date();
+        document.write('지금 날짜+시간 : '+today.toLocaleString()+'<br>');
+        document.write('지금 날짜 : '+today.toLocaleDateString()+'<br>');
+        document.write('지금 시간 : '+today.toLocaleTimeString()+'<br>');
+        limitday.setDate(today.getDate()+14); //2주 후로 바꿈
+        document.write('2주 후 : '+limitday.toLocaleString()+'<br>');
+        today.setMonth(1); //2월로 세팅이 됨
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

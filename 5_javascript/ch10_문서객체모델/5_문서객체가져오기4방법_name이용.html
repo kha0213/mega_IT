@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var id = document.getElementsByName('id');
+         };
+        function login(){
+            var id = document.getElementsByName('id')[0].value;
+            var pw = document.getElementsByName('pw')[0].value;
+            alert('id는 '+id+'이고 pw는 '+pw);
+        }
+    </script>
+</head>
+
+<body>
+
+        <h1>로그인</h1>
+        <p>ID <input type="text" name="id" id="id"></p>
+        <p>PW <input type="password" name="pw" id="pw"></p>
+        <p><button onclick="login()">로그인</button></p>
+        <p><button>회원가입</button></p>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var arr1 = new Array('hij','abc','zzz','asdfff');
+        var arr2 = [52,273,103,57,32];
+        
+        document.write('정렬전의 arr1 : '+arr1+'<br>');
+        arr1.sort();
+        document.write('정렬후의 arr1 : '+arr1+'<br>');
+        document.write('정렬전의 arr2 : '+arr2+'<br>');
+        arr2.sort(function(left,right){
+            // return left - right; // 오름차순 정리
+            return right - left; // 내림차순 정리
+        });
+        document.write('정렬후의 arr2 : '+arr2+'<br>');
+        
+        
+        
+        // arr2.forEach(function(data,idx){
+        //     document.write(idx+'번째 : '+data+'<br>');
+        // });
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
