@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var header1 = document.querySelector('.header');
+            var headers = document.querySelectorAll('.header');
+            header1.innerHTML = '바꿔';
+            for(var idx in headers){
+                headers[idx].style.cssText = 'color:blue;background-color:yellow';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 class="header">HEADER</h1>
+    <h1 class="header">HEADER</h1>
+</body>
+</html>

@@ -5,12 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div{
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid steelblue;
+        }
+        h1{
+            margin: 0 0 20px 0;
+        }
+    </style>
+    <script>
+        function gosite(n){
+            var site = ['http://www.naver.com',
+                        'http://www.daum.net',
+                        'http://www.google.com',
+                        'http://www.youtube.com'
+            ]
+            location.href=site[n];
+        }
+    
+    
+    </script>
 </head>
 <body>
+    <div>
     <h1>메뉴</h1>
-    <button>네이버</button>
-    <button>다음</button>
-    <button>구글</button>
-    <button>유투브</button>
+    <button onclick="gosite(0)">네이버</button>
+    <button onclick="gosite(1)">다음</button onclick="gosite()">
+    <button onclick="gosite(2)">구글</button onclick="gosite()">
+    <button onclick="gosite(3)">유투브</button onclick="gosite()">
+    </div>
 </body>
 </html>

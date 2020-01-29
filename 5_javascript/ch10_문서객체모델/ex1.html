@@ -20,36 +20,28 @@
         td:nth-child(5){background-color: blue;}
         td:nth-child(6){background-color: navy;}
         td:nth-child(7){background-color: purple;}
-    
     </style>
 
     <script>
         function changeBackground(n){
-            var color = ['red','orange','yellow','green','blue','navy','purple'];
+            var color = ['red','orange','yellow','green','blue','navy','purple','white'];
             document.body.style.backgroundColor=color[n];
         }
-        function returnBackground(){
-            document.body.style.backgroundColor='white';
-        }
-
-
-    
-    
-    
+        
     </script>
 
 
 </head>
 <body>
     <table>
-        <tr>
-            <td onmouseover="changeBackground(0)" onmouseout="returnBackground()"></td>
-            <td onmouseover="changeBackground(1)" onmouseout="returnBackground()"></td>
-            <td onmouseover="changeBackground(2)" onmouseout="returnBackground()"></td>
-            <td onmouseover="changeBackground(3)" onmouseout="returnBackground()"></td>
-            <td onmouseover="changeBackground(4)" onmouseout="returnBackground()"></td>
-            <td onmouseover="changeBackground(5)" onmouseout="returnBackground()"></td>
-            <td onmouseover="changeBackground(6)" onmouseout="returnBackground()"></td>
+        <tr onmouseout="changeBackground(7)">
+            <td onmouseover="changeBackground(0)"></td>
+            <td onmouseover="changeBackground(1)"></td>
+            <td onmouseover="changeBackground(2)"></td>
+            <td onmouseover="changeBackground(3)"></td>
+            <td onmouseover="changeBackground(4)"></td>
+            <td onmouseover="changeBackground(5)"></td>
+            <td onmouseover="changeBackground(6)"></td>
         </tr>
     </table>
 </body>
