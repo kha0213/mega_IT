@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var header = document.getElementById('header');
+            var p = this.document.getElementsByTagName('p')[0];
+            function whenClick(){
+                alert('click');
+            }
+            header.onclick=whenClick;
+            for(var key  in header){
+                p.innerHTML += key+' : '+header[key]+'<br>';
+            }
+            // 이벤트 이름 :click
+            // 이벤트 속성 변수 : onclick
+            // 이벤트 리스너 : whenClick 
+        }
+    
+    </script>
+</head>
+<body>
+    <h1 id="header">Click</h1>
+    <p></p>
+</body>
+</html>
