@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function imgOver(n){
+            var img = document.querySelectorAll('img');
+            img[n].setAttribute('src','img/'+n+'over.jpg')
+        }
+        function imgOut(n){
+            var img = document.querySelectorAll('img');
+            img[n].setAttribute('src','img/'+n+'out.jpg')
+        }
+    </script>
+</head>
+<body>
+    <img src="img/0out.jpg" alt="" onmouseover="imgOver(0)" onmouseout="imgOut(0)">
+    <img src="img/1out.jpg" alt="" onmouseover="imgOver(1)" onmouseout="imgOut(1)">
+    <img src="img/2out.jpg" alt="" onmouseover="imgOver(2)" onmouseout="imgOut(2)">
+    <img src="img/3out.jpg" alt="" onmouseover="imgOver(3)" onmouseout="imgOut(3)">
+</body>
+</html>

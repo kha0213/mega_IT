@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+        document.getElementById('myForm').onsubmit = function(){
+            var pw = document.getElementById('pw');
+            var pwchk = document.getElementById('pwchk');
+            if(pw.value!=pwchk.value){
+                alert('비밀번호가 다릅니다.');
+                pw='';
+                pwchk='';
+                return false; //디폴드 이벤트 제한
+            }
+        }
+    };
+    </script>
+</head>
+<body>
+    <form action="#" name="frm" id="myForm">
+        <p>ID <input type="text" name="id" id="id"></p>
+        <p>PW <input type="password" name="pw" id="pw"></p>
+        <p>PW <input type="password" name="pwchk" id="pwchk"></p>
+        <p><input type="submit" value="롱롱이"></p>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            background-color: green;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+        }
+        td{
+            background-color: white;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var tr = document.querySelectorAll('td');
+            tr[4].style.backgroundColor='yellow';
+        }
+        var beforeKey=4;
+        onkeydown = function(){
+            var tr = document.querySelectorAll('td');
+            for(var i=0;i<tr.length;i++){
+                tr[i].style.backgroundColor='white';
+            }
+            var pushKey = event.keyCode;
+            tr[beforeKey].style.backgroundColor='white';
+            switch(pushKey){
+                case 37: 
+                    if(beforeKey==0 || beforeKey==3 || beforeKey==6){
+                        beforeKey+=3;
+                    }
+                    tr[beforeKey-1].style.backgroundColor='yellow';
+                    beforeKey-=1;
+                    break;
+                case 38: 
+                    if(beforeKey==0 || beforeKey==1 || beforeKey==2){
+                        beforeKey+=9;
+                    }
+                    tr[beforeKey-3].style.backgroundColor='yellow';
+                    beforeKey-=3;
+                    break;
+                case 39: 
+                    if(beforeKey==2 || beforeKey==5 || beforeKey==8){
+                        beforeKey-=3;
+                    }
+                    tr[beforeKey+1].style.backgroundColor='yellow';
+                    beforeKey+=1;
+                    break;
+                case 40: 
+                    if(beforeKey==6 || beforeKey==7 || beforeKey==8){
+                        beforeKey-=9;
+                    }
+                    tr[beforeKey+3].style.backgroundColor='yellow';
+                    beforeKey+=3;
+                    break;
+            }
+            
+        };
+    
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+</body>
+</html>

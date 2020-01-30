@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            color: red;
+        }
+    
+    </style>
+    <script>
+        var i =0;
+        window.onload = function(){
+            var h1 = document.querySelector('h1');
+            h1.onclick = function () {
+                if(i<5){
+                    h1.innerHTML+='<span>♡</span>';
+                    i++;
+                }else{
+                    alert('좋아요는 5번까지만이야');
+                    this.onclick=null;
+                }
+                
+            }
+        };
+    
+    </script>
+</head>
+<body>
+    <h1>좋아요</h1>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            background-color: green;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+        }
+        td{
+            background-color: white;
+        }
+    </style>
+    <script>
+        onkeyup = function(){
+            var tr = document.querySelectorAll('td');
+            for(var i=0;i<tr.length;i++){
+                tr[i].style.backgroundColor='white';
+            }
+            var pushKey = event.keyCode;
+            if(96<=pushKey && pushKey<=104){
+                pushKey -= 96;
+                tr[pushKey].style.backgroundColor='yellow';
+            }else if(48<=pushKey && pushKey<=56){
+                pushKey -= 48;
+                tr[pushKey].style.backgroundColor='red';
+            }
+        };
+    
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+</body>
+</html>
