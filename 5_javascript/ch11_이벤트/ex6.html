@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        onclick = function(){
+            var div = document.querySelector('div');
+            div.style.position='absolute';
+            div.style.left=event.offsetX+'px';
+            div.style.top=event.offsetY+'px';
+            var span = document.querySelector('span');
+            span.innerHTML = '<br>screen좌표값:'+event.screenX+', '+event.screenY+'<br>'+
+                        'offset좌표값:'+event.offsetX+', '+event.offsetY+'<br>';
+        }
+    
+    </script>
+</head>
+<body>
+    <div>
+        <img src="img/car.gif" alt="">
+        <span></span>
+    </div>
+    
+</body>
+</html>
