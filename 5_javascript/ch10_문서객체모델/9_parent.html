@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parent</title>
+    <style>
+        table{
+            margin: 0 auto;
+        }
+        td{
+            text-align: center;
+            padding: 5px 0;
+        }
+        input[type=text],input[type=date]{
+            border: 1px solid pink;
+            width: 155px;
+            height: 17px;
+        }
+        span{
+            display: inline-block;
+            width:155px;
+            height: 17px;
+            border: 1px solid pink;
+        }
+        h1{
+            background-color: pink;
+            font-weight: bold;
+            width: 100%;
+            padding: 20px 2px;
+            border: 2px solid tomato;
+            font-size: 1.1em;
+            border-radius: 10px 40px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        
+        function childOpen(){
+            var child = open('9_child.html','','width=500, height=600, left=100, top=10');
+            if(!child){
+                alert('팝업차단을 해제해주세요');
+            }
+        }
+
+    
+    </script>
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <td>사원이름</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>파트 명칭</td>
+            <td class="part"><span id="part"></span></td>
+        </tr>
+        <tr>
+            <td>결제일자</td>
+            <td><input type="date" id="date"></td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="childOpen()"><h1 id="insa">인사정보 파트 선택</h1></td>
+        </tr>
+    </table>
+
+</body>
+</html>

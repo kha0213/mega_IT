@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function header(n){
+            if(n==1){
+                var header1 = document.getElementsByTagName('h1')[0];
+                header1.style.border='2px solid green';
+            }else{
+                var header2 = document.querySelector('#header2');
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 id="header1" onclick="header(1)">HEADER</h1>
+    <h1 id="header2" onclick="header(2)">HEADER</h1>
+</body>
+</html>

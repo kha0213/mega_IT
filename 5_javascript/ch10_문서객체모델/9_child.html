@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Child</title>
+    <style>
+        #wrap {
+            width: 450px;
+            margin: 0 auto;
+        }
+
+        #wrap h1 {
+            color: red;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #wrap h3 {
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid pink;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //opener : parent창
+            var name = opener.document.getElementById('name').value; //반드시 id로 가져오자
+            var date = opener.document.getElementById('date').value;
+            var showName = document.getElementById('showName'); 
+            if (date != '') {
+                showName.innerHTML=name + '님 날짜 : ' + date;
+            }
+            else {
+                showName.innerHTML=name + '날짜는 안 넘어옴';
+            }
+            var modifyName = document.getElementById('modifyName');
+            modifyName.value = name;
+        };
+
+        function sendData(part){
+            var modifyName = document.getElementById('modifyName').value;
+            opener.document.getElementById('name').value=modifyName;
+            opener.document.getElementById('part').innerHTML=part;
+            window.close();
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>인사정보시스템</h1>
+        <hr>
+        <h2 id="showName"></h2>
+        <h2>이름 수정 가능 <input type="text" id="modifyName"></h2>
+        <hr>
+        <h3 onclick="sendData('인사')">인사로하고 닫기</h3>
+        <h3 onclick="sendData('재무')">재무로하고 닫기</h3>
+        <h3 onclick="sendData('총무')">총무로하고 닫기</h3>
+        <h3 onclick="sendData('롱롱')">롱롱로하고 닫기</h3>
+
+
+    </div>
+</body>
+
+</html>
