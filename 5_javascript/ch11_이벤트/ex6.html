@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div{
+            display: none;
+        }
+    </style>
     <script>
         onclick = function(){
             var div = document.querySelector('div');
+            div.style.display='inline';
             div.style.position='absolute';
             div.style.left=event.offsetX+'px';
             div.style.top=event.offsetY+'px';
@@ -20,8 +26,8 @@
 </head>
 <body>
     <div>
-        <img src="img/car.gif" alt="">
         <span></span>
+        <img src="img/car.gif" alt="">
     </div>
     
 </body>

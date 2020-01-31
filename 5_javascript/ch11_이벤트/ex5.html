@@ -6,14 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        function imgCng(){
+        window.onload = function (){
             var img = document.querySelector('img');
-            img.setAttribute('src','img/but2.gif')
-        }
+            img.onmouseup = function(){
+                this.setAttribute('src','img/but1.gif');
+            };
+            img.onmousedown = function(){
+                this.setAttribute('src','img/but2.gif');
+            }
+        };
     
     </script>
 </head>
 <body>
-    <img src="img/but1.gif" alt="" onclick="imgCng()">
+    <img src="img/but1.gif" alt="">
 </body>
 </html>
