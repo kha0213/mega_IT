@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="../Ex1?id=aaaa&pw=ppp">Ex1 Servlet에게 id와 pw넘기기(Get)</a>
+	<hr>
+	<button onclick="location.href='../Ex1?id=i&pw=p'">Ex1
+		servlet에게 id와 pw넘기기(Get)</button>
+	<hr>
+	<form action="http://localhost:8181/ch04_servlet/Ex1" method="get">
+		<p>
+			ID <input type="text" name="id">
+		</p>
+		<p>
+			PW <input type="password" name="pw">
+		</p>
+		<p>
+			<input type="submit" value="Ex1 servlet에게 id와 pw넘기기(Get)">
+		</p>
+	</form>
+	<hr>
+	<form action="/ch04_servlet/Ex1" method="post">
+	<!-- post방식은 한글이 깨짐!!!!!!! -->
+		<p>
+			ID <input type="text" name="id">
+		</p>
+		<p>
+			PW <input type="password" name="pw">
+		</p>
+		<p>
+			<input type="submit" value="Ex1 servlet에게  id와 pw넘기기(Post)">
+		</p>
+	</form>
+</body>
+</html>
