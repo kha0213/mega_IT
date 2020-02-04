@@ -33,20 +33,26 @@ public class Exam4 extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String[] gugu = request.getParameterValues("gugu");
+		
 
 		out.println("<html>");
 		out.println("<head>");
+		out.println("<link rel=\"stylesheet\" href=\"css/exam4.css\" type=\"text/css\">");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<table>");
 		out.println("<caption>");
 		out.println("<h2>★★★원하는 구구단 출력★★★</h2>");
 		out.println("</caption>");
-		for(int j=1;j<10;j++) {
+		for(int j=0;j<10;j++) {
 			out.println("<tr>");
 			for(int i=0;i<gugu.length;i++) {
 				out.println("<td>");
-				out.printf("%d X %d = %d",Integer.parseInt(gugu[i]),j,Integer.parseInt(gugu[i])*j);
+				if(j==0) {
+					out.printf("%d 단",Integer.parseInt(gugu[i]));
+				}else {
+					out.printf("%d X %d = %d",Integer.parseInt(gugu[i]),j,Integer.parseInt(gugu[i])*j);
+				}
 				out.println("</td>");
 			}
 			out.println("</tr>");
@@ -54,6 +60,8 @@ public class Exam4 extends HttpServlet {
 		out.println("</table>");
 		out.println("</body>");
 		out.println("</html>");
+		out.close();
+		
 	}
 
 	/**

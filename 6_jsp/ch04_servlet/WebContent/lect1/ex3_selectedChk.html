@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementsByTagName('form')[0].onsubmit = function(){
+			var opt = document.getElementsByClassName('opt');
+			var optSelectedCnt = 0;
+			for(var i=0;i<opt.length;i++){
+				if(opt[i].selected){
+					optSelectedCnt++;
+				}
+			}
+			alert('선택된 op'+optSelectedCnt);
+			if(optSelectedCnt!=0){
+				return true;
+			}
+			return false;
+		};
+		
+	};
+
+</script>
+
+</head>
+<body>
+	<h2>2~9단까지 하나는 선택</h2>
+	<form action="#">
+		<select name="su" multiple="multiple" size="5">
+			<option value="2" class="opt">2단</option>
+			<option value="3" class="opt">3단</option>
+			<option value="4" class="opt">4단</option>
+			<option value="5" class="opt">5단</option>
+			<option value="6" class="opt">6단</option>
+			<option value="7" class="opt">7단</option>
+			<option value="8" class="opt">8단</option>
+			<option value="9" class="opt">9단</option>
+		</select>
+		<input type="submit">
+	</form>
+</body>
+</html>
