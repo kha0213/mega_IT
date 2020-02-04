@@ -1,0 +1,33 @@
+@charset "UTF-8";
+#joinForm_wrap{
+            width:350px;
+            margin: 0 auto;
+            padding: 10px 40px;
+            border: 1px solid #D4A190;
+        }
+        #join_title{
+            color: #A47160;
+            text-align: center;
+        }
+        table th{
+            text-align: left;
+            width: 33%;
+            padding: 5px 0;
+        }
+        input{
+            border: 1px solid #D4A190;
+        }
+        tr:last-child td input{
+            width: 30%;
+            background-color: #A47160;
+            color: white;
+        }
+        input[name=name],input[name=id],input[name=pw],input[name=pwChk],
+        input[name=birth],input[name=email]{
+            width:100%;
+        }
+        td select{
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #D4A190;
+        }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/ch04_servlet/css/exam8.css" rel="stylesheet">
+</head>
+<body>
+	<form action="../Exam8" method="post">
+		<table>
+			<caption>게시판</caption>
+			<tr>
+				<th>제 목</th>
+				<td colspan="4"><input type="text" name="title"
+					autofocus="autofocus" size="30"></td>
+			</tr>
+			<tr>
+				<th>작 성 자</th>
+				<td colspan="4"><input type="text" name="writer" size="30">
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="4"><textarea rows="10" cols="32" name="content"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"><input type="submit" value="저장"> <input
+					type="reset" value="초기화"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
