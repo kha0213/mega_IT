@@ -9,14 +9,36 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
-  <servlet>
-  	<servlet-name>Ex0</servlet-name>
-  	<servlet-class>com.tj.lect1.Ex0</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>Ex0</servlet-name>
-  	<url-pattern>/Ex000</url-pattern>
-  </servlet-mapping>
-
+  <!-- 공유 param -->
+  <context-param>
+  	<param-name>contextId</param-name>
+  	<param-value>scott</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>contextPw</param-name>
+  	<param-value>tiger</param-value>
+  </context-param>
+	<servlet>
+		<servlet-name>Ex4_initParam</servlet-name>
+		<servlet-class>com.tj.lect1.Ex4_initParam</servlet-class>
+		<init-param>
+			<param-name>id</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>pw</param-name>
+			<param-value>mysql</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jdbcdriver</param-name>
+			<param-value>com.mysql.jdbc.Driver</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Ex4_initParam</servlet-name>
+		<url-pattern>/Ex4_initParam</url-pattern>
+	</servlet-mapping>
+	<!-- <listener>
+		<listener-class>com.tj.lect1.Ex6_Listener</listener-class>
+	</listener> -->
 </web-app>
