@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String conPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/join.css">
+    <link rel="stylesheet" href="<%=conPath%>/css/join.css">
     
     <script>
         window.onload = function(){
@@ -28,7 +29,7 @@
 </head>
 <body>
     <div id="joinForm_wrap">
-        <form action="/ch05_jsp/member/joinPro.jsp" method="post">
+        <form action="<%=conPath%>/member/joinPro.jsp" method="post">
         <div id="join_title">
             <h2>회원가입</h2>
             <hr color="#D4A190">
