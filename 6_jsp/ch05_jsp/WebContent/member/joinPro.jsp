@@ -85,6 +85,9 @@ tr {
 				<th>생년월일 : <%=birth%></th>
 			</tr>
 			<tr>
+				<th>생년월일2 : <%=birth2%></th>
+			</tr>
+			<tr>
 				<th>취미 : <%=hobbyStr%></th>
 			</tr>
 			<tr>
