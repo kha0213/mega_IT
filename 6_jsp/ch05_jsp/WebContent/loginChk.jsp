@@ -1,3 +1,4 @@
+<%@ page import="java.net.URLEncoder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,11 +13,13 @@
 </style>
 </head>
 <body>
+
 	<%
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String msg; 
 		if (!id.equals("aaa") || !pw.equals("111")) {
-			response.sendRedirect("loginFrm.jsp?id=ng");
+			response.sendRedirect("loginFrm.jsp?msg=no"); 
 		}
 	%>
 	<table>

@@ -5,9 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	
+</script>
 </head>
 <body>
-	<%String name = "홍길동"; %>
-	<h3>이름은 <%=name %>입니다.</h3>
+	<%
+		response.sendRedirect("member/login.jsp");
+	
+	%>
 </body>
 </html>

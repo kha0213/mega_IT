@@ -92,7 +92,7 @@
                 <td colspan="2">
                     <input type="submit" value="가입하기">
                     <input type="reset" value="다시하기">
-                    <input type="button" value="로그인">
+                    <input type="button" value="로그인" onclick="location.href='login.jsp'">
                 </td>
             </tr>
         </table>

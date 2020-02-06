@@ -14,9 +14,19 @@
 		color:red;
 	}
 </style>
+
 </head>
 <body>
-	<form action="loginCertification.jsp">
+<%String msg = request.getParameter("msg"); 
+	if(msg!=null) {
+		%>
+		<script type="text/javascript">
+			alert('아이디와 비번 확인');
+		</script>
+		<%
+	}
+%>
+	<form action="loginChk.jsp">
 	<table>
 		<caption>로그인 화면</caption>
 		<tr>
@@ -34,9 +44,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<% if(request.getParameter("id")!=null) 
-						out.print("<span>Check ID and PW</span>");	
-				%>
+				
 			</td>
 		</tr>
 	</table>

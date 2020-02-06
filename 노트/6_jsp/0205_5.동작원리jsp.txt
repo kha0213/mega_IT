@@ -1,5 +1,7 @@
 ch05_jsp프로젝트 (ch05_jsp contextRoot)
 
+0.톰캣이 배포하는방법
+(wtpwebapps & work폴더)
 소스폴더 : D:\mega_IT\source\6_jsp\ch05_jsp\
 
 실행폴더 : D:\mega_IT\IDE\apache-tomcat-9.0.30\wtpwebapps\ch05_jsp
@@ -9,3 +11,9 @@ D:\mega_IT\IDE\apache-tomcat-9.0.30\work\Catalina\localhost\ch05_jsp\org\apache\
 
 ch05_jsp을 배포하는 폴더 :
 D:\mega_IT\IDE\apache-tomcat-9.0.30\webapps
+
+1.내가 사용자가 사용하도록 웹어플리케이션을 배포
+	(webapps 폴더)
+1-1. 톰캣의 webapps폴더 밑에 배포하고싶은 contextRoot 정하면 됨
+1-2. source/6_jsp/ch05_jsp/webcontent 모든 내용을 xx에 복사
+1-3. source/6_jsp/ch05_jsp/build/classes폴더를 WEB-INF밑에 복사
