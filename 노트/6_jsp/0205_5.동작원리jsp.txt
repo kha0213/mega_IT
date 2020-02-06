@@ -1,0 +1,11 @@
+ch05_jsp프로젝트 (ch05_jsp contextRoot)
+
+소스폴더 : D:\mega_IT\source\6_jsp\ch05_jsp\
+
+실행폴더 : D:\mega_IT\IDE\apache-tomcat-9.0.30\wtpwebapps\ch05_jsp
+
+jsp를 서블릿으로 바꾸는 폴더 :
+D:\mega_IT\IDE\apache-tomcat-9.0.30\work\Catalina\localhost\ch05_jsp\org\apache\jsp
+
+ch05_jsp을 배포하는 폴더 :
+D:\mega_IT\IDE\apache-tomcat-9.0.30\webapps
