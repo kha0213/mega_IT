@@ -31,26 +31,22 @@
 		<div id="nav">
 			<ul>
 	<%  String id=null;
-		Cookie[] css = request.getCookies();
-		if(css!=null){
-			for(Cookie c : css){
-				if(c.getName().equals("id")){
-					id=c.getValue();
-				}
-			}
-		}
+		String name = null;
+		id = (String)session.getAttribute("id");
+		name = (String)session.getAttribute("name");
+		
 	
 	%>
 	<%
 	if(id==null){//로그인 전 해더%>
 		<li><a href="join.jsp">회원가입</a></li>
 		<li><a href="login.jsp">로그인</a></li>
-		<li><a href="welcome.jsp">홈</a></li>
+		<li><a href="main.jsp">홈</a></li>
 			
 	<%}else{//로그인 이후 해더 %>
 		<li><a href="logout.jsp">로그아웃</a></li>
 		<li><a href="modify.jsp">정보수정</a></li>
-		<li><a href="mypage.jsp"><%=id %>님</a></li>
+		<li><a href="mypage.jsp"><%=name %>(<%=id %>)님</a></li>
 		
 	<%}%>
 				
