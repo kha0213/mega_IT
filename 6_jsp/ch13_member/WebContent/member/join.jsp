@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href='../css/style.css' rel='stylesheet'>
+<script src="../js/join.js">
+
+</script>
 </head>
 <body>
 	<form action="joinOk.jsp" method="post" name="join_frm">
@@ -33,7 +36,7 @@
 	<th>주소</th><td><input type="text" name="address"></td>
 	</tr>
 	<tr>
-	<td colspan="2"><input type="submit" value="회원가입">
+	<td colspan="2"><input type="button" value="회원가입" onclick="infoConfirm()">
 	<input type="reset" value="취소">
 	<input type="button" value="로그인" onclick="location.href='login.jsp'"></td>
 	</tr>
