@@ -31,7 +31,7 @@
 %>
 
 
-	<form action="modifyOk.jsp" method="post" name="modify_frm">
+	<form action="modifyOk.jsp" method="post" name="modify_frm" onsubmit="return infoConfirm()">
 		<table>
 			<caption>정보수정</caption>
 			<tr>
@@ -60,15 +60,15 @@
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" name="tempbirth" value="<%if(birth!=null) out.print(birth.substring(0, 10));%>"></td>
+				<td><input type="date" name="tempbirth" required="required" value="<%if(birth!=null) out.print(birth.substring(0, 10));%>"></td>
 			</tr>
 			<tr>
 				<th>주소</th>
 				<td><input type="text" name="address" value="<%=address%>"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" value="정보수정"
-					onclick="infoConfirm()"> <input type="reset" value="취소">
+				<td colspan="2"><input type="submit" value="정보수정"
+					> <input type="reset" value="취소">
 					<input type="button" value="로그아웃"
 					onclick="location.href='logout.jsp'"></td>
 			</tr>

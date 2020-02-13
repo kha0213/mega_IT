@@ -8,7 +8,6 @@ function infoConfirm(){
 		modify_frm.pw.value='';
 		modify_frm.pwChk.value='';
 		modify_frm.pw.focus();
-		return;
+		return false;
 	}
-	modify_frm.submit();
 }
