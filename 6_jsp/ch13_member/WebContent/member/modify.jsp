@@ -12,24 +12,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href='<%=conPath %>/css/style.css' rel='stylesheet'>
+<script src="../js/modify.js">
+</script>
 </head>
 <body>
-<%  MemberDto member = ((MemberDto)session.getAttribute("member"));
+<%!String id="",name="",email="",address="",birth=""; %>
+<% MemberDto member = ((MemberDto)session.getAttribute("member"));
 	if(member==null){
 		response.sendRedirect("login.jsp");
+	}else{
+	id = member.getId();
+	name = member.getName();
+	email = member.getEmail()==null?"":member.getEmail();
+	birth = member.getBirth().toString();
+	address = member.getAddress()==null?"":member.getAddress();
+		
 	}
-	String id = member.getId();
-	String name = member.getName();
-	String email = member.getEmail()==null?"":member.getEmail();
-	Timestamp birth = member.getBirth();
-	String address = member.getAddress()==null?"":member.getAddress();
-
-
-
 %>
 
 
-	<form action="modifyOk.jsp" method="post" name="join_frm">
+	<form action="modifyOk.jsp" method="post" name="modify_frm">
 		<table>
 			<caption>정보수정</caption>
 			<tr>
@@ -38,11 +40,15 @@
 			</tr>
 			<tr>
 				<th>현비밀번호</th>
-				<td><input type="password" name="oldPw"></td>
+				<td><input type="password" name="oldPw" required="required"></td>
 			</tr>
 			<tr>
 				<th>새비밀번호</th>
-				<td><input type="password" name="pw" placeholder="미입력시 비밀번호 유지"></td>
+				<td><input type="password" name="pw"></td>
+			</tr>
+			<tr>
+				<th>새비밀번호확인</th>
+				<td><input type="password" name="pwChk"></td>
 			</tr>
 			<tr>
 				<th>이름</th>
@@ -54,7 +60,7 @@
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" name="tempbirth" value="<%=birth.toString().substring(0, 10)%>"></td>
+				<td><input type="date" name="tempbirth" value="<%if(birth!=null) out.print(birth.substring(0, 10));%>"></td>
 			</tr>
 			<tr>
 				<th>주소</th>

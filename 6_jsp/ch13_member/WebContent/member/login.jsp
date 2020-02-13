@@ -14,6 +14,7 @@ String conPath = request.getContextPath();
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href='<%=conPath %>/css/style.css' rel='stylesheet'>
+
 </head>
 <body>
 	<form action="loginOk.jsp" method="post">
