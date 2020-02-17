@@ -35,9 +35,6 @@ String conPath = request.getContextPath();
 				<input type="button" value="목록" class="btn" onclick="location.href='list.jsp'">
 				</td></tr>
 		</table>
-	
-	
-	
 	</form>
 </body>
 </html>

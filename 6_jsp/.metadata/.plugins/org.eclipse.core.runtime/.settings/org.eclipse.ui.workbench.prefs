@@ -43,6 +43,7 @@ org.eclipse.pde.genericeditor.extension.editor.color.quote=118,200,244
 org.eclipse.pde.genericeditor.extension.editor.color.tag=86,156,214
 org.eclipse.pde.genericeditor.extension.editor.color.text=212,212,212
 org.eclipse.search.ui.match.highlight=206,92,0
+org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands>\r\n<keyBinding contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+SHIFT+O"/>\r\n<keyBinding commandId\="org.eclipse.jdt.ui.edit.text.java.organize.imports" contextId\="org.eclipse.jdt.ui.javaEditorScope" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+SHIFT+O"/>\r\n</org.eclipse.ui.commands>
 org.eclipse.ui.editors.rangeIndicatorColor=27,118,153
 org.eclipse.ui.workbench.HOVER_BACKGROUND=52,57,61
 org.eclipse.ui.workbench.HOVER_FOREGROUND=238,238,238
