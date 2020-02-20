@@ -1,9 +1,11 @@
 package com.tj.model1ex.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -141,6 +143,7 @@ public class CustomerDao {
 		}
 		return result;
 	}
+
 	// 4. id로 DTO가져오기 (매개변수 : id)
 	public CustomerDto getCustomer(String cid) {
 		CustomerDto dto = null;
@@ -152,7 +155,7 @@ public class CustomerDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cid);
-			
+
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dto = new CustomerDto();
@@ -186,8 +189,7 @@ public class CustomerDao {
 	// 5. 회원정보 수정 (매개변수 : dto)
 	public int updateCustomer(CustomerDto dto) {
 		int result = FAIL;
-		String sql = "UPDATE CUSTOMER SET CPW=?,CNAME=?,CTEL=?,CEMAIL=?,"
-				+ "CADDRESS=?,CBIRTH=?,CGENDER=? WHERE CID=?";
+		String sql = "UPDATE CUSTOMER SET CPW=?,CNAME=?,CTEL=?,CEMAIL=?," + "CADDRESS=?,CBIRTH=?,CGENDER=? WHERE CID=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -214,6 +216,81 @@ public class CustomerDao {
 				System.out.println(e.getMessage());
 			}
 		}
+		return result;
+	}
+
+	// 6. 회원정보 리스트 출력 (start, end)
+	public ArrayList<CustomerDto> listCustomer(int start, int end) {
+		ArrayList<CustomerDto> dtos = new ArrayList<CustomerDto>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM CUSTOMER ORDER BY CID) A)"
+				+ "    WHERE RN BETWEEN ? AND ?";
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String cid = rs.getString("cid");
+				String cpw = rs.getString("cpw");
+				String cname = rs.getString("cname");
+				String ctel = rs.getString("ctel");
+				String cemail = rs.getString("cemail");
+				String caddress = rs.getString("caddress");
+				String cgender = rs.getString("cgender");
+				Date cbirth = rs.getDate("cbirth");
+				Date crdate = rs.getDate("crdate");
+				dtos.add(new CustomerDto(cid, cpw, cname, ctel, cemail, caddress, cgender, cbirth, crdate));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		return dtos;
+	}
+
+	// 7. 등록된 회원 명수 가져오기
+	public int getCustomerTotCnt() {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT COUNT(*) CNT FROM CUSTOMER";
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+			}
+		}
+
 		return result;
 	}
 

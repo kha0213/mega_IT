@@ -33,7 +33,7 @@ function next(){location = "../main/main.jsp";}
 잠시 후 메인페이지로 이동합니다.
 </h2>
 </div>
-<body onLoad="setTimeout('next()', 2000)">
+<body onLoad="setTimeout('next()', 1000)">
 <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

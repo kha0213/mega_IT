@@ -13,8 +13,8 @@ String conPath = request.getContextPath();
 </head>
 <body>
 	<%
-		CustomerDto dto = (CustomerDto)session.getAttribute("dto");
-		if(dto==null) response.sendRedirect("main.jsp");
+		CustomerDto dto = (CustomerDto)session.getAttribute("customer");
+		if((CustomerDto)session.getAttribute("customer")==null) response.sendRedirect("../main/main.jsp");
 		
 	
 	%>

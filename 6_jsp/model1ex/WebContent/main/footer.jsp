@@ -1,27 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String conPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="<%=conPath %>/css/footer.css">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		body{background-color: #ffffaa;}
+		footer{height: 50px; background-color: #003300;}
+		footer #footer_info{
+			color:white;
+			font-weight: bold;
+			font-size: 12px;
+			text-align: center;
+		}
+		footer #footer_info p{margin: 5px auto;}
+	</style>
 </head>
 <body>
 	<footer>
-		<div class="office_logo">
-		<img alt="다음로고" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png">
-		</div>
-		<div class="office_address">
-			<ul>
-				<li>서울시 종로구 수표로 105 육의전빌딩 8F | TEL : 02-766-8376 | FAX : 02-766-8339</li>
-				<li>사업자등록번호 : 000-12-00000 | 통신판매업신로 : 종로 제 0000호 | 대표이사 : 롱롱이</li>
-				<li>더조은쇼핑 문의 메일 : webmaster@tjoeun.com</li>				
-			</ul>
-		</div>
-		<div class="copyright">
-			ⓒ2020 TJACADEMY.Co.,Ltd. All Rights Reserved. 
+		<div id="footer_info">
+			<p>(주)조은회사</p>
+			<p>서울특별시 아무구 몰라로 98길 76 조은빌딩</p>
 		</div>
 	</footer>
 </body>

@@ -16,7 +16,7 @@ String conPath = request.getContextPath();
 <jsp:useBean id="dto" class="com.tj.model1ex.dto.CustomerDto"/>
 <jsp:setProperty property="*" name="dto"/>
 <%
-	String userPw = ((CustomerDto)session.getAttribute("dto")).getCpw();
+	String userPw = ((CustomerDto)session.getAttribute("customer")).getCpw();
 	String preCpw = request.getParameter("preCpw");
 	String tempbirth = request.getParameter("tempbirth");
 	if(!userPw.equals(preCpw)){%>
@@ -32,7 +32,7 @@ String conPath = request.getContextPath();
 	CustomerDao cDao = CustomerDao.getInstance();
 	int result = cDao.updateCustomer(dto);
 	if(result == CustomerDao.SUCCESS){
-		session.setAttribute("dto", dto);
+		session.setAttribute("customer", dto);
 	%>
 		<script>
 			alert('정보수정 완료되었습니다.');

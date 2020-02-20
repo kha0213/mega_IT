@@ -15,7 +15,7 @@
 <body>
 	<%
 		String cid = (String)session.getAttribute("cid");
-		if ((CustomerDto)session.getAttribute("dto") != null) {
+		if ((CustomerDto)session.getAttribute("customer") != null) {
 			response.sendRedirect("../main/main.jsp");
 		}
 	%>

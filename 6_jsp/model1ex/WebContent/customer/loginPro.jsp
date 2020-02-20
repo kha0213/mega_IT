@@ -34,7 +34,7 @@
 		}else{
 			CustomerDto dto = new CustomerDto();
 			dto = cDao.getCustomer(cid);
-			session.setAttribute("dto", dto);
+			session.setAttribute("customer", dto);
 			response.sendRedirect("../main/main.jsp");
 		}
 	%>
