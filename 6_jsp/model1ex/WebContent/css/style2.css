@@ -3,7 +3,7 @@ body {
 	background-color: #fff0B5;
 	font-size: 12px;
 }
-#content_form table {border: 2px solid pink; width:95%; margin: 10px auto;}
+#content_form table {border: 2px solid green; width:95%; margin: 10px auto;}
 #content_form table tr { background-color: #FFE271; }
 #content_form table tr:hover { background-color: orange;
 	cursor: pointer;
@@ -17,3 +17,5 @@ body {
 #content_form input:not(.btn), #content_form textarea {
 	width: 90%;
 }
+b{color:red;}
+
