@@ -15,8 +15,20 @@
    7) 하단servers 탭에서 new를 클릭하여 tomcat설정
       apache에 있는 tomcat을 선택하고 tomcat8.5을 연결하고 8181포트 등 정보 세가지 수정
 
-   8)프로젝트들 import
-   9) 한프로젝트라도 실행시킨 후 IPv4로 변경
+   8) Severs의 Tomcat v8.5밑의 context.xml에 
+	    <Resource 
+		auth="Container"
+		driverClassName = "oracle.jdbc.driver.OracleDriver"
+		url = "jdbc:oracle:thin:@localhost:1521:xe"
+		username = "scott"
+		password = "tiger"
+		name = "jdbc/Oracle11g" 
+		type = "javax.sql.DataSource"
+		maxActive = "10"
+		maxWait = "1000"
+	/>추가하고 Publish to the Server.
+   9)프로젝트들 import
+   10) 한프로젝트라도 실행시킨 후 IPv4로 변경
 eclipse > Run > Run Configuration > Apache Tomcat > Tomcat v8.5 Server >
 	Arguiments > 
 	Program arguments에 "-Djava.net.preferIPv4Stack=true" 입력

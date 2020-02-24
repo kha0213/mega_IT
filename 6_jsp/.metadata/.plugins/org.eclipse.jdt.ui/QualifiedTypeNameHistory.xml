@@ -45,4 +45,5 @@
 <fullyQualifiedTypeName name="com.tj.model1ex.dto.FileBoardDto"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>
