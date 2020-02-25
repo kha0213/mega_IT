@@ -50,11 +50,10 @@ public class FrontController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String command = uri.substring(conPath.length());
 	
-		System.out.println("uri와 commend : "+uri+", "+command);
 		String viewPage = "";
+		Service service = null;
 		
 		if(command.equals("/insert.do")) {
-			System.out.println("insert command 호출");
 			request.setAttribute("result", "insert command");
 			viewPage = "1_front/ex02.jsp";
 		}else if(command.equals("/select.do")) {
@@ -70,15 +69,12 @@ public class FrontController extends HttpServlet {
 			request.setAttribute("result", "update command");
 			viewPage = "1_front/ex02.jsp";
 		}else if(command.equals("/listMember.do")) {
-			System.out.println("회원목록 출력 호출함");
-			//로직 수행
-			MemberDao mDao = MemberDao.getInstance();
-			request.setAttribute("members", mDao.getListMember());
+			service = new ListMemberService();
+			service.execute(request, response);
 			viewPage = "1_front/ex03list.jsp";
 		}else if(command.equals("/joinPro.do")) {
-			System.out.println("회원가입 호출함");
-			JoinMemberService jms = new JoinMemberService();
-			jms.execute(request, response);
+			service = new JoinMemberService();
+			service.execute(request, response);
 			viewPage = "1_front/ex04joinResult.jsp";
 		}
 		
