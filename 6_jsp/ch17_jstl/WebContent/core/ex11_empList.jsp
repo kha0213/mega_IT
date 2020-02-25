@@ -62,7 +62,7 @@
 						</tr>
 					</c:if>
 					<c:if test="${emps.size() != 0 }">
-						<c:forEach var="emp" items="${emps}" begin="${paging.startRow }" end="${paging.endRow }">
+						<c:forEach var="emp" items="${emps}">
 							<tr class="text-center">
 								<td>${emp.empno }</td>
 								<td>${emp.ename }</td>

@@ -124,6 +124,7 @@ public class EmpDao {
 			pstmt.setString(1, ename);
 			pstmt.setString(2, job);
 			rs = pstmt.executeQuery();
+			rs.next();
 			result = rs.getInt(1);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

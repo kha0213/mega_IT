@@ -61,9 +61,10 @@ public class Ex11_empList extends HttpServlet {
 		int startRow =0, endRow=0;
 		startRow = (currentPage-1)*PAGESIZE+1;
 		endRow = startRow+PAGESIZE-1;
-		
+		//뿌릴 emps
 		ArrayList<EmpDto> emps = dao.getListEmpSearchNameJobTopN(ename, job, startRow, endRow);
 		request.setAttribute("emps", emps);
+		
 		int empCnt = dao.cntEmpSearchNameJobTopN(ename, job);
 		int pageSize = (empCnt-1)/PAGESIZE+1;
 		int startPage =0,endPage=0;
