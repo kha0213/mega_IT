@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="model1ex" path="/model1ex" reloadable="true" source="org.eclipse.jst.jee.server:model1ex"/><Context docBase="ch17_jstl" path="/ch17_jstl" reloadable="true" source="org.eclipse.jst.jee.server:ch17_jstl"/><Context docBase="ch18" path="/ch18" reloadable="true" source="org.eclipse.jst.jee.server:ch18"/><Context docBase="myproject" path="/myproject" reloadable="true" source="org.eclipse.jst.jee.server:myproject"/><Context docBase="ch19_1" path="/ch19_1" reloadable="true" source="org.eclipse.jst.jee.server:ch19_1"/></Host>
+      <Context docBase="model1ex" path="/model1ex" reloadable="true" source="org.eclipse.jst.jee.server:model1ex"/><Context docBase="ch17_jstl" path="/ch17_jstl" reloadable="true" source="org.eclipse.jst.jee.server:ch17_jstl"/><Context docBase="ch18" path="/ch18" reloadable="true" source="org.eclipse.jst.jee.server:ch18"/><Context docBase="myproject" path="/myproject" reloadable="true" source="org.eclipse.jst.jee.server:myproject"/><Context docBase="ch19_1" path="/ch19_1" reloadable="true" source="org.eclipse.jst.jee.server:ch19_1"/><Context docBase="ch19_2_mvc_board" path="/ch19_2_mvc_board" reloadable="true" source="org.eclipse.jst.jee.server:ch19_2_mvc_board"/></Host>
     </Engine>
   </Service>
 </Server>

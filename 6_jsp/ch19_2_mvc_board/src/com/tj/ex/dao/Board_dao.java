@@ -27,7 +27,7 @@ public class Board_dao {
 	}
 
 	// 글목록 (start_row, end_row)
-	public ArrayList<Board_dto> getBoardsList(int start_row, int end_row) {
+	public ArrayList<Board_dto> getBoardsList(int startRow, int endRow) {
 		ArrayList<Board_dto> boards = new ArrayList<Board_dto>();
 		String sql = "SELECT * FROM (SELECT ROWNUM RN,A.* FROM (SELECT * FROM mvc_board ORDER BY BGROUP DESC, BSTEP) A)"
 				+ "    WHERE RN BETWEEN ? AND ?";
@@ -38,8 +38,8 @@ public class Board_dao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start_row);
-			pstmt.setInt(2, end_row);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int bid = rs.getInt("bid");
