@@ -215,9 +215,33 @@ public class Board_dao {
 	// 답글쓰기 위해 원글 정보 가져오기 boolean hitUp ->false
 
 	// stepA
-	private void preReplyBoardStepA(int bid) { // 원글 bid
-		Board_dto board = boardContentView(bid, false);
-
+//	private void preReplyBoardStepA(int bid) { // 원글 bid
+//		Board_dto board = boardContentView(bid, false);
+//
+//		String sql = "UPDATE mvc_board SET BSTEP=BSTEP+1 WHERE BGROUP=? AND BSTEP>?";
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//
+//		try {
+//			conn = ds.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, board.getBgroup());
+//			pstmt.setInt(2, board.getBstep());
+//			pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//		} finally {
+//			try {
+//				if (pstmt != null)
+//					pstmt.close();
+//				if (conn != null)
+//					conn.close();
+//			} catch (SQLException e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
+//	}
+	private void preReplyBoardStepA(int bgroup, int bstep) { // 원글 bgroup bstep
 		String sql = "UPDATE mvc_board SET BSTEP=BSTEP+1 WHERE BGROUP=? AND BSTEP>?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -225,8 +249,8 @@ public class Board_dao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, board.getBgroup());
-			pstmt.setInt(2, board.getBstep());
+			pstmt.setInt(1, bgroup);
+			pstmt.setInt(2, bstep);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -244,23 +268,34 @@ public class Board_dao {
 
 	// 답글쓰기
 	public int replyBoard(Board_dto board) {
+		String bname = board.getBname(); 
+		String btitle = board.getBtitle(); 
+		String bcontent = board.getBcontent(); 
+		int bgroup = board.getBgroup(); 
+		int bstep = board.getBstep(); 
+		int bindent = board.getBindent(); 
+		String bip = board.getBip();
+		return replyBoard(bname, btitle, bcontent, bgroup, bstep, bindent, bip);
+	}
+	public int replyBoard(String bname, String btitle, String bcontent, int bgroup, int bstep, int bindent, String bip) {
 		int result = 0;
+		preReplyBoardStepA(bgroup, bstep);
 		String sql = "INSERT INTO mvc_board (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)"
 				+ "    VALUES (MVC_BOARD_SEQ.NEXTVAL,?,?,?,?,?,?,?)";
-		// 1.bname 2.btitle 3.bcontent 4.bgroup 5.bstep 6.bindent 7.bip
+		// 1.bname 2.btitle 3.bcontent 원글(4.bgroup 5.bstep 6.bindent) 7.bip
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getBname());
-			pstmt.setString(2, board.getBtitle());
-			pstmt.setString(3, board.getBcontent());
-			pstmt.setInt(4, board.getBgroup());
-			pstmt.setInt(5, board.getBstep());
-			pstmt.setInt(6, board.getBindent());
-			pstmt.setString(7, board.getBip());
+			pstmt.setString(1, bname);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.setInt(4, bgroup);
+			pstmt.setInt(5, bstep+1);
+			pstmt.setInt(6, bindent+1);
+			pstmt.setString(7, bip);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -277,6 +312,14 @@ public class Board_dao {
 
 	// 글 수정하기
 	public int modifyBoard(Board_dto board) {
+		String bname = board.getBname();
+		String btitle = board.getBtitle();
+		String bcontent = board.getBcontent();
+		String bip = board.getBip();
+		int bid = board.getBid();
+		return modifyBoard(bname, btitle, bcontent, bip, bid);
+	}
+	public int modifyBoard(String bname,String btitle,String bcontent,String bip,int bid) {
 		int result = 0;
 		String sql = "UPDATE mvc_board SET BNAME=?,BTITLE=?,BCONTENT=?,BDATE=SYSDATE,BIP=? WHERE BID=?";
 		// 1.bname 2.btitle 3.bcontent 4.bip 5.bid
@@ -286,11 +329,11 @@ public class Board_dao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getBname());
-			pstmt.setString(2, board.getBtitle());
-			pstmt.setString(3, board.getBcontent());
-			pstmt.setString(4, board.getBip());
-			pstmt.setInt(5, board.getBid());
+			pstmt.setString(1, bname);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.setString(4, bip);
+			pstmt.setInt(5, bid);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
