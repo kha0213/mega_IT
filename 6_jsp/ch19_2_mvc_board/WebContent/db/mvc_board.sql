@@ -23,7 +23,7 @@ COMMIT;
 
 -- 1. 글목록 (START_ROW ~ END_ROW)
 SELECT * FROM (SELECT ROWNUM RN,A.* FROM (SELECT * FROM mvc_board ORDER BY BGROUP DESC, BSTEP) A)
-    WHERE RN BETWEEN 2 AND 3;
+    WHERE RN BETWEEN 1 AND 50;
 -- 2. 전체 글 갯수
 SELECT COUNT(*) FROM mvc_board;
 -- 3. 원글쓰기
@@ -48,6 +48,8 @@ UPDATE mvc_board SET BNAME='수정',BTITLE='수정제목',BCONTENT='수정내용
 
 -- 7. 삭제하기
 DELETE FROM mvc_board WHERE BID=1;
+
+SELECT * FROM mvc_board;
 
 
 

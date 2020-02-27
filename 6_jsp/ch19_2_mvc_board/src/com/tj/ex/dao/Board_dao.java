@@ -268,16 +268,18 @@ public class Board_dao {
 
 	// 답글쓰기
 	public int replyBoard(Board_dto board) {
-		String bname = board.getBname(); 
-		String btitle = board.getBtitle(); 
-		String bcontent = board.getBcontent(); 
-		int bgroup = board.getBgroup(); 
-		int bstep = board.getBstep(); 
-		int bindent = board.getBindent(); 
+		String bname = board.getBname();
+		String btitle = board.getBtitle();
+		String bcontent = board.getBcontent();
+		int bgroup = board.getBgroup();
+		int bstep = board.getBstep();
+		int bindent = board.getBindent();
 		String bip = board.getBip();
 		return replyBoard(bname, btitle, bcontent, bgroup, bstep, bindent, bip);
 	}
-	public int replyBoard(String bname, String btitle, String bcontent, int bgroup, int bstep, int bindent, String bip) {
+
+	public int replyBoard(String bname, String btitle, String bcontent, int bgroup, int bstep, int bindent,
+			String bip) {
 		int result = 0;
 		preReplyBoardStepA(bgroup, bstep);
 		String sql = "INSERT INTO mvc_board (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)"
@@ -293,16 +295,18 @@ public class Board_dao {
 			pstmt.setString(2, btitle);
 			pstmt.setString(3, bcontent);
 			pstmt.setInt(4, bgroup);
-			pstmt.setInt(5, bstep+1);
-			pstmt.setInt(6, bindent+1);
+			pstmt.setInt(5, bstep + 1);
+			pstmt.setInt(6, bindent + 1);
 			pstmt.setString(7, bip);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
 			try {
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -319,7 +323,8 @@ public class Board_dao {
 		int bid = board.getBid();
 		return modifyBoard(bname, btitle, bcontent, bip, bid);
 	}
-	public int modifyBoard(String bname,String btitle,String bcontent,String bip,int bid) {
+
+	public int modifyBoard(String bname, String btitle, String bcontent, String bip, int bid) {
 		int result = 0;
 		String sql = "UPDATE mvc_board SET BNAME=?,BTITLE=?,BCONTENT=?,BDATE=SYSDATE,BIP=? WHERE BID=?";
 		// 1.bname 2.btitle 3.bcontent 4.bip 5.bid
@@ -350,7 +355,6 @@ public class Board_dao {
 		return result;
 	}
 
-	
 	// 글 삭제하기
 	public int deleteBoard(int bid) {
 		int result = 0;
