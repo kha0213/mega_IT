@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	$('button').click(function(){
+		var mId = $('#mId').val();
+		//$.post(1,2,3) 1.url 2.data 3.callback함수(data,stauts) data가 받는 값
+		
+		$.post('idConfirm.jsp?',{mId:mId},function(data,status){
+				$('#result').html(data);
+		}); 
+	});
+
+
+
+
+});
+</script>
+</head>
+<body>
+	<p>아이디 <input type="text" name="mId" id="mId">
+		<button id="chk">중복체크</button>
+	</p>
+	<span id="result"></span>
+	
+
+
+</body>
+</html>
