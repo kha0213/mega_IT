@@ -18,7 +18,7 @@
 	}else{
 		out.print(mId+"는 사용가능한 ID입니다"+x);
 	}
-
+	
 %>
 
 
