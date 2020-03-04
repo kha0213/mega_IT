@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  
+ <script>
+	$(document).ready(function(){
+		
+		
+		$('*').css('color','blue');
+		$('p').click(function(){
+			$(this).hide();
+		});
+		
+		$('#hideP1').click(function(){
+			$('#p1').hide();
+		});
+		
+		$('#hidePTag').click(function(){
+			$('p').hide();
+		});
+		$('#showPTag').click(function(){
+			$('p').show('slow');
+		});
+		
+	}); 	
+ 
+ </script>
+</head>
+<body>
+	<h1>이곳은 heading</h1>
+	<p>이 p태그를 클릭하면 숨겨져요</p>
+	<p>이 p태그를 클릭하면 숨겨져요</p>
+	<p id="p1">하나만도 숨겨져요</p>
+	<button id="hideP1">p1 하나만 숨겨요</button>
+	<button id="hidePTag">p태그 다 숨겨요</button>
+	<button id="showPTag">p태그 다 나타나요</button>
+</body>
+</html>

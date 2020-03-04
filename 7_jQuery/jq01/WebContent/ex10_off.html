@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	var h1ClickCnt = 0, h2ClickCnt=0;
+	$('#h1').click(function(){
+		h1ClickCnt++;
+		if(h1ClickCnt>=6){
+			$(this).off();
+		}else{
+			$(this).append('♥');
+			$(this).prepend('뫄');
+		}
+	});
+	// 1초에 한번씩 #h2.click 이벤트 발생
+
+	
+	$('#h2').click(function(){
+		h2ClickCnt++;
+		if(h2ClickCnt>=6){
+			$(this).off();
+		}else{
+			$(this).html($(this).html()+'♡');
+		}
+	});
+
+	setInterval(function(){
+		$('h1').last().trigger('click');
+	}, 1000);
+	
+	
+
+});
+</script>
+</head>
+<body>
+	<h1 id="h1">start1 : </h1>
+	<h1 id="h2">start2 : </h1>
+
+
+</body>
+</html>

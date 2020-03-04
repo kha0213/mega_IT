@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table td {
+	background-color: #AAFFAA;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+}
+
+td:hover {
+	background-color: blue;
+}
+.tdClick{
+		background-color: red;
+	}
+.image{
+	background-image: url("img/pengsu.jpg");
+	
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		var ddukIdx = parseInt(Math.random() * 9);
+		alert(ddukIdx);
+		$('td').click(function(){
+			if($(this).attr('id') == ddukIdx){
+				$('td').removeClass('tdClick');
+				$('td').removeClass('image');
+				$(this).addClass('image');
+				$('#msg').html('맞음 div');
+				$('input[type=text]').val('맞았다');
+				// 한 번 맞추면 이벤트 제거
+				$('td').off(); //td에 대한 모든 이벤트 제거
+			}else{
+				$('td').removeClass('tdClick');
+				$(this).addClass('tdClick');
+				$('#msg').html('틀림 div');
+				$('input[type=text]').val('틀렸다');
+			}
+		});
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td id="0"></td>
+			<td id="1"></td>
+			<td id="2"></td>
+		</tr>
+		<tr>
+			<td id="3"></td>
+			<td id="4"></td>
+			<td id="5"></td>
+		</tr>
+		<tr>
+			<td id="6"></td>
+			<td id="7"></td>
+			<td id="8"></td>
+		</tr>
+
+	</table>
+	<div id="msg">선택한 곳이 맞는지 답 뿌려라</div>
+	<input type="text" name="msg" size="20" value="선택한 곳이 맞는지 답 뿌리기">
+
+
+</body>
+</html>

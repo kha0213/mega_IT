@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+ 	$(function(){
+ 		$('#msg').html('Hello, jQuery');
+ 		$('input[name=msg]').val('Hello.jQuery2');
+ 		var msg = $('#msg').html();
+ 		msg = $('input[name="msg"]').val();
+ 		alert(msg);
+ 		
+ 		$('input[type="password"]').focus(
+			function(){
+				$(this).css('background-color','lightyellow').css('color','red');
+			} 				
+ 		);
+ 		
+ 		$('input[type="password"]').blur( //포커스를 잃었을 때
+ 			function(){
+ 				$(this).css('background-color','white').css('color','black');
+ 			}		
+ 		);
+ 	}
+ 			
+ 	
+ 	
+ 	);
+</script>
+</head>
+<body>
+	<p id="msg">누가먼저</p>
+	
+	<p>메세지 <input type="text" name="msg"> </p>
+	<p>비밀번호 <input type="password" name="pw"> </p>
+	<p>선택1 <input type="radio"> </p>
+	<p>선택2 <input type="checkbox"></p>
+
+
+</body>
+</html>

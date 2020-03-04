@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	var array = [{name:'가메출판사',link:'http://www.kame.co.kr'},
+			{'name':'네이버','link':'http://www.naver.com'},
+			{'name':'갓구글','link':'http://www.google.com'},
+			{'name':'다다다음','link':'http://www.daum.net'},
+	];
+	
+	
+	$.each(array, function(idx,item){
+		var out = '<h1><a href="'+item.link+'">'+item.name+'</a></h1>';
+		$('body').html($('body').html()+out);
+	});
+	
+	
+	$(array).each(function(idx,item){
+		var out = '<h1><a href="'+item.link+'">'+item.name+'</a></h1>';
+		$('body').html($('body').html()+out);
+	}); 
+	
+	
+	/* array.forEach(function(item,index){
+		var out = '<h1><a href="'+item.link+'">'+item.name+'</a></h1>';
+		
+		document.body.innerHTML += out;
+		
+	}); */
+
+
+
+});
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>

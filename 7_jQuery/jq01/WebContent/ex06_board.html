@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	tr:hover {
+	background-color: orange;
+}
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	$('tr').click(
+		function(){
+			var bid = $(this).children(0).eq(0).text();
+			alert('글번호는 '+bid);
+			location.href='ex05_selector.html?bid='+bid+"&pageNum=10";
+		}		
+	);
+
+
+
+
+});
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>글번호</th><th>제목</th><th>글쓴이</th><th>조회수</th>
+		</tr>
+		<tr>
+			<td>5</td><td>제목5</td><td>펭수</td><td>10</td>
+		</tr>
+		<tr>
+			<td>4</td><td>제목4</td><td>펭수</td><td>11</td>
+		</tr>
+		<tr>
+			<td>3</td><td>제목3</td><td>펭수</td><td>5</td>
+		</tr>
+		<tr>
+			<td>2</td><td>제목2</td><td>펭수</td><td>3</td>
+		</tr>
+		<tr>
+			<td>1</td><td>제목1</td><td>펭수</td><td>2</td>
+		</tr>
+	</table>
+
+
+</body>
+</html>

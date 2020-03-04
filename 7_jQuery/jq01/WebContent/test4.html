@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.red{
+		color:red;
+	}
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	var result = Array(5);
+	var symbol = ['+','-','x','/'];
+	var symbolRe = Array(5);
+	
+	for(var i=0;i<=4;i++){
+		$('input[name=su'+i+']').val(parseInt(Math.random() * 10));
+		$('input[name=sd'+i+']').val(parseInt(Math.random() * 10));
+		symbolRe[i] = parseInt(Math.random() * 4);
+		$('#gi'+i).html(symbol[symbolRe[i]]);
+		/* result[i] =  */
+	}
+	
+	$('#re').click(function(){
+		location.href='test4.html';
+	});
+	
+	var score = 0;
+	/*  $('#chk').click(function(){
+		for(var j=0;j<5;j++){
+			if(result[i]==$('input[name=answer'+i+']').val()){
+				$('input[name=answer'+i']').val($('input[name=answer'+i']').val()+' 맞췄어요 20점 추가');
+				score += 20;
+			}else{
+				$('input[name=answer'+i']').val($('input[name=answer'+i']').val()+' 틀렸어요 정답은 '+result[i]);
+			}
+		}
+		
+		$('h3').html('너의점수는 '+score+'점이야');
+	});  */
+	
+	var ch = 0;
+	setInterval(function(){
+		ch++;
+		if(ch<=30){
+		$('h2').html('경과 시간 : '+ch+'초야');
+		}else{
+			$('h2').addClass('red');
+			$('h2').html('경과 시간 : '+ch+'초야');
+		}
+	}, 1000);
+	
+	
+	
+});
+</script>
+</head>
+<body>
+
+<h1>1번 : <input type="number" name="su0"> <span id="gi0"></span> <input type="number" name="sd0"> = [답 <input type="number" name="answer0">]</h1>
+<h1>2번 : <input type="number" name="su1"> <span id="gi1"></span> <input type="number" name="sd1"> = [답 <input type="number" name="answer1">]</h1>
+<h1>3번 : <input type="number" name="su2"> <span id="gi2"></span> <input type="number" name="sd2"> = [답 <input type="number" name="answer2">]</h1>
+<h1>4번 : <input type="number" name="su3"> <span id="gi3"></span> <input type="number" name="sd3"> = [답 <input type="number" name="answer3">]</h1>
+<h1>5번 : <input type="number" name="su4"> <span id="gi4"></span> <input type="number" name="sd4"> = [답 <input type="number" name="answer4">]</h1>
+<h2></h2>
+<button id="chk">채점해봐</button>
+<button id="re">다시해봐</button>
+<h3></h3>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 	table td { */
+/* 		background-color: #AAFFAA; */
+/* 		width: 100px; */
+/* 		height: 100px; */
+/* 	} */
+	.tdClick{
+		background-color: red;
+	}
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	/* $('td').click(function(){
+		$(this).addClass('tdClick');
+	}); */
+
+	$('td').on('click',function(){
+		$('td').removeClass('tdClick');
+		$(this).addClass('tdClick');
+	});
+
+
+});
+</script>
+</head>
+<body>
+	<table>
+		<tr><td></td><td></td></tr>
+		<tr><td></td><td></td></tr>
+	</table>
+
+
+</body>
+</html>

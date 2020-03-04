@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	var su1 = parseInt(Math.random() * 10);
+	var su2 = parseInt(Math.random() * 10);
+	
+	$('#su1').html(su1);
+	$('#su2').html(su2);
+	
+	$('#re').click(function(){
+		location.href='test2.html';
+	});
+	$('#chk').click(function(){
+		if(su1+su2==$('input[type=number]').val()){
+			$('h3').html(su1+'+'+su2+'='+(su1+su2)+' 맞췄네요.');
+		}else{
+			$('h3').html(su1+'+'+su2+'='+(su1+su2)+' 인데 '+$('input[type=number]').val()+'로 썻네요 틀렸네요.');
+		}
+	});
+
+});
+</script>
+</head>
+<body>
+
+<h1>[ <span id="su1"></span> ]+[ <span id="su2"></span> ]=[답 <input type="number" name="answer">]</h1>
+<button id="chk">채점해봐</button>
+<button id="re">다시해봐</button>
+<h3></h3>
+</body>
+</html>

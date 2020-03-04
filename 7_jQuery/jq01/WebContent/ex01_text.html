@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	b{color:red;}
+
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		//$('여기에 선택자')
+		$('#p1').click(function () {
+			// 아이디가 p1인 것은 click할 때 할 일
+			 $('#p1').html('<b>태그 내용 바뀜</b>');
+			
+			//	$(this).text('<b>태그 내용 바뀜</b>');
+			
+		});
+	}); //document.ready = window.onload역활 이후엔 $(function(){}); 이걸로 쓴다.
+	$(function() {
+		
+	});
+	
+	
+	
+	
+	
+</script>
+
+</head>
+<body>
+	<p id="p1">p태그 하나</p>
+	
+	
+	
+</body>
+</html>
