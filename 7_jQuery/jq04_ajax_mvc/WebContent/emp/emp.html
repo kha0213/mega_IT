@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+
+
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+$(function(){
+	 $.ajax({
+		url : '../emp.do',
+		dataType : 'html',
+		data : "ename=&job=",
+		success : function(data){
+			$('#showEmp').html(data);
+		}
+	}); 
+	
+	
+ 	$('#ename, #job').keyup(function(){
+ 		var ename = $('#ename').val().toUpperCase();
+ 		var job = $('#job').val().toUpperCase();
+ 		
+ 		$('#ename').val(ename);
+ 		$('#job').val(job);
+ 		
+ 		var sendData = "ename="+ename+"&job="+job;
+ 		
+ 		$.ajax({
+ 			url : '../emp.do',
+ 			dataType : 'html',
+ 			data : sendData,
+ 			success : function(empList){
+ 				$('#showEmp').html(empList);
+ 			}
+ 		});
+ 		
+	}); 
+
+
+
+
+});
+</script>
+</head>
+<body>
+	<p>
+	이름 <input type="text" id="ename" class="ttt">
+	직책 <input type="text" id="job" class="ttt">
+	</p>
+	<div id="showEmp">
+	</div>
+
+</body>
+</html>

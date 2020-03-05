@@ -1,39 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="conPath" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="${conPath}/css/login.css">
+
+<script
+src="https://code.jquery.com/jquery-3.4.1.js">
+</script>
+<script>
+$(function(){
+$('#loginFail').click(function(){
+	window.open('${conPath}/loginSearch.do');
+	
+	
+});
+	
+});
+
+</script>
+
 </head>
 <body>
-<%
-	if(session.getAttribute("name")!=null){
-		response.sendRedirect("main.jsp");		
-	}
-%>
+<c:if test="${not empty member }">
+	<script>
+		location.href='${conPath}/main.do';
+	</script>
+</c:if>
+
 <%@include file="header.jsp" %>
 	<div id="loginForm_wrap">
 	<div id="login_title">
 		로그인
 	</div>
-	<form action="loginPro.jsp" method="post">
+	<form action="${conPath}/login.do" method="post">
 	<table>
-		
-		
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" id="id" name="id" value="<% String userId = (String)session.getAttribute("id");
-			if(userId !=null){
-				out.print(userId);
-			}
-			%>"></td>
+			<td><input type="text" id="id" name="id" required="required"></td>
 		</tr>
 		
 		<tr>
 			<th>비밀번호</th>
-			<td><input type="password" id="pw" name="pw"></td>
+			<td><input type="password" id="pw" name="pw" required="required"></td>
 		</tr>
 		<tr>
 			<td> </td>
@@ -46,13 +60,9 @@
 		</tr>
 		<tr>
 			<td colspan="2" id="login_findIdPw">
-				<%
-					String msg = request.getParameter("msg");
-					if(msg!=null){
-						out.print(msg);
-					}
-				
-				%>
+				<c:if test="${not empty loginResultFail}">
+					<p id="loginFail">${loginResultFail }</p>
+				</c:if>
 			
 			</td>
 		</tr>

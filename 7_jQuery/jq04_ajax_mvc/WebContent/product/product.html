@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(function() {
+		$('#stockConfirm').click(function(){
+			$.ajax({
+				url : '../productStock.do',
+				type : 'post',
+				dataType : 'html',
+				data : 'pname='+$('input[name="pname"]').val(),
+				success : function(data, status){
+					$('#stockCnt').html(data);
+				}
+			})
+		});
+		$('#alert').click(function(){
+			var str = $('#stockCnt').text().trim();
+			alert(str);
+		});
+		
+	});
+	
+
+</script>
+</head>
+<body>
+	<table>
+		<caption>오늘의 예제</caption>
+		<tr>
+			<th>물건명</th>
+			<td><input type="text" name="pname"><span id="stockCnt"> &nbsp; </span></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">
+				<button id="stockConfirm">재고량 확인</button>
+				<button id="alert">alert</button>
+			</td>
+		</tr>
+	</table>
+
+
+</body>
+</html>
