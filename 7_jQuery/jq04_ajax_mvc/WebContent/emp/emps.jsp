@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
 	table{
 		width: 90%; margin: 10px auto;
