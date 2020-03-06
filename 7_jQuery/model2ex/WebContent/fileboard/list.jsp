@@ -103,7 +103,7 @@ src="https://code.jquery.com/jquery-3.4.1.js">
 				</c:if>
 				<c:if test="${boardsList.size() ne 0 }">
 					<c:forEach var="board" items="${boardsList }">
-					<tr id="moveContent" onclick="location.href='${conPath }/content_view.do?fId=${board.fId }'">
+					<tr onclick="location.href='${conPath }/content_view.do?fId=${board.fId }&pageNum=${pageNum }'">
 						<td>${board.fId }</td>
 					
 						<td>${board.mName }</td>

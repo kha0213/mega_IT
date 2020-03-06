@@ -22,44 +22,44 @@
   <tbody>
   	<tr>
       <th scope="row">글번호</th>
-      <td>${content_view.bid }</td>
+      <td>${content_view.fId }</td>
     </tr>
     <tr>
       <th scope="row">작성자이름</th>
-      <td>${content_view.bname }</td>
+      <td>${content_view.mName }</td>
     </tr>
    <tr>
       <th scope="row">제목</th>
-      <td>${content_view.btitle }</td>
+      <td>${content_view.fTitle }</td>
     </tr>
     <tr>
       <th scope="row">본문</th>
-      <td><pre>${content_view.bcontent }</pre></td>
+      <td><pre>${content_view.fContent }</pre></td>
     </tr>
     <tr>
       <th scope="row">작성일</th>
-      <td><fmt:formatDate value="${content_view.bdate }" type="both" dateStyle="full" timeStyle="long"/> </td>
+      <td><fmt:formatDate value="${content_view.fRdate }" type="both" dateStyle="full" timeStyle="long"/> </td>
     </tr>
     <tr>
       <th scope="row">조회수</th>
-      <td><fmt:formatNumber value="${content_view.bhit }" groupingUsed="true"/> </td>
+      <td><fmt:formatNumber value="${content_view.fHit }" groupingUsed="true"/> </td>
     </tr>
     <tr>
       <th scope="row">IP</th>
-      <td>${content_view.bip }</td>
+      <td>${content_view.fIp }</td>
     </tr>
   </tbody>
    <tfoot>
     <tr>
       <th scope="col" colspan="2" class="text-center">
       	<button type="button" class="btn btn-lg btn-outline-primary" 
-      	onclick="location.href='${conPath}/modify_view.do?bid=${param.bid }&pageNum=${param.pageNum }'">수정</button>
+      	onclick="location.href='${conPath}/modify_view.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">수정</button>
 		<button type="button" class="btn btn-lg btn-outline-info"
-		onclick="location.href='${conPath}/boardsList.do?bid=${param.bid }&pageNum=${param.pageNum }'">목록</button>
+		onclick="location.href='${conPath}/boardsList.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">목록</button>
 		<button type="button" class="btn btn-lg btn-outline-success"
-		onclick="location.href='${conPath}/reply_view.do?bid=${param.bid }&pageNum=${param.pageNum }'">답변</button>
+		onclick="location.href='${conPath}/reply_view.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">답변</button>
 		<button type="button" class="btn btn-lg btn-outline-danger"
-		onclick="location.href='${conPath}/delete.do?bid=${param.bid }&pageNum=${param.pageNum }'">삭제</button>
+		onclick="location.href='${conPath}/delete.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">삭제</button>
       </th>
     </tr>
   </tfoot>
