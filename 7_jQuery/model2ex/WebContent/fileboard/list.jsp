@@ -19,48 +19,31 @@ src="https://code.jquery.com/jquery-3.4.1.js">
 </script>
 </head>
 <body>
-	<c:set var="SUCCESS" value="1" />
-	<c:set var="FAIL" value="0" />
-	<c:if test="${writeResult eq SUCCESS }">
+	
+	<c:if test="${not empty writeResult }">
 		<script>
-			alert('글쓰기 성공하였습니다.');
+			alert(${writeResult});
 		</script>
 	</c:if>
-	<c:if test="${writeResult eq FAIL }">
+	
+	<c:if test="${not empty modifyResult }">
 		<script>
-			alert('글쓰기 실패하였습니다.');
+			alert('${modifyResult}');
 		</script>
 	</c:if>
-	<c:if test="${modifyResult eq SUCCESS }">
+
+	<c:if test="${not empty deleteResult}">
 		<script>
-			alert('글수정 성공하였습니다.');
+			alert('${deleteResult}');
 		</script>
 	</c:if>
-	<c:if test="${modifyResult eq FAIL }">
+
+	<c:if test="${not empty replyResult}">
 		<script>
-			alert('글수정 실패하였습니다.');
+			alert('${replyResult}');
 		</script>
 	</c:if>
-	<c:if test="${deleteResult eq SUCCESS }">
-		<script>
-			alert('글삭제 성공하였습니다.');
-		</script>
-	</c:if>
-	<c:if test="${deleteResult eq FAIL }">
-		<script>
-			alert('글삭제 실패하였습니다.');
-		</script>
-	</c:if>
-	<c:if test="${replyResult eq SUCCESS }">
-		<script>
-			alert('답변글 쓰기 성공하였습니다.');
-		</script>
-	</c:if>
-	<c:if test="${replyResult eq FAIL }">
-		<script>
-			alert('답변글 쓰기 실패하였습니다.');
-		</script>
-	</c:if>
+
 	<jsp:include page="../main/header.jsp"/>
 
 	<div id="content_form">
@@ -108,8 +91,8 @@ src="https://code.jquery.com/jquery-3.4.1.js">
 					
 						<td>${board.mName }</td>
 					
-						<td>
-						<c:forEach begin="0" end="${board.fIndent }">
+						<td style="text-align: left;">
+						<c:forEach var="i" begin="1" end="${board.fIndent }">
 							&nbsp; &nbsp; &nbsp;
 								<c:if test="${i eq board.fIndent }">
 									┖

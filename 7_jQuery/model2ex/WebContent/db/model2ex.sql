@@ -58,6 +58,10 @@ INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME,
 commit;
 SELECT * FROM FILEBOARD;
 SELECT * FROM mvc_member;
+SELECT * FROM ADMIN;
+
+UPDATE FILEBOARD SET FTITLE='ss',FCONTENT='aaaa',FFILENAME='bbb',FIP='ccc',FRDATE=SYSDATE WHERE FID=1;
+commit;
 ----------------------------------------------------------------------
 --                          admin table                             --
 ----------------------------------------------------------------------

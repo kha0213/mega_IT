@@ -70,7 +70,7 @@ src="https://code.jquery.com/jquery-3.4.1.js">
 					<th>사진</th>
 					<td colspan="2"><input type="file" name="mPhoto"></td>
 				</tr>
-				<tr><th>생년월일</th><td><input type="text" name="mBirth" id="datepicker" value="${member.mBirth }"></td></tr>
+				<tr><th>생년월일</th><td colspan="2"><input type="text" name="mBirth" id="datepicker" value="${member.mBirth }"></td></tr>
 				
 				
 				<tr>

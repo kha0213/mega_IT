@@ -12,31 +12,37 @@
 </head>
 <body>
 	<div class="container">
-	<form action="${conPath }/reply.do" method="post">
-	<input type="hidden" name="bgroup" value="${replyView.bgroup }">
-	<input type="hidden" name="bstep" value="${replyView.bstep }">
-	<input type="hidden" name="bindent" value="${replyView.bindent }">
+	<form action="${conPath }/Breply.do" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="fId" value="${replyView.fId }">
+	<input type="hidden" name="fGroup" value="${replyView.fGroup }">
+	<input type="hidden" name="fStep" value="${replyView.fStep }">
+	<input type="hidden" name="fIndent" value="${replyView.fIndent }">
 	<input type="hidden" name="pageNum" value="${param.pageNum }">
+	<input type="hidden" name="mId" value="${member.mId }">
 		<table class="table table-dark table-hover text-center">
   <thead>
     <tr>
-      <th colspan="2">${replyView.bid }번 글의 답글쓰기</th>
+      <th colspan="2">${replyView.fId }번 글의 답글쓰기</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">작성자</th>
-      <td scope="col"><input type="text" name="bname" required="required" class="form-control"
+      <td scope="col"><input type="text" name="mName" readonly="readonly" value="${member.mName }" class="form-control"
       ></td>
     </tr>
     <tr>
       <th scope="row">글제목</th>
-      <td scope="col"><input type="text" name="btitle" required="required" class="form-control"
-      value="${replyView.btitle }의 답글"></td>
+      <td scope="col"><input type="text" name="fTitle" required="required" class="form-control"
+      value="${replyView.fTitle }의 답글"></td>
     </tr>
     <tr>
       <th scope="row">본문</th>
-      <td scope="col"><textarea rows="5" cols="20" name="bcontent" class="form-control"></textarea></td>
+      <td scope="col"><textarea rows="5" cols="20" name="fContent" class="form-control"></textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">파일</th>
+      <td scope="col"><input type="file" name="fFileName" class="form-control"></td>
     </tr>
   </tbody>
   <tfoot>

@@ -12,8 +12,8 @@
 </head>
 <body>
 	<div class="container">
-	<form action="${conPath }/modify.do" method="post">
-	<input type="hidden" name="bid" value="${modifyView.bid }">
+	<form action="${conPath }/Bmodify.do" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="fId" value="${param.fId }">
 	<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<table class="table table-dark table-hover text-center">
   <thead>
@@ -23,20 +23,31 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">작성자</th>
-      <td scope="col"><input type="text" name="bname" required="required" class="form-control"
-      value="${modifyView.bname }"></td>
+      <th scope="row">ID</th>
+      <td scope="col"><input type="text" name="mId" readonly="readonly" class="form-control"
+      value="${member.mId }"></td>
     </tr>
     <tr>
       <th scope="row">글제목</th>
-      <td scope="col"><input type="text" name="btitle" required="required" class="form-control"
-      value="${modifyView.btitle }"></td>
+      <td scope="col"><input type="text" name="fTitle" required="required" class="form-control"
+      value="${modifyView.fTitle }"></td>
     </tr>
     <tr>
       <th scope="row">본문</th>
-      <td scope="col"><textarea rows="5" cols="20" name="bcontent" class="form-control">${modifyView.bcontent }</textarea></td>
+      <td scope="col"><textarea rows="5" cols="20" name="fContent" class="form-control">${modifyView.fContent }</textarea></td>
     </tr>
  	
+ 	<tr>
+      <th scope="row">파일</th>
+      <td scope="col"><input type="file" name="fFileName" class="form-control"><br>
+      <img src="fileboardUp/${modifyView.fFileName }" alt="이전에 저장한 파일">
+      <input type="checkbox" name="fileChk" value="Chk">(체크 시 이전 저장한 파일 그대로)
+      </td>
+    </tr>
+    
+
+    
+    
    
   </tbody>
   <tfoot>

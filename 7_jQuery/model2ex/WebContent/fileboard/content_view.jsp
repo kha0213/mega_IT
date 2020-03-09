@@ -11,6 +11,14 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+
+<c:if test="${not empty modifyResult }">
+<script>
+	alert('${modifyResult}');
+</script>
+</c:if>
+
+
 <jsp:include page="../main/header.jsp"/>
 	<div id="content_form">
 		<table class="table table-bordered table-hover">
@@ -48,18 +56,32 @@
       <th scope="row">IP</th>
       <td>${content_view.fIp }</td>
     </tr>
+    <tr>
+      <th scope="row">업로드 파일 img</th>
+      <td><img src="fileboardUp/${content_view.fFileName }" alt="uploadFile">
+      </td>
+    </tr>
   </tbody>
    <tfoot>
     <tr>
       <th scope="col" colspan="2" class="text-center">
+      
+      <c:if test="${content_view.mName eq member.mName }">
       	<button type="button" class="btn btn-lg btn-outline-primary" 
-      	onclick="location.href='${conPath}/modify_view.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">수정</button>
+      	onclick="location.href='${conPath}/Bmodify_view.do?fId=${content_view.fId }&pageNum=${param.pageNum }'">수정</button>
+      </c:if>
+      	
 		<button type="button" class="btn btn-lg btn-outline-info"
-		onclick="location.href='${conPath}/boardsList.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">목록</button>
-		<button type="button" class="btn btn-lg btn-outline-success"
-		onclick="location.href='${conPath}/reply_view.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">답변</button>
+		onclick="location.href='${conPath}/list.do?fId=${content_view.fId }&pageNum=${param.pageNum }'">목록</button>
+		
+      <c:if test="${not empty member || not empty admin }">
+      <button type="button" class="btn btn-lg btn-outline-success"
+		onclick="location.href='${conPath}/Breply_view.do?fId=${content_view.fId }&pageNum=${param.pageNum }'">답변</button>
+      </c:if>
+      <c:if test="${content_view.mName eq member.mName || not empty admin}">
 		<button type="button" class="btn btn-lg btn-outline-danger"
-		onclick="location.href='${conPath}/delete.do?bid=${content_view.fId }&pageNum=${param.pageNum }'">삭제</button>
+		onclick="location.href='${conPath}/Bdelete.do?fId=${content_view.fId }&pageNum=${param.pageNum }'">삭제</button>
+	 </c:if>
       </th>
     </tr>
   </tfoot>

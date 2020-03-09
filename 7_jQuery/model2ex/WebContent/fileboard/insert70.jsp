@@ -18,7 +18,7 @@
 	<%
 		FileboardDao bDao = FileboardDao.getInstance();
 		for(int i=0;i<200;i++){
-		int result = bDao.insertBoard("ID"+i, "title"+i, "content"+i, "filename"+i,"ippppi");
+		boolean result = bDao.insertBoard("ID"+i, "title"+i, "content"+i, "filename"+i,"ippppi");
 		}
 	
 	%>	

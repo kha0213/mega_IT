@@ -26,6 +26,7 @@
 	
 	
 	<jsp:include page="../main/header.jsp"/>
+	<div id="content_form">
 	<table>
 		<caption>전체회원보기</caption>
 		<tr>
@@ -65,6 +66,7 @@
 		</c:if>
 		&nbsp; &nbsp; &nbsp;
 		<a href="${conPath }/allView.do?pageNum=${pageCnt}">&gt;&gt;</a>
+	</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>

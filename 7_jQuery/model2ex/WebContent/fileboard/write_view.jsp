@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-	<form action="${conPath }/write.do" method="post">
+	<form action="${conPath }/write.do" method="post" enctype="multipart/form-data">
 		<table class="table table-dark table-hover text-center">
   <thead>
     <tr>
@@ -21,18 +21,21 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">작성자</th>
-      <td scope="col"><input type="text" name="bname" required="required" class="form-control"></td>
+      <th scope="row">ID</th>
+      <td scope="col"><input type="text" name="mId" readonly="readonly" value="${member.mId }" class="form-control"></td>
     </tr>
     <tr>
       <th scope="row">글제목</th>
-      <td scope="col"><input type="text" name="btitle" required="required" class="form-control"></td>
+      <td scope="col"><input type="text" name="fTitle" required="required" class="form-control"></td>
     </tr>
     <tr>
       <th scope="row">본문</th>
-      <td scope="col"><textarea rows="5" cols="20" name="bcontent" class="form-control"></textarea></td>
+      <td scope="col"><textarea rows="5" cols="20" name="fContent" class="form-control"></textarea></td>
     </tr>
- 	
+ 	<tr>
+      <th scope="row">파일</th>
+      <td scope="col"><input type="file" name="fFileName" class="form-control"></td>
+    </tr>
    
   </tbody>
   <tfoot>

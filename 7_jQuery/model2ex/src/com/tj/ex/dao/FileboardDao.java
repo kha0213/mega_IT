@@ -109,8 +109,8 @@ public class FileboardDao {
 	}
 	
 	//글 쓰기
-	public int insertBoard(String mId,String fTitle, String fContent, String fFileName, String fIp) {
-		int result = 0;
+	public boolean insertBoard(String mId,String fTitle, String fContent, String fFileName, String fIp) {
+		boolean result = false;
 		String sql = "INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME," + 
 				"        FGROUP, FSTEP, FINDENT, FIP)" + 
 				"    VALUES (FILEBOARD_SEQ.NEXTVAL, ?,?,?,?," + 
@@ -126,7 +126,7 @@ public class FileboardDao {
 			pstmt.setString(3, fContent);
 			pstmt.setString(4, fFileName);
 			pstmt.setString(5, fIp);
-			result = pstmt.executeUpdate();
+			result = (pstmt.executeUpdate()==1);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -208,8 +208,8 @@ public class FileboardDao {
 		return board;
 	}
 	
-	public int modifyBoard(int fId, String fTitle, String fContent, String fFileName, String fIp, Date frdate) {
-		int result = 0;
+	public boolean modifyBoardPlusFile(int fId, String fTitle, String fContent, String fFileName, String fIp) {
+		boolean result = false;
 		String sql = "UPDATE FILEBOARD SET FTITLE=?,FCONTENT=?,FFILENAME=?,FIP=?,FRDATE=SYSDATE WHERE FID=?";
 		
 		Connection conn = null;
@@ -223,9 +223,36 @@ public class FileboardDao {
 			pstmt.setString(3, fFileName);
 			pstmt.setString(4, fIp);
 			pstmt.setInt(5, fId);
-			result = pstmt.executeUpdate();
+			result = (pstmt.executeUpdate()==1);
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("mpw오류??라고"+e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+	public boolean modifyBoardNotFile(int fId, String fTitle, String fContent, String fIp) {
+		boolean result = false;
+		String sql = "UPDATE FILEBOARD SET FTITLE=?,FCONTENT=?,FFILENAME=?,FIP=?,FRDATE=SYSDATE WHERE FID=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, fTitle);
+			pstmt.setString(2, fContent);
+			pstmt.setString(3, fIp);
+			pstmt.setInt(4, fId);
+			result = (pstmt.executeUpdate()==1);
+		} catch (SQLException e) {
+			System.out.println("mpw오류??"+e.getMessage());
 		} finally {
 			try {
 				if(pstmt!=null) pstmt.close();
@@ -237,8 +264,8 @@ public class FileboardDao {
 		return result;
 	}
 	
-	public int deleteBoard(int fId) {
-		int result = 0;
+	public boolean deleteBoard(int fId) {
+		boolean result = false;
 		String sql = "DELETE FROM FILEBOARD WHERE FID=?";
 		
 		Connection conn = null;
@@ -248,7 +275,7 @@ public class FileboardDao {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, fId);
-			result = pstmt.executeUpdate();
+			result = (pstmt.executeUpdate()==1);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -263,14 +290,15 @@ public class FileboardDao {
 	}
 	
 	private void preReplyStepA(int fGroup,int fStep) {
-		String sql = "UPDATE FILEBOARD SET FSTEP=FSTEP+1 WHERE FGROUP=2 AND FSTEP>?";
+		String sql = "UPDATE FILEBOARD SET FSTEP=FSTEP+1 WHERE FGROUP=? AND FSTEP>?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, fStep);
+			pstmt.setInt(1, fGroup);
+			pstmt.setInt(2, fStep);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -284,9 +312,9 @@ public class FileboardDao {
 		}
 	}
 	
-	public int replyBoard(String mId,String fTitle, String fContent, String fFileName,int fGroup, int fStep, int fIndent, String fIp) {
+	public boolean replyBoard(String mId,String fTitle, String fContent, String fFileName,int fGroup, int fStep, int fIndent, String fIp) {
 		preReplyStepA(fGroup,fStep);
-		int result = 0;
+		boolean result = false;
 		String sql = "INSERT INTO FILEBOARD (FID, MID, FTITLE, FCONTENT, FFILENAME," + 
 				"        FGROUP, FSTEP, FINDENT, FIP)" + 
 				"    VALUES (FILEBOARD_SEQ.NEXTVAL, ?,?,?,?," + 
@@ -305,7 +333,7 @@ public class FileboardDao {
 			pstmt.setInt(6, fStep+1);
 			pstmt.setInt(7, fIndent+1);
 			pstmt.setString(8, fIp);
-			result = pstmt.executeUpdate();
+			result = (pstmt.executeUpdate()==1);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {

@@ -11,7 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tj.ex.service.ALoginService;
 import com.tj.ex.service.BContentService;
+import com.tj.ex.service.BDeleteService;
 import com.tj.ex.service.BListService;
+import com.tj.ex.service.BModifyService;
+import com.tj.ex.service.BModify_viewService;
+import com.tj.ex.service.BReplyService;
+import com.tj.ex.service.BReply_viewService;
+import com.tj.ex.service.BWriteService;
 import com.tj.ex.service.LogoutService;
 import com.tj.ex.service.MAllViewService;
 import com.tj.ex.service.MJoinService;
@@ -101,6 +107,32 @@ public class Controller extends HttpServlet {
 			service = new BContentService();
 			service.execute(request, response);
 			viewPage = "fileboard/content_view.jsp";
+		}else if(com.equals("/write_view.do")) {
+			viewPage = "fileboard/write_view.jsp";
+		}else if(com.equals("/write.do")) {
+			service = new BWriteService();
+			service.execute(request, response);
+			viewPage = "list.do";
+		}else if(com.equals("/Bmodify_view.do")) {
+			service = new BModify_viewService();
+			service.execute(request, response);
+			viewPage = "fileboard/modify_view.jsp";
+		}else if(com.equals("/Bmodify.do")) {
+			service = new BModifyService();
+			service.execute(request, response);
+			viewPage = "list.do";
+		}else if(com.equals("/Bdelete.do")) {
+			service = new BDeleteService();
+			service.execute(request, response);
+			viewPage = "list.do";
+		}else if(com.equals("/Breply_view.do")) {
+			service = new BReply_viewService();
+			service.execute(request, response);
+			viewPage = "fileboard/reply_view.jsp";
+		}else if(com.equals("/Breply.do")) {
+			service = new BReplyService();
+			service.execute(request, response);
+			viewPage = "list.do";
 		}
 		
 		
