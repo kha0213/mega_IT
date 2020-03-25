@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="student1" class="com.tj.ex1_student.Student">
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="31"/>
+		<constructor-arg value="고2"/>
+		<constructor-arg value="A8"/>
+	</bean>
+	<bean id="student2" class="com.tj.ex1_student.Student">
+		<constructor-arg value="김영롱"/>
+		<constructor-arg value="25"/>
+		<constructor-arg value="중1"/>
+		<constructor-arg value="N2"/>
+	</bean>
+	
+	<bean id="student_info1" class="com.tj.ex1_student.Student_info">
+		<constructor-arg ref="student1"/>
+	</bean>
+	<bean id="student_info2" class="com.tj.ex1_student.Student_info">
+		<constructor-arg ref="student2"/>
+	</bean>
+
+</beans>

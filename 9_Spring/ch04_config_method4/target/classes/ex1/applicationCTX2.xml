@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="family" class="com.tj.ex1xml.Family" c:mamiName="엄마" c:papaName="아빠" p:sisterName="딸">
+		<property name="brotherName" value="브라덜"/>
+	</bean>
+	<bean id="student2" class="com.tj.ex1xml.Student">
+		<constructor-arg name="name" value="홀길동"/>
+		<constructor-arg name="age" value="31"/>
+		<constructor-arg name="hobbies">
+			<list>
+				<value>졸기</value>
+				<value>졸려</value>
+				<value>졸료</value>
+			</list>
+		</constructor-arg>
+	
+	</bean>
+</beans>

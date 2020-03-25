@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="cal" class="com.tj.cal.Calculator"/> <!-- 속성변수 하나도 없을 때 바로 닫자 -->
+			
+	<bean id="myCal" class="com.tj.cal.MyCalculator">
+		<property name="calculator">
+			<ref bean="cal"/>
+		</property>
+		<property name="n1">
+			<value>10</value>
+		</property>
+		<property name="n2">
+			<value>4</value>
+		</property>
+	</bean>
+	
+
+</beans>

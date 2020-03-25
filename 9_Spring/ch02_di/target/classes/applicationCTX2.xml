@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="bmi_calculator" class="com.tj.bmi.BMI_calculator">
+		<property name="low_weight" value="18.5"/>
+		<property name="normal" value="23"/>
+		<property name="over_weight" value="25"/>
+		<property name="obesity" value="30"/>
+	</bean>
+	
+	<bean id="my_info" class="com.tj.bmi.My_info">
+		<property name="name" value="영롱"/> <!-- 기본 데이터 형 -->
+		<property name="height" value="178.5"/>
+		<property name="weight" value="80"/>
+		<property name="hobbies"> <!-- 리스트 데이터 형 -->
+			<list>
+				<value>요가</value>
+				<value>마라톤</value>
+				<value>공부</value>
+				<value>SPRING</value>
+			</list>
+		</property>
+		<property name="bmical" ref="bmi_calculator"/>  <!-- 참조 데이터형 = 객체타입 -->
+	</bean>
+
+</beans>
