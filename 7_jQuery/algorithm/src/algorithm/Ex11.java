@@ -31,6 +31,10 @@ public class Ex11 {
         	String temp = key.next();
         	dap[i++]=ans.get(temp);
         }
+        for(int j=0;j<dap.length;j++) {
+        	answer += dap[j];
+        }
+        int 
         
         
         

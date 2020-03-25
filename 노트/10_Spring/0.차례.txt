@@ -1,17 +1,16 @@
-1. Spring°³¿ä
-2. DI °³³ä
-3. DI È°¿ë
-4. DI ¼³Á¤¹æ¹ý
-5. ºó ¶óÀÌÇÁ»çÀÌÅ¬°ú ¹üÀ§
-6. ¿ÜºÎÈ­ÀÏÀ» ÀÌ¿ëÇÑ ¼³Á¤
+1. Springê°œìš”
+2. DI ê°œë…
+3. DI í™œìš©
+4. DI ì„¤ì •ë°©ë²•
+5. ë¹ˆ ë¼ì´í”„ì‚¬ì´í´ê³¼ ë²”ìœ„
+6. ì™¸ë¶€í™”ì¼ì„ ì´ìš©í•œ ì„¤ì •
 7. AOP
-8. MVC ±âÃÊ
-9. ÄÁÆ®·Ñ·¯
-10. Æûµ¥ÀÌÅÍ
+8. MVC ê¸°ì´ˆ
+9. ì»¨íŠ¸ë¡¤ëŸ¬
+10. í¼ë°ì´í„°
 11. RequestMapping
-12. µ¥ÀÌÅÍ °ËÁõ - »ý·« °¡´É
-13. MVC°Ô½ÃÆÇ
-14. JDBC ¸Àº¸±â
-15. fileupload
-16. mail api
-17. Mybatis ÇÁ·¹ÀÓ¿öÅ©·Î DB ¿¬µ¿
+12. MVCê²Œì‹œíŒ
+13. JDBC ë§›ë³´ê¸°
+14. fileupload
+15. mail api
+16. Mybatis í”„ë ˆìž„ì›Œí¬ë¡œ DB ì—°ë™
