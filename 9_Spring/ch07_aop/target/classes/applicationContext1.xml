@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	
+	<bean id="proxyClass" class="com.tj.ex1.ProxyClass"/>
+	
+	<aop:config>
+		<aop:aspect id="aroundAspect" ref="proxyClass">
+			<aop:pointcut expression="within(com.tj.ex1.*)" id="aroundM"/>
+			<aop:around method="aroundAdvice" pointcut-ref="aroundM"/> 
+		</aop:aspect>
+		
+		<aop:aspect id="beforeAspect" ref="proxyClass">
+			<aop:pointcut expression="within(com.tj.ex1.Worker)" id="beforeM"/>
+			<aop:before method="beforeAdvice" pointcut-ref="beforeM"/>
+		</aop:aspect>
+		
+		<aop:aspect id="afterAspect" ref="proxyClass">
+			<aop:pointcut expression="execution(* com.tj.ex1.Worker.get*())" id="afterM"/>
+			<aop:after method="afterAdvice" pointcut-ref="afterM"/>
+		</aop:aspect>
+		
+		<aop:aspect id="afterReturnAspect" ref="proxyClass">
+			<aop:pointcut expression="bean(student)" id="afterReturnM"/>
+			<aop:after-returning method="afterReturningAdvice" pointcut-ref="afterReturnM"/>
+		</aop:aspect>
+		
+	</aop:config>
+	
+	<bean id="student" class="com.tj.ex1.Student" p:name="홍길동" p:age="19" p:gradeNum="3" p:classNum="5"/>
+	<bean id="worker" class="com.tj.ex1.Worker" p:name="롱롱이" p:job="직업업" p:age="18"/>
+	
+</beans>
