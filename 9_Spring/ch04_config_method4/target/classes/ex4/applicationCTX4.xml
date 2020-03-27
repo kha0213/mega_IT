@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="student2" class="com.tj.ex1xml.Student">
+	<bean id="student2" class="com.tj.ex1xml.Student" >
 		<constructor-arg value="홍희"/>
 		<constructor-arg value="123"/>
 		<constructor-arg>

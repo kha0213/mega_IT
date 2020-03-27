@@ -11,5 +11,6 @@ public class Test_main {
 		Student st2 = ctx.getBean("student2",Student.class);
 		System.out.println(st1);
 		System.out.println(st2);
+		ctx.close();
 	}
 }
