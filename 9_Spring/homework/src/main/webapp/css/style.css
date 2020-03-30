@@ -1,0 +1,22 @@
+@charset "UTF-8";
+body{
+	width:300px;
+	margin:0 auto;
+	background-color: lightyellow;
+}
+table{
+	width:100%;
+}
+
+.text-right{
+	text-align: right;
+}
+.font-red{
+	color: red;
+}
+.font-size-up{
+	font-size: 1.2em;
+}
+.text-center{
+	text-align: center;
+}

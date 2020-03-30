@@ -1,0 +1,9 @@
+@charset "UTF-8";
+body{
+	background-color: green;
+	color: yellow;
+}
+a{
+	font-size: 3em;
+	color: orange;
+}
