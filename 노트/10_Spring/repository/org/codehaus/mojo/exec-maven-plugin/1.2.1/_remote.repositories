@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Mar 27 12:51:29 KST 2020
+exec-maven-plugin-1.2.1.jar>central=
+exec-maven-plugin-1.2.1.pom>central=

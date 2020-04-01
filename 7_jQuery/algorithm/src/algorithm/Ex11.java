@@ -34,7 +34,7 @@ public class Ex11 {
         for(int j=0;j<dap.length;j++) {
         	answer += dap[j];
         }
-        int 
+      
         
         
         

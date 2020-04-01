@@ -1,19 +1,19 @@
-IP Ã¼Å© ÇÒÀÏÀÌ »ı°Ü¼­ ´ÙÀ½°ú °°ÀÌ °Ë»öÀ» Çß´õ´Ï  
-<%=request.getRemoteAddr()%> ÀÇ °á°ú°¡ 
-0:0:0:0:0:0:0:1 ¸¸ ³ª¿Â´Ù.
-IPV6 ¹®Á¦ÀÌ´Ù. WIN7 ÀÌ»óÀº ±âº»ÀÌ IPV6  
+IP ì²´í¬ í• ì¼ì´ ìƒê²¨ì„œ ë‹¤ìŒê³¼ ê°™ì´ ê²€ìƒ‰ì„ í–ˆë”ë‹ˆ  
+<%=request.getRemoteAddr()%> ì˜ ê²°ê³¼ê°€ 
+0:0:0:0:0:0:0:1 ë§Œ ë‚˜ì˜¨ë‹¤.
+IPV6 ë¬¸ì œì´ë‹¤. WIN7 ì´ìƒì€ ê¸°ë³¸ì´ IPV6  
 
-±×·¡¼­ ÅèÄ¹ ½ÇÇà½Ã JVM È¯°æº¯¼ö¸¦ Ãß°¡ ÇØ¾ß ÇÑ´Ù. 
-0:0:0:0:0:0:0:1  ÀÌ°Å¶û 127.0.0.1 ÀÌ¶û °°´Ù°í..
+ê·¸ë˜ì„œ í†°ìº£ ì‹¤í–‰ì‹œ JVM í™˜ê²½ë³€ìˆ˜ë¥¼ ì¶”ê°€ í•´ì•¼ í•œë‹¤. 
+0:0:0:0:0:0:0:1  ì´ê±°ë‘ 127.0.0.1 ì´ë‘ ê°™ë‹¤ê³ ..
 
 eclipse > Run > Run Configurations > Apache Tomcat > Tomcat v8.5 Server >
 Arguiments > 
-Program arguments¿¡ "-Djava.net.preferIPv4Stack=true" ÀÔ·Â
-VM arguments:¿¡ "-Djava.net.preferIPv4Stack=true" ÀÔ·Â
+Program argumentsì— "-Djava.net.preferIPv4Stack=true" ì…ë ¥
+VM arguments:ì— "-Djava.net.preferIPv4Stack=true" ì…ë ¥
 
-- ÅèÄ¹ Àç ½ÇÇàÈÄ Àç È®ÀÎ ÇÏ¸é IPv4·Î ³ª¿Â´Ù. 
+- í†°ìº£ ì¬ ì‹¤í–‰í›„ ì¬ í™•ì¸ í•˜ë©´ IPv4ë¡œ ë‚˜ì˜¨ë‹¤. 
 
 IPv6
 Arguiments > 
-Program arguments¿¡ "start"
-VM arguments:¿¡ "-Dcatalina.base="C:\mega_IT\IDE\apache-tomcat-8.5.37" -Dcatalina.home="C:\mega_IT\IDE\apache-tomcat-8.5.37" -Dwtp.deploy="C:\mega_IT\IDE\apache-tomcat-8.5.37\wtpwebapps" -Djava.endorsed.dirs="C:\mega_IT\IDE\apache-tomcat-8.5.37\endorsed""
+Program argumentsì— "start"
+VM arguments:ì— "-Dcatalina.base="C:\mega_IT\IDE\apache-tomcat-8.5.37" -Dcatalina.home="C:\mega_IT\IDE\apache-tomcat-8.5.37" -Dwtp.deploy="C:\mega_IT\IDE\apache-tomcat-8.5.37\wtpwebapps" -Djava.endorsed.dirs="C:\mega_IT\IDE\apache-tomcat-8.5.37\endorsed""

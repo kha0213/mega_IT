@@ -10,8 +10,39 @@
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+  
 <script>
+
+
+
+
+
+
 	$(function(){
+		IMP.init("imp70203497"); 
+		
+		
+		
+		$('#click').click(function(){
+			IMP.certification({ // param
+			    merchant_uid: 'merchant_' + new Date().getTime()
+			  }, function (rsp) { // callback
+			    if (rsp.success) {
+			      alert('인증성공');
+			    } else {
+			    	alert('인증실패');
+			    }
+			  });
+		});
+		
+		
+		
+		
+		
+		
+		
+		
 		$('form').submit(function(){
 			var kor = $('input[name="kor"]').val();
 			var eng = $('input[name="eng"]').val();
@@ -35,6 +66,7 @@
 </script>
 </head>
 <body>
+	<h1><button id="click">클릭</button></h1>
 	<p class="text-right font-red">"현재 총 ${cnt }명"</p>
 	<form action="${conPath }/input.do" method="get">
 	<table>

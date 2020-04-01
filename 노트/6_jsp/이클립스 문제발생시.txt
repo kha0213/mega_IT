@@ -1,10 +1,10 @@
-1. ¹®Á¦°¡ ÀÚÁÖ ¹ß»ıÇØ¼­ ÀÌÅ¬¸¯½º ¼Ò½º Á¤¸®
-   1) ÀÌÅ¬¸³½º ´İ´Â´Ù
-   2) ¼Ò½º ÇÁ·ÎÁ§Æ®¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ÀüºÎ »èÁ¦
-   3) ÅèÄ¹ Æú´õµµ »èÁ¦
-   4) ´Ù¿î¹ŞÀº ÅèÄ¹À» ´Ù½Ã ¾ĞÃàÀ» Ç¬ ÈÄ, jstl.jar¿Í standard.jar¸¦ libÆú´õ¿¡ ¿Å±ä´Ù
-   5) ÀÌÅ¬¸³½º¸¦ ½ÇÇà
-   6) Window-preferrnce¿¡¼­
+1. ë¬¸ì œê°€ ìì£¼ ë°œìƒí•´ì„œ ì´í´ë¦­ìŠ¤ ì†ŒìŠ¤ ì •ë¦¬
+   1) ì´í´ë¦½ìŠ¤ ë‹«ëŠ”ë‹¤
+   2) ì†ŒìŠ¤ í”„ë¡œì íŠ¸ë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ì „ë¶€ ì‚­ì œ
+   3) í†°ìº£ í´ë”ë„ ì‚­ì œ
+   4) ë‹¤ìš´ë°›ì€ í†°ìº£ì„ ë‹¤ì‹œ ì••ì¶•ì„ í‘¼ í›„, jstl.jarì™€ standard.jarë¥¼ libí´ë”ì— ì˜®ê¸´ë‹¤
+   5) ì´í´ë¦½ìŠ¤ë¥¼ ì‹¤í–‰
+   6) Window-preferrnceì—ì„œ
    	6.1 Encoding (UTF-8)
 	      a. window -> preferences -> general -> workspace
 	      b. window -> preferences -> web -> css files
@@ -12,10 +12,10 @@
 	      d. window -> preferences -> web -> jsp files
     	6.2 Test Web browser
 	       window -> webBrowser-> Chrome 
-   7) ÇÏ´Üservers ÅÇ¿¡¼­ new¸¦ Å¬¸¯ÇÏ¿© tomcat¼³Á¤
-      apache¿¡ ÀÖ´Â tomcatÀ» ¼±ÅÃÇÏ°í tomcat8.5À» ¿¬°áÇÏ°í 8181Æ÷Æ® µî Á¤º¸ ¼¼°¡Áö ¼öÁ¤
+   7) í•˜ë‹¨servers íƒ­ì—ì„œ newë¥¼ í´ë¦­í•˜ì—¬ tomcatì„¤ì •
+      apacheì— ìˆëŠ” tomcatì„ ì„ íƒí•˜ê³  tomcat8.5ì„ ì—°ê²°í•˜ê³  8181í¬íŠ¸ ë“± ì •ë³´ ì„¸ê°€ì§€ ìˆ˜ì •
 
-   8) SeversÀÇ Tomcat v8.5¹ØÀÇ context.xml¿¡ 
+   8) Seversì˜ Tomcat v8.5ë°‘ì˜ context.xmlì— 
 	    <Resource 
 		auth="Container"
 		driverClassName = "oracle.jdbc.driver.OracleDriver"
@@ -26,12 +26,12 @@
 		type = "javax.sql.DataSource"
 		maxActive = "10"
 		maxWait = "1000"
-	/>Ãß°¡ÇÏ°í Publish to the Server.
-   9)ÇÁ·ÎÁ§Æ®µé import
-   10) ÇÑÇÁ·ÎÁ§Æ®¶óµµ ½ÇÇà½ÃÅ² ÈÄ IPv4·Î º¯°æ
+	/>ì¶”ê°€í•˜ê³  Publish to the Server.
+   9)í”„ë¡œì íŠ¸ë“¤ import
+   10) í•œí”„ë¡œì íŠ¸ë¼ë„ ì‹¤í–‰ì‹œí‚¨ í›„ IPv4ë¡œ ë³€ê²½
 eclipse > Run > Run Configuration > Apache Tomcat > Tomcat v8.5 Server >
 	Arguiments > 
-	Program arguments¿¡ "-Djava.net.preferIPv4Stack=true" ÀÔ·Â
-	VM arguments:¿¡ "-Djava.net.preferIPv4Stack=true" ÀÔ·Â
+	Program argumentsì— "-Djava.net.preferIPv4Stack=true" ì…ë ¥
+	VM arguments:ì— "-Djava.net.preferIPv4Stack=true" ì…ë ¥
    
    
