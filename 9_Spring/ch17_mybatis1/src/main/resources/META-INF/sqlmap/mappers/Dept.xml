@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Dept"> <!-- 아까 alies 해줘서 짧게 가능 원래는 com.tj.ch17.dto.Dept -->
+	<resultMap type="Dept" id="DeptResult">
+		<result property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	<select id="deptList" resultMap="DeptResult"> <!-- resultMap은 위에 있는것, resultType는 com.tj.ch17.dto.Dept -->
+	<!-- CDATA로 SQL문에 꺽쇠괄호를 쓸 수 있다. -->
+		SELECT * FROM DEPT
+	</select>
+	
+</mapper>
